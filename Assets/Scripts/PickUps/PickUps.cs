@@ -5,9 +5,22 @@ using UnityEngine;
 
 public class PickUps : MonoBehaviour
 {
-    [SerializeField] private bool repair;
-    [SerializeField] private bool speedBoost;
+    [HideInInspector] public int ListIndex = 0;
+    [HideInInspector] public string[] upgrades = new string[] { "SpeedBoost", "Repair", "Boom", "speedturn" };
 
+     private GameObject CounterObject;
+     private CollectobolCounter counter;
+
+    private void Awake() {
+        CounterObject = GameObject.FindWithTag("Counter");
+        if(CounterObject == null) {
+            Debug.LogError("Noo bad cant counterobject");
+            return;
+        }
+
+
+        counter = CounterObject.GetComponent<CollectobolCounter>();
+    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -25,28 +38,46 @@ public class PickUps : MonoBehaviour
     }
 
     private void WitchPowerUp() {
-        if(repair == true && speedBoost == true) {
-            Debug.LogError("PickUp " + gameObject.name + " heeft meer dan een soort power aan staan");
-            return;
-        }else if(repair == false && speedBoost == false) {
-            Debug.LogError("PickUp " + gameObject.name + " heeft geen power up aan staan");
-            return;
+
+        switch (ListIndex) {
+            case 0:
+                SpeedBoost();
+                break;
+            case 1:
+                Repair();
+                break;
+            case 2:
+                Boom();
+                break;
+            case 3:
+                SpeedTurn();
+                break;
+
         }
-        if(repair == true) {
-            Repair();
-        }
-        if(speedBoost == true) {
-            SpeedBoost();
-        }
-        
+        counter.totaalCount++;
     }
     private void Repair() {
         //repair car
         Debug.Log("repair repair repair");
+        counter.repairCount++;
     }
     
     private void SpeedBoost() {
         //give speedboost
         Debug.Log("Speed Speed Speed");
+        counter.speedBoostCount++;
     }
+    private void Boom() {
+        //give boom
+        Debug.Log("Boom Boom Boom");
+        counter.boomCount++;
+    }
+
+    private void SpeedTurn() {
+        //give Turn
+        Debug.Log("Turn turn turn");
+        counter.speedTurnCount++;
+    }
+
+    
 }
