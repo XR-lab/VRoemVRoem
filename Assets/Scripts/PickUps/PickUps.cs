@@ -21,15 +21,8 @@ public class PickUps : MonoBehaviour
 
         counter = CounterObject.GetComponent<CollectobolCounter>();
     }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            //give effect
-            WitchPowerUp();
-        }
-    }
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Car")) {
+        if (other.CompareTag("Player")) {
             //give effect
             WitchPowerUp();
             // destroy pick up
