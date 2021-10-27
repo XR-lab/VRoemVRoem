@@ -8,7 +8,7 @@ namespace XRLab.VRoem.Core
 {
     public class RingSpawner : MonoBehaviour
     {
-        [SerializeField] private Ring _ring;
+        [SerializeField] private MoveObstacle _ring;
         [Range(1, 10)] [SerializeField] private float _spawnWidth;
         [Range(0.1f, 10)] [SerializeField] private float _spawnHeight;
 
