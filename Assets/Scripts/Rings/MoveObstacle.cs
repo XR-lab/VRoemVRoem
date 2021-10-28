@@ -19,7 +19,7 @@ namespace XRLab.VRoem.Core
 
         private void Update()
         {
-            _speed = speedManager.ModifiedSpeed;
+            _speed = speedManager.FinalSpeed;
 
             transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         }

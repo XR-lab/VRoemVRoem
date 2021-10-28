@@ -21,7 +21,6 @@ namespace XRLab.VRoem.Vehicle
         private bool _mouseControl = false;
         private bool _boosting = false;
         private bool _boostInCooldown = false;
-        private bool _canBoost = true;
 
         private void Start()
         {

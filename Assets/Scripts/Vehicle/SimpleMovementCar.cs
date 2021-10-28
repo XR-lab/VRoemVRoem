@@ -76,6 +76,12 @@ namespace XRLab.VRoem.Vehicle
                 Vector3 averageNormals = (hitUpLeft.normal + hitUpRight.normal + hitDownLeft.normal + hitDownRight.normal) / 4;
 
                 _groundAngle = Vector3.Angle(Vector3.up, averageNormals);
+
+                float rampDot = Vector3.Dot(Vector3.forward, averageNormals);
+                float groundAnglePercentage = _groundAngle / 90;
+                float normalMultiplier = rampDot > 0 ? (1  + groundAnglePercentage) : Mathf.Abs(1 - groundAnglePercentage);
+
+                _speedManager.NormalBasedSpeed(normalMultiplier);
                 _rb.drag = _rigidBodyDrag;
             }
             else
@@ -93,7 +99,7 @@ namespace XRLab.VRoem.Vehicle
         private void LookAtTarget()
         {
             Vector3 lookat = _targetPoint;
-            lookat.z += Mathf.Clamp(_speedManager.ModifiedSpeed, 0, 1.5f);
+            lookat.z += Mathf.Clamp(_speedManager.FinalSpeed, 0, 1.5f);
 
             Quaternion targetRotation = Quaternion.LookRotation(lookat - transform.position);
             _model.rotation = Quaternion.Slerp(_model.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
