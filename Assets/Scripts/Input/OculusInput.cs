@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class OculusInput : MonoBehaviour
 {
+
     public delegate void ConfirmPress();
     public ConfirmPress OnConfirmPress;
     private OculusBindings oculusBindings;

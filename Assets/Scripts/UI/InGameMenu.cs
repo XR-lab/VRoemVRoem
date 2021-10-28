@@ -6,9 +6,14 @@ using UnityEngine.XR;
 
 public class InGameMenu : MonoBehaviour
 {
+    [Header("PauzeMenu")]
     [SerializeField] private GameObject pauzeMenu;
+
+    [Header("input")]
     private OculusInput oculusInput;
 
+
+    //check input 
     void Start()
     {
         pauzeMenu.SetActive(false);
@@ -19,24 +24,17 @@ public class InGameMenu : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+    //restart press space
     void Update()
     {
-        
-       
         if (Input.GetKeyDown("space"))
         {
             RestartLevel();
         }
 
-    }
-
-    public void RestartLevel()
-    {
-        Time.timeScale = 1;
-        pauzeMenu.SetActive(true);
-        SceneManager.LoadScene("Restartlevel");
-    }
+    } 
+    
+    //check if pauzemenu is active
     void CheckOpen()
     {
         if (!pauzeMenu.activeInHierarchy)
@@ -48,12 +46,23 @@ public class InGameMenu : MonoBehaviour
             close();
         }
     }
+
+    // call to restart level
+    public void RestartLevel()
+    {
+        Time.timeScale = 1;
+        pauzeMenu.SetActive(true);
+        SceneManager.LoadScene(0);
+    }
+   
+    //open pauze menu and stop game time
     public void Open()
     {
         Time.timeScale = 0;
         pauzeMenu.SetActive(true);
         Debug.Log("open");
     }
+    //close pauze menu and start game time
     public void close()
     {
         Time.timeScale = 1;
