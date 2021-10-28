@@ -14,7 +14,7 @@ namespace XRLab.VRoem.Core
 
         private void Start()
         {
-            speedManager = FindObjectOfType<SpeedManager>();            
+            speedManager = FindObjectOfType<SpeedManager>();
         }
 
         private void Update()

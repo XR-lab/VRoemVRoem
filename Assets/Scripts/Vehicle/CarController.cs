@@ -52,7 +52,7 @@ namespace XRLab.VRoem.Vehicle
             Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
             RaycastHit hit;
 
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
             {
                 _car.SetOrientation(hit.point, _boosting);
 
@@ -75,14 +75,9 @@ namespace XRLab.VRoem.Vehicle
                     }
 
                     _speedManager.CalculateModifedSpeed(multiplier);
-                }                
+                }
             }
-            else
-            {
-                Ray ray = new Ray(_handAnchor.position, _handAnchor.forward);
 
-                RaycastHit hit;
-                
             bool hitFound = (hit.collider != null);
 
             _lineRenderer.SetPosition(0, _handAnchor.position);
