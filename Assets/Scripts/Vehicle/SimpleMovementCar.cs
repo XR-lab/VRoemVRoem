@@ -26,6 +26,8 @@ namespace XRLab.VRoem.Vehicle
         private SpeedManager _speedManager;       
         private float _rigidBodyDrag = 0;
 
+        public bool Grounded { get { return _grounded; } }
+
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();           
@@ -39,6 +41,7 @@ namespace XRLab.VRoem.Vehicle
             CheckGrounded();
             UpdateCarBackBounds();
 
+            //Doesn't look at target point when not on the ground
             if (!_grounded) { return; }
 
             LookAtTarget();
@@ -46,6 +49,7 @@ namespace XRLab.VRoem.Vehicle
 
         private void FixedUpdate()
         {
+            //Remove control when distance to raycast and car is too low or the car is not on the ground
             if (InTargetPointRange() || !_grounded) return;
 
             Vector3 _targetDirection = (_targetPoint - transform.position).normalized;
@@ -59,6 +63,7 @@ namespace XRLab.VRoem.Vehicle
 
         private void CheckGrounded()
         {
+            //4 raycasts at all corners of the car
             RaycastHit hitUpLeft;
             RaycastHit hitUpRight;
             RaycastHit hitDownLeft;
@@ -73,6 +78,7 @@ namespace XRLab.VRoem.Vehicle
 
             if (_grounded)
             {
+                //Average all normals to get a ground angle
                 Vector3 averageNormals = (hitUpLeft.normal + hitUpRight.normal + hitDownLeft.normal + hitDownRight.normal) / 4;
 
                 _groundAngle = Vector3.Angle(Vector3.up, averageNormals);
@@ -87,33 +93,39 @@ namespace XRLab.VRoem.Vehicle
 
         private void UpdateCarBackBounds()
         {
+            //Car has an invisible collsion box behind him at all times so that he can go up ramps with ease
             _backCarBounds.position = new Vector3(0, _backCarBounds.position.y, Mathf.Clamp(transform.position.z, _lockedPosZ * 1 - _dynamicToleranceZ, _lockedPosZ * 1 + _dynamicToleranceZ) - 1.1f);
         }
 
         private void LookAtTarget()
         {
+            //Look at direction of the controller raycast with the speed of the speed manager added so that the car will look forward
             Vector3 lookat = _targetPoint;
             lookat.z += Mathf.Clamp(_speedManager.ModifiedSpeed, 0, 1.5f);
 
             Quaternion targetRotation = Quaternion.LookRotation(lookat - transform.position);
             _model.rotation = Quaternion.Slerp(_model.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
+            //Lock all not wanted local rotation axes
             transform.localRotation = new Quaternion(transform.localRotation.x, 0, 0, transform.localRotation.w);
             _model.localRotation = new Quaternion(0, Mathf.Clamp(_model.localRotation.y, -0.5f, 0.5f), 0, _model.localRotation.w);
         }
 
         public override void SetOrientation(Vector3 lookAtPosition, bool boosting)
         {
+            //Changes target point Z based on speed so that the car will move towards it
             float multiplier = boosting ? _boostMultiplierPosZ : Mathf.Clamp(_speedManager.CurrentMultiplier, 1 - _dynamicToleranceZ, 1 + _dynamicToleranceZ);
 
             float dynamicPosZ = _lockedPosZ * multiplier;
 
+            //Correct Controller Raycast hit point so that the car will not follow the Y and Z of the hit point
             Vector3 heightCorrectedPoint = new Vector3(Mathf.Clamp(lookAtPosition.x, -2.7f, 2.7f), transform.position.y, dynamicPosZ);
             _targetPoint = heightCorrectedPoint;
         }
 
         private bool InTargetPointRange()
         {
+            //Check distance between raycast hit point and the car
             return Vector3.Distance(transform.position, _targetPoint) <= _lookAtThreshold;
         }
     }
