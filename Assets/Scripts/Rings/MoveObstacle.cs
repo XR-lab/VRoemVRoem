@@ -24,6 +24,7 @@ namespace XRLab.VRoem.Core
             //Set material clipping position to the clipping plane position in the scene
             Vector3 clippingPlanePos = GameObject.FindGameObjectWithTag("ClippingPlane").transform.position;
             _clipMaterial.SetVector("_SectionPoint", clippingPlanePos);
+
         }
 
         private void Update()
