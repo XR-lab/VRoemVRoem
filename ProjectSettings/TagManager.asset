@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - ClippingPlane
+  - OVR
   - Counter
+
   layers:
   - Default
   - TransparentFX
@@ -12,11 +15,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Ridable
+  - Road
   - RayHit
   - Player
   - Bounds
-  - 
+  - ClippingPlane
   - 
   - 
   - 

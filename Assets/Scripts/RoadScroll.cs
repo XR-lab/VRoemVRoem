@@ -12,6 +12,7 @@ public class RoadScroll : MonoBehaviour
 
     private void Start()
     {
+        //Set starting positions of the roads
         for (int i = 0; i < roads.Count; i++)
         {
             roads[i].transform.localPosition = new Vector3(0, 0, i == 0 ? _startingPositionZ : roads[i - 1].transform.localPosition.z + _offset);
@@ -20,13 +21,14 @@ public class RoadScroll : MonoBehaviour
 
     private void Update()
     {
+        //Check if the road in front has a lower Z position as the threshold to teleport it to the back
         if (roads[0].transform.localPosition.z < _moveTreshold)
         {
             MoveRoad();
         }
     }
 
-    // Update is called once per frame
+    //Teleports the font road to the last road + the offset given
     private void MoveRoad()
     {
         GameObject movingRoad = roads[0];
