@@ -90,7 +90,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5571448876694586838}
-  - component: {fileID: 787612774027712752}
   - component: {fileID: 1621174873852033094}
   - component: {fileID: 1021810409}
   - component: {fileID: 1021810410}
@@ -110,26 +109,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239538521199222555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6151382812070786326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &787612774027712752
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239538521199222555}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.2}
-  m_Center: {x: 0, y: -0.02, z: 0}
 --- !u!54 &1621174873852033094
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -138,14 +124,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239538521199222555}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1.5
+  m_Drag: 4
+  m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 96
+  m_CollisionDetection: 1
 --- !u!114 &1021810409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,11 +168,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   _lookAtThreshold: 0.1
-  _rotationSpeed: 5
-  _dynamicToleranceZ: 0.05
-  _boostMultiplierPosZ: 1.1
+  _rotationSpeed: 10
+  _dynamicToleranceZ: 0.25
+  _boostMultiplierPosZ: 1.5
   _backCarBounds: {fileID: 0}
   _model: {fileID: 6151382812070786326}
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _raycastLength: 1
+  _grounded: 0
+  _groundAngle: 0
+  _upperLeftRay: {fileID: 1235974634437004085}
+  _upperRightRay: {fileID: 3256716027665106507}
+  _lowerLeftRay: {fileID: 5949650999192565952}
+  _lowerRightRay: {fileID: 6151886433748754362}
 --- !u!120 &4809586866357353009
 LineRenderer:
   m_ObjectHideFlags: 0
