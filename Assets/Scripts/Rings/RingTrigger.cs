@@ -12,7 +12,7 @@ namespace XRLab.VRoem.Core
         {
             if (other.attachedRigidbody.CompareTag(Tags.PLAYER))
             {
-                _renderer.material.color = Color.green;
+                _renderer.material.SetColor("_Color", Color.green);
             }
         }
     }
