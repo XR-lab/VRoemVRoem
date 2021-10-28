@@ -20,6 +20,12 @@ namespace XRLab.VRoem.Core
             if (other.CompareTag(Tags.PLAYER))
             {
                 _renderer.material.color = Color.green;
+
+                //Debug voor testen van de dood functie
+
+                FindObjectOfType<Gamemanager>().objectHitCounter += 1 ;
+                
+
             }
         }
     }
