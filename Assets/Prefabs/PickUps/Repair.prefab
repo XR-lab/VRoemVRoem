@@ -105,12 +105,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4444286668505193621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5101dd282360854ca846556788caf7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fd8f5be7bb0fa446804d4c9f39a335a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListIndex: 0
-  upgrades:
-  - SpeedBoost
-  - Repair
-  - Boom
-  - speedturn

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectobolCounter : MonoBehaviour
+public class CollectableCounter : MonoBehaviour
 {
-    [HideInInspector] public int totaalCount;
+     public int totaalCount;
     [HideInInspector] public int repairCount;
     [HideInInspector] public int speedBoostCount;
     [HideInInspector] public int boomCount;
