@@ -5,6 +5,7 @@ namespace XRLab.VRoem.Vehicle
     public class SimpleMovementCar : Car
     {
         [SerializeField] private float _speed;
+        [SerializeField] private float _gravityMultiplierBasedOnUp = 2;
         [SerializeField] private float _lookAtThreshold = 0.1f;
         [SerializeField] private float _rotationSpeed = 5;
         [SerializeField] private float _dynamicToleranceZ = 0.05f;
@@ -15,6 +16,7 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _raycastLength = 2;
         [SerializeField] private bool _grounded = false;
         [SerializeField] private float _groundAngle = 0;
+        [SerializeField] private float _normalSmoothing = 1.2f;
         [SerializeField] private Transform _upperLeftRay;
         [SerializeField] private Transform _upperRightRay;
         [SerializeField] private Transform _lowerLeftRay;
@@ -49,12 +51,19 @@ namespace XRLab.VRoem.Vehicle
             if (InTargetPointRange() || !_grounded) return;
 
             Vector3 _targetDirection = (_targetPoint - transform.position).normalized;
+            _targetDirection.y = 0;
 
             float turnPercentage = Mathf.Clamp(Mathf.Abs(_model.localRotation.y) / 0.25f, 0.25f, 1.5f);
 
             float force = _speed * turnPercentage;
 
             _rb.AddForce(_targetDirection * force);
+
+            if (!_grounded)
+            {
+                //Sticks better to slopes
+                _rb.AddForce(-transform.up * _gravityMultiplierBasedOnUp);
+            }            
         }
 
         private void CheckGrounded()
@@ -74,6 +83,7 @@ namespace XRLab.VRoem.Vehicle
             if (_grounded)
             {
                 Vector3 averageNormals = (hitUpLeft.normal + hitUpRight.normal + hitDownLeft.normal + hitDownRight.normal) / 4;
+                transform.up -= (transform.up - averageNormals) * _normalSmoothing * Time.deltaTime;
 
                 _groundAngle = Vector3.Angle(Vector3.up, averageNormals);
 
@@ -83,11 +93,13 @@ namespace XRLab.VRoem.Vehicle
 
                 _speedManager.NormalBasedSpeed(normalMultiplier);
                 _rb.drag = _rigidBodyDrag;
+                _rb.freezeRotation = true;
             }
             else
             {
                 _rb.drag = 0;
                 _groundAngle = 0;
+                _rb.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             }
         }
 

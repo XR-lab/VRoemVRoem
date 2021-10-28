@@ -77,7 +77,7 @@ namespace XRLab.VRoem.Vehicle
                 }                
             }
 
-            bool hitFound = (hit.collider != null);
+            bool hitFound = hit.collider != null;
 
             _lineRenderer.SetPosition(0, _handAnchor.position);
             _lineRenderer.SetPosition(1, hitFound ? hit.point : ray.origin + ray.direction * 100);

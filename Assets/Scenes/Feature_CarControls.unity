@@ -290,7 +290,6 @@ MonoBehaviour:
   _roadSpeedMultiplier: 0.2
   _accelerationLerpSpeed: 7
   _currentMultiplier: 1
-  _roadMaterial: {fileID: 2100000, guid: 49eafc866411b0940828e845a368598f, type: 2}
 --- !u!1 &256887948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,8 +2603,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 96372245}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
+      propertyPath: _normalSmoothing
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _dynamicToleranceZ
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
+      propertyPath: _stickToGroundForce
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _boostMultiplierPosZ
@@ -2713,7 +2720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3878556263245177128, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: m_Constraints
-      value: 96
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 3878556263245177128, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: m_Interpolate
