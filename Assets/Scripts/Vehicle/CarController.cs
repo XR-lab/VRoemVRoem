@@ -10,6 +10,8 @@ namespace XRLab.VRoem.Vehicle
 
         private Car _car;
         private LineRenderer _lineRenderer;
+        private bool mouseControl = true;
+
         private void Start()
         {
             _car = GetComponent<Car>();
@@ -18,7 +20,12 @@ namespace XRLab.VRoem.Vehicle
 
         private void Update()
         {
-            Ray ray = new Ray(_handAnchor.position, _handAnchor.forward);
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                mouseControl = !mouseControl;
+            }
+
+            Ray ray = mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
