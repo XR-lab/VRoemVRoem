@@ -60,10 +60,10 @@ namespace XRLab.VRoem.Vehicle
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
             {
                 //Send hit point to car
-                _car.SetOrientation(hit.point, _boosting);
+                _car.SetTargetPoint(hit.point, _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
-                if (!_boosting && _car.Grounded)
+                if ((!_boosting || !_car.CanMove) && _car.Grounded)
                 {
                     float clampedY = (Mathf.Clamp(hit.point.y, -1, 6) + 1) / 7;
 
@@ -95,6 +95,8 @@ namespace XRLab.VRoem.Vehicle
 
         private void BoostCheck()
         {
+            if(!_car.CanMove) { _boostTimer = 0;  return; }
+
             if (_boostTimer > 0)
             {
                 //When pressing boost decrease timer an send speed to speedManager

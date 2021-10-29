@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1621174873852033094}
   - component: {fileID: 1021810409}
   - component: {fileID: 1021810410}
+  - component: {fileID: 2672206238268710807}
   - component: {fileID: 4809586866357353009}
   m_Layer: 0
   m_Name: PlayerCar
@@ -183,6 +184,20 @@ MonoBehaviour:
   _upperRightRay: {fileID: 3256716027665106507}
   _lowerLeftRay: {fileID: 5949650999192565952}
   _lowerRightRay: {fileID: 6151886433748754362}
+--- !u!114 &2672206238268710807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239538521199222555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1021dfa25165bf74883d6887887b8fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slowerAccelMultiplier: 0.5
+  _loseControlTime: 1
 --- !u!120 &4809586866357353009
 LineRenderer:
   m_ObjectHideFlags: 0

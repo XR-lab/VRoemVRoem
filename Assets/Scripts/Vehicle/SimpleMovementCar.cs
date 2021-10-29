@@ -23,14 +23,17 @@ namespace XRLab.VRoem.Vehicle
         private Vector3 _targetPoint;
         private float _lockedPosZ = 3.5f;
         private Rigidbody _rb;
-        private SpeedManager _speedManager;       
+        private SpeedManager _speedManager;
+        public SpeedManager GetSpeedManager { get { return _speedManager; } }
         private float _rigidBodyDrag = 0;
+        private bool _overrideTargetPoint = false;
 
         public bool Grounded { get { return _grounded; } }
+        public bool CanMove { get; set; } = true;
 
         private void Start()
         {
-            _rb = GetComponent<Rigidbody>();           
+            _rb = GetComponent<Rigidbody>();
             _lockedPosZ = transform.position.z;
             _speedManager = FindObjectOfType<SpeedManager>();
             _rigidBodyDrag = _rb.drag;
@@ -42,15 +45,20 @@ namespace XRLab.VRoem.Vehicle
             UpdateCarBackBounds();
 
             //Doesn't look at target point when not on the ground
-            if (!_grounded) { return; }
+            if (!_grounded || !CanMove) { return; }
 
             LookAtTarget();
+
+            if (_overrideTargetPoint && Vector3.Distance(transform.position, _targetPoint) <= _lookAtThreshold)
+            {
+                _overrideTargetPoint = false;
+            }
         }
 
         private void FixedUpdate()
         {
             //Remove control when distance to raycast and car is too low or the car is not on the ground
-            if (InTargetPointRange() || !_grounded) return;
+            if (InTargetPointRange() || !_grounded || !CanMove) return;
 
             Vector3 _targetDirection = (_targetPoint - transform.position).normalized;
 
@@ -111,8 +119,12 @@ namespace XRLab.VRoem.Vehicle
             _model.localRotation = new Quaternion(0, Mathf.Clamp(_model.localRotation.y, -0.5f, 0.5f), 0, _model.localRotation.w);
         }
 
-        public override void SetOrientation(Vector3 lookAtPosition, bool boosting)
+        public override void SetTargetPoint(Vector3 lookAtPosition, bool boosting)
         {
+            if(_overrideTargetPoint) { return; }
+
+            if(_speedManager.OverwritingControllerSpeed) { boosting = true; }
+
             //Changes target point Z based on speed so that the car will move towards it
             float multiplier = boosting ? _boostMultiplierPosZ : Mathf.Clamp(_speedManager.CurrentMultiplier, 1 - _dynamicToleranceZ, 1 + _dynamicToleranceZ);
 
@@ -127,6 +139,12 @@ namespace XRLab.VRoem.Vehicle
         {
             //Check distance between raycast hit point and the car
             return Vector3.Distance(transform.position, _targetPoint) <= _lookAtThreshold;
+        }
+
+        public void SetOverridenTargetPoint(float x)
+        {
+            _targetPoint = new Vector3(Mathf.Clamp(x, -2.7f, 2.7f), transform.position.y, transform.position.z);
+            _overrideTargetPoint = true;
         }
     }
 }
