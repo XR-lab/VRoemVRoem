@@ -7,7 +7,6 @@ TagManager:
   - ClippingPlane
   - OVR
   - Counter
-
   layers:
   - Default
   - TransparentFX
