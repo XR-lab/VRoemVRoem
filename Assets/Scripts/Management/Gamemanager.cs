@@ -21,6 +21,7 @@ public class Gamemanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objectHitCounter = 0;
         Time.timeScale = 1;
         policarPropStartLocation = policarProp.transform.position;
 
