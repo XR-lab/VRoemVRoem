@@ -15,6 +15,7 @@ namespace XRLab.VRoem.Core
             {
                 _renderer.material.SetColor("_Color", Color.green);
                 MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.currentMonneyToLose;
+                Destroy(this);
             }
         }
     }

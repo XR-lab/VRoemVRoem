@@ -12,7 +12,7 @@ public class RoadScroll : MonoBehaviour
 
     //berekenen van checkpoint
     private int roadCount;
-    [SerializeField] private GameObject CheckPoint;
+    [SerializeField] private GameObject checkpoint;
     [SerializeField] private int roadsTillCheckpoint;
 
 
@@ -36,7 +36,8 @@ public class RoadScroll : MonoBehaviour
 
         if (roadCount == roadsTillCheckpoint)
         {
-            CheckPoint.SetActive(true);
+           GameObject checkpointObj = Instantiate(checkpoint, new Vector3(roads[3].transform.position.x, (roads[3].transform.position.y - 0.5f)+ checkpoint.transform.localScale.y, roads[3].transform.position.z), Quaternion.identity);
+            checkpointObj.transform.parent = roads[3].transform;
             roadCount = 0;
         }
     }

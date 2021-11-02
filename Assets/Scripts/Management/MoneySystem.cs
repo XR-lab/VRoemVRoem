@@ -14,9 +14,11 @@ public class MoneySystem : MonoBehaviour
     public static float currentMonney;
     public static float currentMonneyToLose;
     public static float MonneyFromStart;
+    public static float BankMoney;
 
     [Header("Canvas")]
-    [SerializeField] private Text canvasText;
+    [SerializeField] private Text moneyText;
+    [SerializeField] private Text bankText;
     [SerializeField] private GameObject gameOverUI;
 
     // Start is called before the first frame update
@@ -32,7 +34,8 @@ public class MoneySystem : MonoBehaviour
     {
         if (currentMonney > -1)
         {
-            canvasText.text = "Money: " + currentMonney;
+            moneyText.text = "Money: " + currentMonney;
+            bankText.text = "bank: " + BankMoney;
         }
         else
         {
