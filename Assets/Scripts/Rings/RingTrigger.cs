@@ -14,6 +14,7 @@ namespace XRLab.VRoem.Core
             if (other.attachedRigidbody.CompareTag(Tags.PLAYER))
             {
                 _renderer.material.SetColor("_Color", Color.green);
+                MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.currentMonneyToLose;
             }
         }
     }

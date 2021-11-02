@@ -10,7 +10,13 @@ public class RoadScroll : MonoBehaviour
     [SerializeField] private float _startingPositionZ = 2.5f;
     [SerializeField] private List<GameObject> roads = new List<GameObject>();
 
-    private void Start()
+    //berekenen van checkpoint
+    private int roadCount;
+    [SerializeField] private GameObject CheckPoint;
+    [SerializeField] private int roadsTillCheckpoint;
+
+
+   private void Start()
     {
         //Set starting positions of the roads
         for (int i = 0; i < roads.Count; i++)
@@ -25,6 +31,13 @@ public class RoadScroll : MonoBehaviour
         if (roads[0].transform.localPosition.z < _moveTreshold)
         {
             MoveRoad();
+            roadCount++;
+        }
+
+        if (roadCount == roadsTillCheckpoint)
+        {
+            CheckPoint.SetActive(true);
+            roadCount = 0;
         }
     }
 
