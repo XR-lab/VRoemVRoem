@@ -6,10 +6,10 @@ using Random = UnityEngine.Random;
 
 namespace XRLab.VRoem.Core
 {
-    public class RingSpawner : MonoBehaviour
+    public class ObstacleSpawner : MonoBehaviour
     {
         [SerializeField] private MoveObstacle _ring;
-        [Range(1, 10)] [SerializeField] private float _spawnWidth;
+        [Range(1, 50)] [SerializeField] private float _spawnWidth;
         [Range(0.1f, 10)] [SerializeField] private float _spawnHeight;
 
         private void Start()
