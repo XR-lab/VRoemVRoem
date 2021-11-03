@@ -22,10 +22,12 @@ public class SpeedManager : MonoBehaviour
 
     public void CalculateModifedSpeed(float multiplier)
     {
+        //Caluclate speed based on the base speed of the manager * number of the given multiplier (normally the car)
         _currentMultiplier = multiplier;
 
         _targetSpeed = _baseSpeed * multiplier;
 
+        //Lerp speed to make the transition between speeds smooth
         _modifiedSpeed = Mathf.Lerp(_modifiedSpeed, _targetSpeed, _accelerationLerpSpeed * Time.deltaTime);
     }
 }

@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: ff7ebd427cced8e489b0a6532fbac5c3
   - enabled: 0
     path: Assets/Scenes/MRC_Scene_v0.1.unity
     guid: d3ea9c5e95bd0e04d9ac9cdcd6cfa3a7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Feature_CarControls.unity
     guid: 9c9ddb3e3da83c845a5f9cc046581bc2
   m_configObjects:
