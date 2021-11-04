@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace XRLab.VRoem.Core
 {
-    public class RingTrigger : MonoBehaviour
+    public class ObstacleTrigger : MonoBehaviour
     {
         [SerializeField] private Renderer _renderer;
 
@@ -14,7 +14,7 @@ namespace XRLab.VRoem.Core
             if (other.attachedRigidbody.CompareTag(Tags.PLAYER))
             {
                 _renderer.material.SetColor("_Color", Color.green);
-                FindObjectOfType<Gamemanager>().objectHitCounter += 1;
+                FindObjectOfType<ObjectHitTracker>().objectHitCounter += 1;
             }
         }
     }

@@ -6,11 +6,9 @@ using Random = UnityEngine.Random;
 
 namespace XRLab.VRoem.Core
 {
-    public class RingSpawner : MonoBehaviour
-    {
-        [SerializeField] private MoveObstacle _ring;
-        [SerializeField] private MoveObstacle _cube;
-        [SerializeField] private MoveObstacle _vuilensbak;
+    public class ObstacleSpawner : MonoBehaviour
+    {   //order zoals nu is ring = 0, cube = 1, vuilnisbak = 2
+        [SerializeField] private List<MoveObstacle> moveableObstacles = new List<MoveObstacle>();
         [Range(1, 10)] [SerializeField] private float _spawnWidth;
         [Range(0.1f, 10)] [SerializeField] private float _spawnHeight;
         int spawnnr;
@@ -29,15 +27,15 @@ namespace XRLab.VRoem.Core
             switch (spawnnr)
             {
                 default: 
-                    Instantiate(_ring, spawnPosition, transform.rotation, transform);
+                    Instantiate(moveableObstacles[0], spawnPosition, transform.rotation, transform);
                     spawnnr++;
                     break;
                 case 1:
-                    Instantiate(_cube, spawnPosition, transform.rotation, transform);
+                    Instantiate(moveableObstacles[1], spawnPosition, transform.rotation, transform);
                     spawnnr++;
                     break;
                 case 2:
-                    Instantiate(_vuilensbak, spawnPosition, transform.rotation, transform);
+                    Instantiate(moveableObstacles[2], spawnPosition, transform.rotation, transform);
                     spawnnr = 0;
                     break;
             }

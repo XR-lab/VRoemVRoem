@@ -35,23 +35,6 @@ namespace XRLab.VRoem.Core
             transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         }
 
-        //public void StartClip()
-        //{
-        //    StartCoroutine(nameof(ClipMaterial));
-        //}
-
-        //private IEnumerator ClipMaterial()
-        //{
-        //    float clipProgress = 0.7f;
-
-        //    float colliderLengthZ = _collider.bounds.size.z;
-
-        //    while (clipProgress > 0)
-        //    {
-        //        clipProgress -= Mathf.Clamp(speedManager.ModifiedSpeed * _clipSpeedMultiplier / colliderLengthZ, 0.1f, 999) * Time.deltaTime;
-        //        _clipMaterial.SetFloat("_ClipProgress", clipProgress);
-        //        yield return null;
-        //    }
-        //}
+       
     }
 }
