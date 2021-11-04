@@ -6,10 +6,8 @@ public class SpeedManager : MonoBehaviour
 {
     [SerializeField] private float _baseSpeed = 2;
     [SerializeField] private float _modifiedSpeed = 1;
-    [SerializeField] private float _roadSpeedMultiplier = 0.5f;
     [SerializeField] private float _accelerationLerpSpeed = 1;
     [SerializeField] private float _currentMultiplier = 1;
-    [SerializeField] private Material _roadMaterial;
 
     public float ModifiedSpeed { get { return _modifiedSpeed; } }
     public float CurrentMultiplier { get { return _currentMultiplier; } }
