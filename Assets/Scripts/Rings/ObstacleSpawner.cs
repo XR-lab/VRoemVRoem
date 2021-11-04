@@ -6,14 +6,11 @@ using Random = UnityEngine.Random;
 
 namespace XRLab.VRoem.Core
 {
-    public class RingSpawner : MonoBehaviour
+    public class ObstacleSpawner : MonoBehaviour
     {
         [SerializeField] private MoveObstacle _ring;
-        [SerializeField] private MoveObstacle _cube;
-        [SerializeField] private MoveObstacle _vuilensbak;
-        [Range(1, 10)] [SerializeField] private float _spawnWidth;
+        [Range(1, 50)] [SerializeField] private float _spawnWidth;
         [Range(0.1f, 10)] [SerializeField] private float _spawnHeight;
-        int spawnnr;
 
         private void Start()
         {
@@ -26,23 +23,8 @@ namespace XRLab.VRoem.Core
             float randomWidth = Random.Range(-_spawnWidth / 2f, _spawnWidth / 2f) + transform.position.x;
             float randomHeight = Random.Range(-_spawnHeight / 2f, _spawnHeight / 2f) + transform.position.y;
             Vector3 spawnPosition = new Vector3(randomWidth, randomHeight, transform.position.z);
-            switch (spawnnr)
-            {
-                default: 
-                    Instantiate(_ring, spawnPosition, transform.rotation, transform);
-                    spawnnr++;
-                    break;
-                case 1:
-                    Instantiate(_cube, spawnPosition, transform.rotation, transform);
-                    spawnnr++;
-                    break;
-                case 2:
-                    Instantiate(_vuilensbak, spawnPosition, transform.rotation, transform);
-                    spawnnr = 0;
-                    break;
-            }
-           
-           
+
+            Instantiate(_ring, spawnPosition, transform.rotation, transform);
         }
 
         private void OnDrawGizmos()
