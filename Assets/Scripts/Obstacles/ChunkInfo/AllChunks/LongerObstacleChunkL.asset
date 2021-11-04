@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f10c89c1b61bfd448cd58b386de0059, type: 3}
+  m_Name: LongerObstacleChunkL
+  m_EditorClassIdentifier: 
+  geometryCost: 8
+  obstaclePrefab: {fileID: 1742388978184419219, guid: d7cbebbe28b4dae45bef045ffc73546c, type: 3}
+  playerActionInfo: {fileID: 11400000, guid: 5b37393564d4f6040b40150831bdcb2c, type: 2}
+  startPositions: 
+  endPositions: 00000000
