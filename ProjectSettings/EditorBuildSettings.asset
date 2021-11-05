@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MRC_Scene_v0.1.unity
     guid: d3ea9c5e95bd0e04d9ac9cdcd6cfa3a7
   - enabled: 1
-    path: Assets/Scenes/Feature_CarControls.unity
+    path: Assets/Scenes/MergingScene.unity
     guid: 9c9ddb3e3da83c845a5f9cc046581bc2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 849e48ae31d94c9408b0d7ca7e6e2278, type: 2}

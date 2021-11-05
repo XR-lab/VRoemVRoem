@@ -657,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedBoost: 2.5
   _slowerAccelMultiplier: 0.5
+  _setPlayerForwardToMyForward: 1
 --- !u!1001 &351786089
 PrefabInstance:
   m_ObjectHideFlags: 0
