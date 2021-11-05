@@ -1,33 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1998043942740984030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742388978184419219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2af756a72764f4aa1bc315f78e2eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedMultiplier: 1
-  _clipSpeedMultiplier: 1
---- !u!114 &3215029383387514785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742388978184419219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0baf986c7cd7c043927bbadf93866ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _destroyPosZ: -10
-  _obstacleGenerator: {fileID: 0}
 --- !u!1 &2394656959978641515
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2394656959978641515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 1.056, z: -1.52}
+  m_LocalPosition: {x: 0.98, y: 1, z: -1.52}
   m_LocalScale: {x: 7, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3945421921322966792}
@@ -123,6 +95,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1998043942740984030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742388978184419219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2af756a72764f4aa1bc315f78e2eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedMultiplier: 1
+  _clipSpeedMultiplier: 1
+--- !u!114 &3215029383387514785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742388978184419219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0baf986c7cd7c043927bbadf93866ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyPosZ: -10
+  _obstacleGenerator: {fileID: 0}
 --- !u!1001 &7398941659363982599
 PrefabInstance:
   m_ObjectHideFlags: 0

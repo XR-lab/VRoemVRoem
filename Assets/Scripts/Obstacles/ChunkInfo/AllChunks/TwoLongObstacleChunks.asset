@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f10c89c1b61bfd448cd58b386de0059, type: 3}
   m_Name: TwoLongObstacleChunks
   m_EditorClassIdentifier: 
-  geometryCost: 10
-  obstaclePrefab: {fileID: 1742388978184419219, guid: 6ec0a2be8ec78264495e1bed19aa80c1, type: 3}
-  playerActionInfo: {fileID: 11400000, guid: 3eeb6653493d80b49bef9e136ee1425b, type: 2}
-  startPositions: 0000000001000000
-  endPositions: 0200000003000000
+  _geometryCost: 12
+  _obstaclePrefab: {fileID: 1742388978184419219, guid: 6ec0a2be8ec78264495e1bed19aa80c1, type: 3}
+  _playerActionInfo: {fileID: 11400000, guid: 3eeb6653493d80b49bef9e136ee1425b, type: 2}
+  _startPositions: 0000000001000000
+  _endPositions: 0200000003000000

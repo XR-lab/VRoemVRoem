@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f10c89c1b61bfd448cd58b386de0059, type: 3}
   m_Name: RampOnlyObstacleChunkML
   m_EditorClassIdentifier: 
-  geometryCost: 4
-  obstaclePrefab: {fileID: 1742388978184419219, guid: fb1ad239f00147a4d9918aaa17c7de4c, type: 3}
-  playerActionInfo: {fileID: 11400000, guid: 10ad607bbcf492e40b0065937a33118d, type: 2}
-  startPositions: 
-  endPositions: 01000000
+  _geometryCost: 3
+  _obstaclePrefab: {fileID: 1742388978184419219, guid: fb1ad239f00147a4d9918aaa17c7de4c, type: 3}
+  _playerActionInfo: {fileID: 11400000, guid: 10ad607bbcf492e40b0065937a33118d, type: 2}
+  _startPositions: 00000000010000000200000003000000
+  _endPositions: 

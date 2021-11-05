@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f10c89c1b61bfd448cd58b386de0059, type: 3}
   m_Name: WallHoleObstacleChunkMR
   m_EditorClassIdentifier: 
-  geometryCost: 8
-  obstaclePrefab: {fileID: 1742388978184419219, guid: b7f3bdd38fe27cb499661abd6af6bef7, type: 3}
-  playerActionInfo: {fileID: 11400000, guid: 5b37393564d4f6040b40150831bdcb2c, type: 2}
-  startPositions: 
-  endPositions: 02000000
+  _geometryCost: 7
+  _obstaclePrefab: {fileID: 1742388978184419219, guid: 5aea0872729008f47b79c8cd2bd0dd11, type: 3}
+  _playerActionInfo: {fileID: 11400000, guid: 5b37393564d4f6040b40150831bdcb2c, type: 2}
+  _startPositions: 02000000
+  _endPositions: 

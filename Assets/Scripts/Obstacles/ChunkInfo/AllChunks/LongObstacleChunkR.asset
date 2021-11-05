@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f10c89c1b61bfd448cd58b386de0059, type: 3}
-  m_Name: LongObstacleChunkL
+  m_Name: LongObstacleChunkR
   m_EditorClassIdentifier: 
-  geometryCost: 4
-  obstaclePrefab: {fileID: 1742388978184419219, guid: 73eda22571a764244bd17f477b2a0323, type: 3}
-  playerActionInfo: {fileID: 11400000, guid: 5b37393564d4f6040b40150831bdcb2c, type: 2}
-  startPositions: 
-  endPositions: 0200000003000000
+  _geometryCost: 6
+  _obstaclePrefab: {fileID: 1742388978184419219, guid: 73eda22571a764244bd17f477b2a0323, type: 3}
+  _playerActionInfo: {fileID: 11400000, guid: 5b37393564d4f6040b40150831bdcb2c, type: 2}
+  _startPositions: 0200000003000000
+  _endPositions: 

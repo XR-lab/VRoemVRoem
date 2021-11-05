@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f10c89c1b61bfd448cd58b386de0059, type: 3}
   m_Name: LongerObstacleChunkR
   m_EditorClassIdentifier: 
-  geometryCost: 8
-  obstaclePrefab: {fileID: 1742388978184419219, guid: fcf91458c9cf9e746994599a2e27853d, type: 3}
-  playerActionInfo: {fileID: 11400000, guid: 5b37393564d4f6040b40150831bdcb2c, type: 2}
-  startPositions: 
-  endPositions: 03000000
+  _geometryCost: 9
+  _obstaclePrefab: {fileID: 1742388978184419219, guid: fcf91458c9cf9e746994599a2e27853d, type: 3}
+  _playerActionInfo: {fileID: 11400000, guid: 5b37393564d4f6040b40150831bdcb2c, type: 2}
+  _startPositions: 03000000
+  _endPositions: 

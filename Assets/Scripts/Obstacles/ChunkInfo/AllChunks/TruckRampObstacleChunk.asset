@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f10c89c1b61bfd448cd58b386de0059, type: 3}
   m_Name: TruckRampObstacleChunk
   m_EditorClassIdentifier: 
-  geometryCost: 6
-  obstaclePrefab: {fileID: 1742388978184419219, guid: ef91347ad8dbb9d47a256b570004f534, type: 3}
-  playerActionInfo: {fileID: 11400000, guid: 10ad607bbcf492e40b0065937a33118d, type: 2}
-  startPositions: 
-  endPositions: 0100000002000000
+  _geometryCost: 8
+  _obstaclePrefab: {fileID: 1742388978184419219, guid: ef91347ad8dbb9d47a256b570004f534, type: 3}
+  _playerActionInfo: {fileID: 11400000, guid: 10ad607bbcf492e40b0065937a33118d, type: 2}
+  _startPositions: 0100000002000000
+  _endPositions: 
