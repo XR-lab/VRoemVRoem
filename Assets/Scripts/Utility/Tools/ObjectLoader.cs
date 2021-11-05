@@ -41,8 +41,9 @@ namespace XRLab.VRoem.Utility
         private Dictionary<int, int> topList = new Dictionary<int, int>();
         private IOrderedEnumerable<KeyValuePair<int, int>> sortedTopList;
         private MeshFilter[] meshes;
-        
-        private int verts = 0;
+
+        private const float triangulationNumber = 3f;
+        private float verts = 0;
         private int maxCarsPolys = 1500;
         private int maxObstaclesPolys = 300;
         private int maxEnvironmentPolys = 2000;
@@ -147,12 +148,14 @@ namespace XRLab.VRoem.Utility
                     for (int i = 0, length = meshes.Length; i < length; i++) 
                     {
                         verts = meshes[i].sharedMesh.vertexCount;
-                        totalVertices += verts;
+                        totalVertices += (int)verts;
                         totalTris += meshes[i].sharedMesh.triangles.Length / 3;
                         totalMeshes++;
-                        topList.Add(i, verts);
+                        topList.Add(i, (int)verts);
 
                     }
+
+                     verts = (verts / triangulationNumber);
 
                     sortedTopList = topList.OrderByDescending(x => x.Value);
                 }
