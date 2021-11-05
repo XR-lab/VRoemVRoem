@@ -16,7 +16,12 @@ namespace XRLab.VRoem.Vehicle
 
         private SimpleMovementCar _car;
         private LineRenderer _lineRenderer;
-        private bool mouseControl = true;
+        private SpeedManager _speedManager;
+        private Transform _vrCam;
+        private bool _mouseControl = false;
+        private bool _boosting = false;
+        private bool _boostInCooldown = false;
+        private bool _canBoost = true;
 
         private void Start()
         {
@@ -34,12 +39,22 @@ namespace XRLab.VRoem.Vehicle
 
         private void Update()
         {
+            ShootControlRay();
+            BoostCheck();
+        }
+
+        private void ShootControlRay()
+        {
+            //Debug mouse input toggle
             if (Input.GetKeyDown(KeyCode.C))
             {
-                mouseControl = !mouseControl;
+                _mouseControl = !_mouseControl;
+                //_vrCam.transform.localPosition = new Vector3(_vrCam.transform.localPosition.x, _mouseControl ? 3 : 3, _vrCam.transform.localPosition.z);
+                _vrCam.transform.localRotation = new Quaternion(_mouseControl ? 0.16f : 0, _vrCam.transform.localRotation.y, _vrCam.transform.localRotation.z, _vrCam.transform.localRotation.w);
             }
 
-            Ray ray = mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
+            //Shoot Ray from right hand or mouse
+            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
