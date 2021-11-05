@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace XRLab.VRoem.Core
 {
-    public class RingTrigger : MonoBehaviour
+    public class ObstacleTrigger : MonoBehaviour
     {
         [SerializeField] private Renderer _renderer;
 
