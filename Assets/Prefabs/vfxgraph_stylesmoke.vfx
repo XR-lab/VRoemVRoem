@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 233
     y: -190
     width: 1132
-    height: 1517
+    height: 1537
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: vfxgraph_SmokeVFX
+  m_Name: vfxgraph_stylesmoke
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -61,7 +61,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: vfxgraph_SmokeVFX
+  m_Name: vfxgraph_stylesmoke
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -156,7 +156,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 3
+      m_SerializableObject: 10
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -524,13 +524,13 @@ MonoBehaviour:
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
-  title: clouds
+  title: 
   m_Owners:
   - {fileID: 8926484042661614558}
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614596}
   dataType: 0
-  capacity: 3
+  capacity: 10
   stripCapacity: 16
   particlePerStripCount: 16
   m_Space: 1
@@ -1456,7 +1456,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.029656395316123964,"value":0.03625965118408203,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.9277955293655396,"value":0.15307307243347169,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.017476072534918786,"value":0.0934458076953888,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.9778761863708496,"value":0.13288623094558717,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 638, y: 747}
+  m_UIPosition: {x: 581, y: 761}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -1513,7 +1513,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.09433960914611817,"g":0.09433960914611817,"b":0.09433960914611817,"a":1.0},"time":0.0},{"color":{"r":0.20754718780517579,"g":0.20754718780517579,"b":0.20754718780517579,"a":1.0},"time":0.1411764770746231},{"color":{"r":0.24528300762176515,"g":0.24528300762176515,"b":0.24528300762176515,"a":1.0},"time":0.3617608845233917},{"color":{"r":0.4811320900917053,"g":0.4811320900917053,"b":0.4811320900917053,"a":1.0},"time":0.5588311553001404}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.800000011920929,"time":0.9499961733818054},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.07547169923782349,"g":0.07547169923782349,"b":0.07547169923782349,"a":1.0},"time":0.12353704124689102},{"color":{"r":0.38679248094558718,"g":0.38679248094558718,"b":0.38679248094558718,"a":1.0},"time":0.5617609024047852},{"color":{"r":0.5849056243896484,"g":0.5849056243896484,"b":0.5849056243896484,"a":1.0},"time":0.8911726474761963}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.800000011920929,"time":0.9499961733818054},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: gradient
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614641}
   - {fileID: 8926484042661614645}
   m_OutputSlots: []
-  m_Disabled: 1
+  m_Disabled: 0
   attribute: angle
   Composition: 0
   Source: 0
@@ -2573,7 +2573,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614702}
   - {fileID: 8926484042661614707}
   m_OutputSlots: []
-  m_Disabled: 1
+  m_Disabled: 0
   attribute: velocity
   Composition: 0
   Source: 0
@@ -2605,7 +2605,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":0.0,"y":0.0,"z":0.0}}'
+      m_SerializableObject: '{"vector":{"x":0.0,"y":0.5,"z":-2.0}}'
     m_Space: 0
   m_Property:
     name: A
