@@ -19,7 +19,7 @@ namespace XRLab.VRoem.Core
             //Set starting positions of the roads
             for (int i = 0; i < roads.Count; i++)
             {
-                roads[i].transform.localPosition = new Vector3(0, 0, i == 0 ? _startingPositionZ : roads[i - 1].transform.localPosition.z + _offset);
+                roads[i].transform.localPosition = new Vector3(0, 0, i * _offset + _startingPositionZ);
             }
         }
 

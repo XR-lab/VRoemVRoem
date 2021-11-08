@@ -9,12 +9,21 @@ namespace XRLab.VRoem.Core
         [SerializeField] private Renderer _renderer;
 
         //Set the color to green when hitting the player
-        private void OnTriggerEnter(Collider other)
+        ////private void OnTriggerEnter(Collider other)
+        ////{
+        ////    if (other.attachedRigidbody.CompareTag(Tags.PLAYER))
+        ////    {
+        ////        print("HIT");
+        ////        //_renderer.material.SetColor("_Color", Color.green);
+        ////       // FindObjectOfType<ObjectHitTracker>().objectHitCounter += 1;
+        ////    }
+        ////}
+        private void OnCollisionEnter(Collision collision) 
         {
-            if (other.attachedRigidbody.CompareTag(Tags.PLAYER))
-            {
-                _renderer.material.SetColor("_Color", Color.green);
-                FindObjectOfType<ObjectHitTracker>().objectHitCounter += 1;
+            if (collision.gameObject.CompareTag(Tags.PLAYER)) {
+                Debug.LogError(collision.gameObject.tag);
+                //_renderer.material.SetColor("_Color", Color.green);
+                //FindObjectOfType<ObjectHitTracker>().objectHitCounter += 1;
             }
         }
     }

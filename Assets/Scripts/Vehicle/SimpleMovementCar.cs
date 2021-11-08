@@ -132,5 +132,10 @@ namespace XRLab.VRoem.Vehicle
             _targetPoint = new Vector3(Mathf.Clamp(x, -_boundsX, _boundsX), transform.position.y, transform.position.z);
             _overrideTargetPoint = true;
         }
+
+        private void OnDrawGizmosSelected() {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(_upperLeftRay.position, -transform.up * _raycastLength);
+        }
     }
 }

@@ -17,7 +17,15 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
 
     protected override void Interact(Collision collision)
     {
-        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        if (rb == null) {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+        else {
+            rb.isKinematic = false;
+        }
+         
         _moveObstacle.enabled = false;
 
         rb.AddForce(transform.forward * _moveObstacle.Speed);
