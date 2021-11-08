@@ -7,6 +7,7 @@ namespace XRLab.VRoem.Utility
         [SerializeField] private float _destroyPosZ = -10;
         public ObstacleGenerator _obstacleGenerator;
         public PlayerActionInfo.PlayerAction actionTheme;
+        public bool free = false;
 
         private void Update()
         {
@@ -14,7 +15,8 @@ namespace XRLab.VRoem.Utility
             {
                 if (_obstacleGenerator != null)
                 {
-                    _obstacleGenerator.CheckGenerateOrStartSprint(gameObject);
+                    _obstacleGenerator.CheckGenerateOrStartSprint(gameObject, actionTheme, free);
+                    gameObject.SetActive(false);
                 }
                 else
                 {

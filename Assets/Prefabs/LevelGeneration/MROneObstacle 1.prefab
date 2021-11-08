@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2394656959978641515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.97, y: 1.056, z: -1.35}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalPosition: {x: -1.27, y: 1.056, z: -1.52}
+  m_LocalScale: {x: 2.2206, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3945421921322966792}
   m_RootOrder: 0
@@ -150,7 +150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8665837882435605721, guid: a25af646c5f3302499582b1d33a909ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8665837882435605721, guid: a25af646c5f3302499582b1d33a909ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -182,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9115399684176104084, guid: a25af646c5f3302499582b1d33a909ba, type: 3}
       propertyPath: m_Name
-      value: LongObstacleOne
+      value: MROneObstacle 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a25af646c5f3302499582b1d33a909ba, type: 3}

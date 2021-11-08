@@ -209,15 +209,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 248ff56d846e62a44981ef94c6d558d5, type: 2}
   - {fileID: 11400000, guid: 366fe4889824d2642b7e864779df80dc, type: 2}
   - {fileID: 11400000, guid: de8b536a2f58beb4f8b4b90e1a5a574b, type: 2}
-  _generationTheme: 0
-  _actionBudget: 20
-  _geometryBudget: 40
-  _chunksDestroyedUntilRest: 10
-  _restDuration: 1
-  _spawnCopyCount: 2
-  _startingChunks: 10
-  _startingOffset: 10
+  - {fileID: 11400000, guid: add01f5fc703a2945ad2f859dfb96e74, type: 2}
+  - {fileID: 11400000, guid: 697a01be1e0be6048aa37de57b403071, type: 2}
+  - {fileID: 11400000, guid: 8829ac52f4f9f704db58a70bb1977e58, type: 2}
+  _freeChunk: {fileID: 11400000, guid: 3897f7073744355438f2a2a121d90a4f, type: 2}
+  _generationTheme: 2
+  _lastEndPosition: 
+  _actionBudget: 80
+  _actionMoney: 20
+  _geometryBudget: 60
+  _geometryMoney: 40
+  _chunksBackInPoolUntilRest: 10
+  _restDuration: 0.2
+  _spawnCopyCount: 5
+  _freeChunkCopyCount: 20
+  _startingChunks: 20
+  _startingOffset: 20
+  _freeChunkMoney: 10
   _offset: 10
+  _likelinessChosenThemeSpawning: 0.5
 --- !u!1 &159529843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,6 +1164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyPosZ: 0
   _obstacleGenerator: {fileID: 0}
+  actionTheme: 0
+  free: 0
 --- !u!114 &776258797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,6 +1298,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyPosZ: 0
   _obstacleGenerator: {fileID: 0}
+  actionTheme: 0
+  free: 0
 --- !u!1 &1088362407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,7 +1649,7 @@ GameObject:
   - component: {fileID: 1372482030}
   - component: {fileID: 1372482029}
   - component: {fileID: 1372482028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1651,7 +1665,7 @@ Transform:
   m_GameObject: {fileID: 1372482026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5.31}
-  m_LocalScale: {x: 6, y: 1, z: 10.099999}
+  m_LocalScale: {x: 9, y: 1, z: 10.099999}
   m_Children: []
   m_Father: {fileID: 1508072355}
   m_RootOrder: 3
@@ -1945,7 +1959,7 @@ Transform:
   m_GameObject: {fileID: 1642500646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.55}
-  m_LocalScale: {x: 6.01, y: 1.01, z: 0.11}
+  m_LocalScale: {x: 9.01, y: 1.01, z: 0.11}
   m_Children: []
   m_Father: {fileID: 1460086919}
   m_RootOrder: 3
@@ -2158,6 +2172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyPosZ: 0
   _obstacleGenerator: {fileID: 0}
+  actionTheme: 0
+  free: 0
 --- !u!114 &1777137190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2578,6 +2594,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 49eafc866411b0940828e845a368598f, type: 2}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
+      propertyPath: _raycastLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
+      propertyPath: _groundLayerMask.m_Bits
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _lowerDifferenceMultiplier
       value: 0.5
       objectReference: {fileID: 0}
@@ -2676,6 +2700,10 @@ PrefabInstance:
     - target: {fileID: 3647720113342989941, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878556263245177128, guid: 69d49675d97627c4da408a47dce84915, type: 3}
+      propertyPath: m_Constraints
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 4185660256522438343, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: m_Name

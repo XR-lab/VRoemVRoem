@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f481fd79a0f1506488c02ecee69a40b2, type: 3}
   m_Name: RampActionInfo
   m_EditorClassIdentifier: 
-  _playerAction: 0
+  _playerAction: 2
   _highFrequencyActionCost: 4
   _lowFrequencyActionCost: 6

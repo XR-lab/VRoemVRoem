@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f481fd79a0f1506488c02ecee69a40b2, type: 3}
   m_Name: ZigZagActionInfo
   m_EditorClassIdentifier: 
-  _playerAction: 0
-  _highFrequencyActionCost: 6
-  _lowFrequencyActionCost: 10
+  _playerAction: 1
+  _highFrequencyActionCost: 8
+  _lowFrequencyActionCost: 11

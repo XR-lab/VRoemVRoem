@@ -9,6 +9,7 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _rotationSpeed = 5;
         [SerializeField] private float _dynamicToleranceZ = 0.05f;
         [SerializeField] private float _boostMultiplierPosZ = 1.1f;
+        [SerializeField] private float _boundsX = 3.8f;
         [SerializeField] private Transform _backCarBounds;
         [SerializeField] private Transform _model;
         [SerializeField] private LayerMask _groundLayerMask;
@@ -94,7 +95,7 @@ namespace XRLab.VRoem.Vehicle
         private void UpdateCarBackBounds()
         {
             //Car has an invisible collsion box behind him at all times so that he can go up ramps with ease
-            _backCarBounds.position = new Vector3(0, _backCarBounds.position.y, Mathf.Clamp(transform.position.z, _lockedPosZ * 1 - _dynamicToleranceZ, _lockedPosZ * 1 + _dynamicToleranceZ) - 1.1f);
+            _backCarBounds.position = new Vector3(0, _backCarBounds.position.y, Mathf.Clamp(transform.position.z, _lockedPosZ * 1 - _dynamicToleranceZ, _lockedPosZ * 1 + _dynamicToleranceZ) - 1.2f);
         }
 
         private void LookAtTarget()
@@ -119,7 +120,7 @@ namespace XRLab.VRoem.Vehicle
             float dynamicPosZ = _lockedPosZ * multiplier;
 
             //Correct Controller Raycast hit point so that the car will not follow the Y and Z of the hit point
-            Vector3 heightCorrectedPoint = new Vector3(Mathf.Clamp(lookAtPosition.x, -2.7f, 2.7f), transform.position.y, dynamicPosZ);
+            Vector3 heightCorrectedPoint = new Vector3(Mathf.Clamp(lookAtPosition.x, -_boundsX, _boundsX), transform.position.y, dynamicPosZ);
             _targetPoint = heightCorrectedPoint;
         }
 
