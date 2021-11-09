@@ -32,6 +32,8 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
         rb.AddExplosionForce(_moveObstacle.Speed * _forceMultiplier, collision.contacts[0].point, _moveObstacle.Speed * _explosionForceMultiplier);
 
         Invoke(nameof(AddMoveWithRoadComponent), 0.2f);
+
+        MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.MonneyToLose;
     }
 
     private void AddMoveWithRoadComponent()

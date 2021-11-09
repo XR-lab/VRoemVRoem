@@ -14,6 +14,10 @@ namespace XRLab.VRoem.Core
         [SerializeField] private float _startingPositionZ = 2.5f;
         [SerializeField] private List<GameObject> roads = new List<GameObject>();
 
+        [SerializeField] private GameObject checkpoint;
+        [SerializeField] private int roadsTillCheckpoint;
+        private int roadCount;
+
         private void Start()
         {
             //Set starting positions of the roads
@@ -29,6 +33,11 @@ namespace XRLab.VRoem.Core
             if (roads[0].transform.localPosition.z < _moveTreshold)
             {
                 MoveRoad();
+                roadCount++;
+            }
+
+            if (roadCount == roadsTillCheckpoint) {
+                SetCheckPoint();
             }
         }
 
@@ -39,6 +48,12 @@ namespace XRLab.VRoem.Core
             roads.Remove(movingRoad);
             movingRoad.transform.localPosition = new Vector3(0, 0, roads[roads.Count - 1].transform.localPosition.z + _offset);
             roads.Add(movingRoad);
+        }
+
+        private void SetCheckPoint() {
+            GameObject checkpointObj = Instantiate(checkpoint, new Vector3(roads[3].transform.position.x, (roads[3].transform.position.y - 1) + checkpoint.transform.localScale.y, roads[3].transform.position.z), Quaternion.identity);
+            checkpointObj.transform.parent = roads[3].transform;
+            roadCount = 0;
         }
     }
 }

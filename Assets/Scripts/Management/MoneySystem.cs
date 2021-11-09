@@ -12,7 +12,7 @@ public class MoneySystem : MonoBehaviour
 
     //floats to ge by anther scripts 
     public static float currentMonney;
-    public static float currentMonneyToLose;
+    public static float MonneyToLose;
     public static float MonneyFromStart;
     public static float BankMoney;
 
@@ -25,7 +25,7 @@ public class MoneySystem : MonoBehaviour
     void Start()
     {
         currentMonney = maxmoney;
-        currentMonneyToLose = moneyLose;
+        MonneyToLose = moneyLose;
         MonneyFromStart = maxmoney;
     }
 
@@ -40,8 +40,8 @@ public class MoneySystem : MonoBehaviour
         else
         {
             currentMonney = 0;
-            //gameOverUI.SetActive(true);
-            //Time.timeScale = 0;
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
