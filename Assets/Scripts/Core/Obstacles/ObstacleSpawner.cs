@@ -16,7 +16,7 @@ namespace XRLab.VRoem.Core
         private void Start()
         {
             // for now, use invoke repeating. Should be replaced with a custom coroutine
-            InvokeRepeating("SpawnRing", 1, 1);
+            InvokeRepeating("SpawnRing", 0.2f, 0.3f);
         }
 
         private void SpawnRing()
