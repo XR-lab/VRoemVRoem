@@ -236,11 +236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedMultiplier: 1
---- !u!4 &96372245 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1053519410887237413, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-  m_PrefabInstance: {fileID: 1954504167}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &148611769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,11 +2029,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c9d1dec84449bd4faac22da428dd801, type: 3}
---- !u!4 &907958438 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3642259586207421019, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-  m_PrefabInstance: {fileID: 1954504167}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &957901294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,11 +3623,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512001617}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1563518681 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8571216181451998932, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-  m_PrefabInstance: {fileID: 1954504167}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1678410235
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,11 +3813,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683429788}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1756612216 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8159853634286182830, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-  m_PrefabInstance: {fileID: 1954504167}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1777137187
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,84 +4143,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 49eafc866411b0940828e845a368598f, type: 2}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _lowerLeftRay
-      value: 
-      objectReference: {fileID: 1756612216}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _upperLeftRay
-      value: 
-      objectReference: {fileID: 907958438}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _lowerRightRay
-      value: 
-      objectReference: {fileID: 1563518681}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _raycastLength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _rotInAirSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _rotationSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _upperRightRay
-      value: 
-      objectReference: {fileID: 96372245}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _angleToRideWall
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _normalSmoothing
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _dynamicToleranceZ
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _stickToGroundForce
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _boostMultiplierPosZ
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _angleToLockControlsX
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _groundLayerMask.m_Bits
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _lowerDifferenceMultiplier
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _gravityMultiplierBasedOnUp
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _normalBasedSpeedMultiplier
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _movementCurve.m_Curve.Array.size
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _upsideDownAngleToUnlockControlsX
-      value: 160
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _gravityMultiplierOnWallsBasedOnUp
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _movementCurve.m_Curve.Array.data[1].time
@@ -4285,18 +4197,6 @@ PrefabInstance:
     - target: {fileID: 2570701798419648391, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _positionModifier
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648391, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _positionModifier.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648391, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _positionModifier.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570701798419648391, guid: 69d49675d97627c4da408a47dce84915, type: 3}
-      propertyPath: _positionModifier.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2570701798526714024, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: m_Antialiasing

@@ -825,6 +825,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2570701797513552299}
     - target: {fileID: 1021810410, guid: 86249d52f8029844d9fb4d71515cb73c, type: 3}
+      propertyPath: _rayHitbox
+      value: 
+      objectReference: {fileID: 1064066593992758228}
+    - target: {fileID: 1021810410, guid: 86249d52f8029844d9fb4d71515cb73c, type: 3}
       propertyPath: backCarBound
       value: 
       objectReference: {fileID: 5790772884826102267}

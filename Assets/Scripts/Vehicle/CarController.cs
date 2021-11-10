@@ -62,7 +62,7 @@ namespace XRLab.VRoem.Vehicle
 
             Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _straightRay ? Vector3.forward : _handAnchor.forward);
             RaycastHit hit;
-            Ray rayAccel = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
+            Ray rayAccel = _mouseControl ? ray : new Ray(_handAnchor.position, _handAnchor.forward);
             RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))

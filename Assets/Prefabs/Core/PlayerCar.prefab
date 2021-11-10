@@ -163,6 +163,9 @@ MonoBehaviour:
   _boostDuration: 2
   _boostCooldown: 5
   _fillBoostSpeed: 0.25
+  _tresholdToAccelerate: 0.4
+  _tresholdToDeccelerate: 0.1
+  _positionModifier: {x: 10, y: 4, z: 1}
   _boostTimer: 1
   _layer:
     serializedVersion: 2
@@ -181,12 +184,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
+  _speedReturnZ: 10
+  _gravityMultiplierBasedOnUp: 2
+  _gravityMultiplierOnWallsBasedOnUp: 4
   _lookAtThreshold: 0.1
   _rotationSpeed: 5
-  _dynamicToleranceZ: 0.05
-  _boostMultiplierPosZ: 1.1
+  _dynamicToleranceZ: 0.25
+  _boostMultiplierPosZ: 2
+  _boundsX: 2.7
+  _lookAtMultiplier: 0.5
+  _minimumTurnSpeed: 0.25
+  _maxTurnSpeed: 1.5
   _backCarBounds: {fileID: 0}
   _model: {fileID: 6151382812070786326}
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _raycastLength: 0.25
+  _grounded: 0
+  _groundAngle: 0
+  _angleToRideWall: 45
+  _rotInAirSpeed: 4
+  _normalSmoothing: 20
+  _angleToLockControlsX: 60
+  _upsideDownAngleToUnlockControlsX: 160
+  _normalBasedSpeedMultiplier: 0.25
+  _upperLeftRay: {fileID: 1235974634437004085}
+  _upperRightRay: {fileID: 3256716027665106507}
+  _lowerLeftRay: {fileID: 5949650999192565952}
+  _lowerRightRay: {fileID: 6151886433748754362}
 --- !u!120 &4809586866357353009
 LineRenderer:
   m_ObjectHideFlags: 0
