@@ -10,6 +10,7 @@ public class SpeedManager : MonoBehaviour
     [SerializeField] private float _roadSpeedMultiplier = 0.5f;
     [SerializeField] private float _accelerationLerpSpeed = 1;
     [SerializeField] private float _currentMultiplier = 1;
+    [SerializeField] private float _lerpSpeedMutlitplierThreshold = 0.5f;
 
     public float FinalSpeed { get { return _finalSpeed; } }
     public float CurrentMultiplier { get { return _currentMultiplier; } }
@@ -34,6 +35,13 @@ public class SpeedManager : MonoBehaviour
     {
         float _targetSpeed = _modifiedSpeed * multiplier;
 
-        _finalSpeed = Mathf.Lerp(_finalSpeed, _targetSpeed, _accelerationLerpSpeed * Time.deltaTime);
+        if (multiplier > _lerpSpeedMutlitplierThreshold)
+        {
+            _finalSpeed = Mathf.Lerp(_finalSpeed, _targetSpeed, _accelerationLerpSpeed * Time.deltaTime);
+        }
+        else
+        {
+            _finalSpeed = _targetSpeed;
+        }
     }
 }

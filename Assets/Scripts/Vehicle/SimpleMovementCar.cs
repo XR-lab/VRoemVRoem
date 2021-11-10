@@ -5,18 +5,29 @@ namespace XRLab.VRoem.Vehicle
     public class SimpleMovementCar : Car
     {
         [SerializeField] private float _speed;
+        [SerializeField] private float _speedReturnZ = 10;
         [SerializeField] private float _gravityMultiplierBasedOnUp = 2;
+        [SerializeField] private float _gravityMultiplierOnWallsBasedOnUp = 4;
         [SerializeField] private float _lookAtThreshold = 0.1f;
         [SerializeField] private float _rotationSpeed = 5;
         [SerializeField] private float _dynamicToleranceZ = 0.05f;
         [SerializeField] private float _boostMultiplierPosZ = 1.1f;
+        [SerializeField] private float _boundsX = 2.7f;
+        [SerializeField] private float _lookAtExtraSpeed = 1.5f;
+        [SerializeField] private float _minimumTurnSpeed = 0.25f;
+        [SerializeField] private float _maxTurnSpeed = 1.5f;
         [SerializeField] private Transform _backCarBounds;
         [SerializeField] private Transform _model;
         [SerializeField] private LayerMask _groundLayerMask;
         [SerializeField] private float _raycastLength = 2;
         [SerializeField] private bool _grounded = false;
         [SerializeField] private float _groundAngle = 0;
+        [SerializeField] private float _angleToRideWall = 45;
+        [SerializeField] private float _rotInAirSpeed = 2;
         [SerializeField] private float _normalSmoothing = 1.2f;
+        [SerializeField] private float _angleToLockControlsX = 80;
+        [SerializeField] private float _upsideDownAngleToUnlockControlsX = 120;
+        [SerializeField] private float _normalBasedSpeedMultiplier = 0.5f;
         [SerializeField] private Transform _upperLeftRay;
         [SerializeField] private Transform _upperRightRay;
         [SerializeField] private Transform _lowerLeftRay;
@@ -27,6 +38,9 @@ namespace XRLab.VRoem.Vehicle
         private Rigidbody _rb;
         private SpeedManager _speedManager;       
         private float _rigidBodyDrag = 0;
+
+        public float GroundAngle { get { return _groundAngle; } }
+        public float AngleToLockControlsX { get { return _angleToLockControlsX; } }
 
         private void Start()
         {
@@ -51,19 +65,27 @@ namespace XRLab.VRoem.Vehicle
             if (InTargetPointRange() || !_grounded) return;
 
             Vector3 _targetDirection = (_targetPoint - transform.position).normalized;
-            _targetDirection.y = 0;
 
-            float turnPercentage = Mathf.Clamp(Mathf.Abs(_model.localRotation.y) / 0.25f, 0.25f, 1.5f);
+            if (_groundAngle < _angleToRideWall)
+            {
+                _targetDirection.y = 0;
+            }           
+
+            float turnPercentage = Mathf.Clamp(Mathf.Abs(_model.localRotation.y) / 0.25f, _minimumTurnSpeed, _maxTurnSpeed);
 
             float force = _speed * turnPercentage;
+            float forceZ = _speedReturnZ * turnPercentage;
 
-            _rb.AddForce(_targetDirection * force);
+            _rb.AddForce(new Vector3(_targetDirection.x, _targetDirection.y, 0) * force);
+            _rb.AddForce(new Vector3(0, 0, _targetDirection.z) * (_targetDirection.z >= 0 ? force :  forceZ));
 
-            if (!_grounded)
+            if (!_grounded || _groundAngle > _angleToRideWall)
             {
+                force = !_grounded ? _gravityMultiplierBasedOnUp : _gravityMultiplierOnWallsBasedOnUp;
+
                 //Sticks better to slopes
-                _rb.AddForce(-transform.up * _gravityMultiplierBasedOnUp);
-            }            
+                _rb.AddForce(-transform.up * force);
+            }
         }
 
         private void CheckGrounded()
@@ -88,18 +110,20 @@ namespace XRLab.VRoem.Vehicle
                 _groundAngle = Vector3.Angle(Vector3.up, averageNormals);
 
                 float rampDot = Vector3.Dot(Vector3.forward, averageNormals);
-                float groundAnglePercentage = _groundAngle / 90;
+                float groundAnglePercentage = Mathf.Clamp01(Mathf.Abs(transform.localRotation.x) / 0.5f) * _normalBasedSpeedMultiplier;
                 float normalMultiplier = rampDot > 0 ? (1  + groundAnglePercentage) : Mathf.Abs(1 - groundAnglePercentage);
 
                 _speedManager.NormalBasedSpeed(normalMultiplier);
                 _rb.drag = _rigidBodyDrag;
-                _rb.freezeRotation = true;
+                _rb.useGravity = _groundAngle < _angleToRideWall;
             }
             else
             {
+                _rb.useGravity = true;
                 _rb.drag = 0;
                 _groundAngle = 0;
-                _rb.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, new Quaternion(0, 0, 0, transform.localRotation.w), _rotInAirSpeed * Time.deltaTime);
             }
         }
 
@@ -111,12 +135,12 @@ namespace XRLab.VRoem.Vehicle
         private void LookAtTarget()
         {
             Vector3 lookat = _targetPoint;
-            lookat.z += Mathf.Clamp(_speedManager.FinalSpeed, 0, 1.5f);
+            lookat.z += Mathf.Clamp(_speedManager.FinalSpeed, 0, _lookAtExtraSpeed);
 
             Quaternion targetRotation = Quaternion.LookRotation(lookat - transform.position);
             _model.rotation = Quaternion.Slerp(_model.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
-            transform.localRotation = new Quaternion(transform.localRotation.x, 0, 0, transform.localRotation.w);
+            transform.localRotation = new Quaternion(transform.localRotation.x, 0, transform.localRotation.z, transform.localRotation.w);
             _model.localRotation = new Quaternion(0, Mathf.Clamp(_model.localRotation.y, -0.5f, 0.5f), 0, _model.localRotation.w);
         }
 
@@ -126,7 +150,7 @@ namespace XRLab.VRoem.Vehicle
 
             float dynamicPosZ = _lockedPosZ * multiplier;
 
-            Vector3 heightCorrectedPoint = new Vector3(Mathf.Clamp(lookAtPosition.x, -2.7f, 2.7f), transform.position.y, dynamicPosZ);
+            Vector3 heightCorrectedPoint = new Vector3(_groundAngle < _angleToLockControlsX || _groundAngle > _upsideDownAngleToUnlockControlsX ? Mathf.Clamp(lookAtPosition.x, -_boundsX, _boundsX) : transform.position.x, _groundAngle < _angleToRideWall || _groundAngle > _upsideDownAngleToUnlockControlsX ? transform.position.y : lookAtPosition.y, dynamicPosZ);
             _targetPoint = heightCorrectedPoint;
         }
 

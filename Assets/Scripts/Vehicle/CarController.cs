@@ -10,25 +10,32 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _boostDuration = 1f;
         [SerializeField] private float _boostCooldown = 5f;
         [SerializeField] private float _fillBoostSpeed = 0.25f;
+        [SerializeField] private float _tresholdToAccelerate = 0.4f;
+        [SerializeField] private float _tresholdToDeccelerate = 0.1f;
+        [SerializeField] private Vector3 _positionModifier;
         [SerializeField] private float _boostTimer = 1;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Color _rayColor = Color.red;
 
-        private Car _car;
+        private SimpleMovementCar _car;
         private LineRenderer _lineRenderer;
         private SpeedManager _speedManager;
         private Transform _vrCam;
         private bool _mouseControl = false;
+        private bool _straightRay = true;
         private bool _boosting = false;
         private bool _boostInCooldown = false;
 
+        private Vector3 _handStartingPos;
+
         private void Start()
         {
-            _car = GetComponent<Car>();
+            _car = GetComponent<SimpleMovementCar>();
             _lineRenderer = GetComponent<LineRenderer>();
             _speedManager = FindObjectOfType<SpeedManager>();
             _boostTimer = _boostDuration;
             _vrCam = FindObjectOfType<OVRCameraRig>().transform;
+            _handStartingPos = _handAnchor.position;
 
             _fillBoostSpeed = 1 / (1 / _boostDuration * _boostCooldown);
         }
@@ -48,21 +55,30 @@ namespace XRLab.VRoem.Vehicle
                 _vrCam.transform.localRotation = new Quaternion(_mouseControl ? 0.16f : 0, _vrCam.transform.localRotation.y, _vrCam.transform.localRotation.z, _vrCam.transform.localRotation.w);
             }
 
-            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                _straightRay = !_straightRay;
+            }
+
+            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _straightRay ? Vector3.forward : _handAnchor.forward);
             RaycastHit hit;
+            Ray rayAccel = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
+            RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
             {
-                _car.SetOrientation(hit.point, _boosting);
+                float diffY = _car.transform.position.y + (_handAnchor.position.y - _handStartingPos.y) * _positionModifier.y;
 
-                if (!_boosting)
+                _car.SetOrientation(new Vector3(hit.point.x * (_mouseControl ? 1 : _positionModifier.x), _car.GroundAngle < _car.AngleToLockControlsX || !_straightRay || _mouseControl ? hit.point.y : diffY, hit.point.z), _boosting);
+
+                if (!_boosting && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer))
                 {
-                    float clampedY = (Mathf.Clamp(hit.point.y, -1, 6) + 1) / 7;
+                    float clampedY = (Mathf.Clamp(hitAccel.point.y, -1, 6) + 1) / 7;
 
                     float multiplier = 1;
 
-                    float upperTreshold = _mouseControl ? 0.8f : 0.4f;
-                    float lowerTreshold = _mouseControl ? 0.2f : 0.1f;
+                    float upperTreshold = _mouseControl ? 0.8f : _tresholdToAccelerate;
+                    float lowerTreshold = _mouseControl ? 0.2f : _tresholdToDeccelerate;
 
                     if (clampedY < lowerTreshold)
                     {
