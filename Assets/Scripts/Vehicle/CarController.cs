@@ -69,7 +69,7 @@ namespace XRLab.VRoem.Vehicle
             {
                 float diffY = _car.transform.position.y + (_handAnchor.position.y - _handStartingPos.y) * _positionModifier.y;
 
-                _car.SetOrientation(new Vector3(hit.point.x * (_mouseControl ? 1 : _positionModifier.x), _car.GroundAngle < _car.AngleToLockControlsX || !_straightRay || _mouseControl ? hit.point.y : diffY, hit.point.z), _boosting);
+                _car.SetOrientation(new Vector3(hit.point.x * (_mouseControl || !_straightRay ? 1 : _positionModifier.x), _car.GroundAngle < _car.AngleToLockControlsX || !_straightRay || _mouseControl ? hit.point.y : diffY, hit.point.z), _boosting);
 
                 if (!_boosting && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer))
                 {

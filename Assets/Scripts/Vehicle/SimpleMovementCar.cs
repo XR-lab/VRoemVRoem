@@ -10,6 +10,7 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _gravityMultiplierOnWallsBasedOnUp = 4;
         [SerializeField] private float _lookAtThreshold = 0.1f;
         [SerializeField] private float _rotationSpeed = 5;
+        [SerializeField] private float _rollRotationSpeed = 5;
         [SerializeField] private float _dynamicToleranceZ = 0.05f;
         [SerializeField] private float _boostMultiplierPosZ = 1.1f;
         [SerializeField] private float _boundsX = 2.7f;
@@ -17,6 +18,7 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _minimumTurnSpeed = 0.25f;
         [SerializeField] private float _maxTurnSpeed = 1.5f;
         [SerializeField] private Transform _backCarBounds;
+        [SerializeField] private Transform _forwardTransform;
         [SerializeField] private Transform _model;
         [SerializeField] private LayerMask _groundLayerMask;
         [SerializeField] private float _raycastLength = 2;
@@ -28,6 +30,10 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _angleToLockControlsX = 80;
         [SerializeField] private float _upsideDownAngleToUnlockControlsX = 120;
         [SerializeField] private float _normalBasedSpeedMultiplier = 0.5f;
+        [SerializeField] private float _maxTurnAngle = 0.5f;
+        [SerializeField] private float _maxRollTurn = 15;
+        [SerializeField] private float _minimumRollTurnDistance = 0.25f;
+        [SerializeField] private float _maxTurnDistance = 5;
         [SerializeField] private Transform _upperLeftRay;
         [SerializeField] private Transform _upperRightRay;
         [SerializeField] private Transform _lowerLeftRay;
@@ -39,6 +45,7 @@ namespace XRLab.VRoem.Vehicle
         private SpeedManager _speedManager;       
         private float _rigidBodyDrag = 0;
         private float _dynamicPosZ;
+        private float turnPercentage;
 
         public float GroundAngle { get { return _groundAngle; } }
         public float AngleToLockControlsX { get { return _angleToLockControlsX; } }
@@ -59,6 +66,8 @@ namespace XRLab.VRoem.Vehicle
             if (!_grounded) { return; }
 
             LookAtTarget();
+
+            //turnPercentage = Mathf.Clamp(Mathf.Abs(_forwardTransform.localRotation.y) / (_maxTurnAngle / 2), _minimumTurnSpeed, _maxTurnSpeed);
         }
 
         private void FixedUpdate()
@@ -70,9 +79,8 @@ namespace XRLab.VRoem.Vehicle
             if (_groundAngle < _angleToRideWall)
             {
                 _targetDirection.y = 0;
-            }           
-
-            float turnPercentage = Mathf.Clamp(Mathf.Abs(_model.localRotation.y) / 0.25f, _minimumTurnSpeed, _maxTurnSpeed);
+            }            
+            turnPercentage = Vector3.Distance(transform.position, _targetDirection) / _maxTurnDistance;
 
             float force = _speed * turnPercentage;
             float forceZ = _speedReturnZ * turnPercentage;
@@ -139,10 +147,17 @@ namespace XRLab.VRoem.Vehicle
             lookat.z = _dynamicPosZ + _speedManager.CurrentMultiplier;
 
             Quaternion targetRotation = Quaternion.LookRotation(lookat - transform.position);
-            _model.rotation = Quaternion.Slerp(_model.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            _forwardTransform.rotation = Quaternion.Slerp(_forwardTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
             transform.localRotation = new Quaternion(transform.localRotation.x, 0, transform.localRotation.z, transform.localRotation.w);
-            _model.localRotation = new Quaternion(0, Mathf.Clamp(_model.localRotation.y, -0.5f, 0.5f), 0, _model.localRotation.w);
+            _forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
+
+            lookat.z = transform.position.z;
+            float rollPercent = Vector3.Distance(lookat, transform.position) < _minimumRollTurnDistance ? 0 : turnPercentage;
+
+            targetRotation = new Quaternion(0, 0, _forwardTransform.localRotation.y > 0 ? -_maxRollTurn * rollPercent : _maxRollTurn * rollPercent, _model.localRotation.w);
+            _model.localRotation = Quaternion.Slerp(_model.localRotation, targetRotation, _rollRotationSpeed * Time.deltaTime);
+            //_forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
         }
 
         public override void SetOrientation(Vector3 lookAtPosition, bool boosting)
