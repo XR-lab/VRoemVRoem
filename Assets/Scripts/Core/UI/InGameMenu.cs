@@ -10,8 +10,6 @@ public class InGameMenu : MonoBehaviour
     [SerializeField] private GameObject pauzeMenu;
     [SerializeField] private GameObject deadMenu;
 
-    [Header("input")]
-    private OculusInput oculusInput;
 
 
     //check input 
@@ -19,10 +17,7 @@ public class InGameMenu : MonoBehaviour
     {
         pauzeMenu.SetActive(false);
         deadMenu.SetActive(false);
-
-        oculusInput = GetComponent<OculusInput>();
-
-        oculusInput.OnConfirmPress += CheckOpen;
+        
     }
 
 
@@ -56,6 +51,14 @@ public class InGameMenu : MonoBehaviour
        
         SceneManager.LoadScene(0);
     }
+
+    public void PauzeMenuButton() {
+        if (pauzeMenu.activeInHierarchy) {
+            close();
+        } else if (!pauzeMenu.activeInHierarchy) {
+            Open();
+        }
+    }
    
     //open pauze menu and stop game time
     public void Open()
@@ -63,6 +66,7 @@ public class InGameMenu : MonoBehaviour
         Time.timeScale = 0;
         pauzeMenu.SetActive(true);
         Debug.Log("open");
+        
     }
     //close pauze menu and start game time
     public void close()
@@ -73,6 +77,6 @@ public class InGameMenu : MonoBehaviour
     }
 
     public void BackToMainMenu() {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene(1);
     }
 }
