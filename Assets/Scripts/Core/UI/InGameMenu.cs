@@ -6,8 +6,9 @@ using UnityEngine.XR;
 
 public class InGameMenu : MonoBehaviour
 {
-    [Header("PauzeMenu")]
+    
     [SerializeField] private GameObject pauzeMenu;
+    [SerializeField] private GameObject deadMenu;
 
     [Header("input")]
     private OculusInput oculusInput;
@@ -17,6 +18,7 @@ public class InGameMenu : MonoBehaviour
     void Start()
     {
         pauzeMenu.SetActive(false);
+        deadMenu.SetActive(false);
 
         oculusInput = GetComponent<OculusInput>();
 
@@ -51,7 +53,7 @@ public class InGameMenu : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1;
-        pauzeMenu.SetActive(true);
+       
         SceneManager.LoadScene(0);
     }
    
@@ -68,5 +70,9 @@ public class InGameMenu : MonoBehaviour
         Time.timeScale = 1;
         pauzeMenu.SetActive(false);
         Debug.Log("close");
+    }
+
+    public void BackToMainMenu() {
+        SceneManager.LoadScene("StartMenu");
     }
 }

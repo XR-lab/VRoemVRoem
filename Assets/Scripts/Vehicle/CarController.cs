@@ -23,8 +23,7 @@ namespace XRLab.VRoem.Vehicle
         private bool _boostInCooldown = false;
         private bool _canBoost = true;
 
-        private void Start()
-        {
+        private void Start() {
             _car = GetComponent<SimpleMovementCar>();
             _lineRenderer = GetComponent<LineRenderer>();
             _speedManager = FindObjectOfType<SpeedManager>();
@@ -36,6 +35,7 @@ namespace XRLab.VRoem.Vehicle
             //It does a calculation to make sure it will take as long as the given cooldown
             _fillBoostSpeed = 1 / (1 / _boostDuration * _boostCooldown);
         }
+
 
         private void Update()
         {
@@ -57,14 +57,12 @@ namespace XRLab.VRoem.Vehicle
             Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
-            {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
                 //Send hit point to car
                 _car.SetOrientation(hit.point, _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
-                if (!_boosting && _car.Grounded)
-                {
+                if (!_boosting && _car.Grounded) {
                     float clampedY = (Mathf.Clamp(hit.point.y, -1, 6) + 1) / 7;
 
                     float multiplier = 1;
@@ -72,12 +70,9 @@ namespace XRLab.VRoem.Vehicle
                     float upperTreshold = _mouseControl ? 0.8f : 0.4f;
                     float lowerTreshold = _mouseControl ? 0.2f : 0.1f;
 
-                    if (clampedY < lowerTreshold)
-                    {
+                    if (clampedY < lowerTreshold) {
                         multiplier -= _speedMultiplierAdded;
-                    }
-                    else if (clampedY > upperTreshold)
-                    {
+                    } else if (clampedY > upperTreshold) {
                         multiplier += _speedMultiplierAdded;
                     }
 
@@ -93,39 +88,30 @@ namespace XRLab.VRoem.Vehicle
             Debug.DrawRay(ray.origin, ray.direction * 100, _rayColor);
         }
 
-        private void BoostCheck()
-        {
-            if (_boostTimer > 0)
-            {
+        private void BoostCheck() {
+            if (_boostTimer > 0) {
                 //When pressing boost decrease timer an send speed to speedManager
-                if (Input.GetButton("Boost") || OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
-                {
+                if (Input.GetButton("Boost") || OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch)) {
                     _boostTimer -= Time.deltaTime;
                     _boosting = true;
                     _speedManager.CalculateModifedSpeed(2);
-                }
-                else
-                {
+                } else {
                     //When releasing boost the meter will fill up as fast as the given cooldown
                     _boosting = false;
-                    if (_boostTimer < _boostDuration)
-                    {
+                    if (_boostTimer < _boostDuration) {
                         _boostTimer += _fillBoostSpeed * Time.deltaTime;
                     }
                 }
-            }
-            else if (!_boostInCooldown)
-            {
+            } else if (!_boostInCooldown) {
                 //When the boost is done then you get an cooldown so that you can only boost again when the cooldown ends
                 _boosting = false;
                 _boostInCooldown = true;
 
                 StartCoroutine(nameof(BoostCooldown));
             }
-        }  
-        
-        private IEnumerator BoostCooldown()
-        {
+        }
+
+        private IEnumerator BoostCooldown() {
             yield return new WaitForSeconds(_boostCooldown);
 
             _boostInCooldown = false;
