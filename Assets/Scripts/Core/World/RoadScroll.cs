@@ -36,7 +36,7 @@ namespace XRLab.VRoem.Core
                 roadCount++;
             }
 
-            if (roadCount == roadsTillCheckpoint) {
+            if ( checkpoint != null && roadCount == roadsTillCheckpoint) {
                 SetCheckPoint();
             }
         }

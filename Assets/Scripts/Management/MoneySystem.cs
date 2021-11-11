@@ -32,7 +32,7 @@ public class MoneySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentMonney > -1)
+        if (currentMonney > 1)
         {
             moneyText.text = "Money: " + currentMonney;
             bankText.text = "bank: " + BankMoney;

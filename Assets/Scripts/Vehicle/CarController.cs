@@ -10,6 +10,9 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _boostDuration = 1f;
         [SerializeField] private float _boostCooldown = 5f;
         [SerializeField] private float _fillBoostSpeed = 0.25f;
+        [SerializeField] private float _tresholdToAccelerate = 0.4f;
+        [SerializeField] private float _tresholdToDeccelerate = 0.1f;
+        [SerializeField] private Vector3 _positionModifier;
         [SerializeField] private float _boostTimer = 1;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Color _rayColor = Color.red;
@@ -19,9 +22,10 @@ namespace XRLab.VRoem.Vehicle
         private SpeedManager _speedManager;
         private Transform _vrCam;
         private bool _mouseControl = false;
+        private bool _straightRay = true;
         private bool _boosting = false;
         private bool _boostInCooldown = false;
-        private bool _canBoost = true;
+        private Vector3 _handStartingPos;
 
         private void Start() {
             _car = GetComponent<SimpleMovementCar>();
@@ -40,29 +44,25 @@ namespace XRLab.VRoem.Vehicle
         private void Update()
         {
             ShootControlRay();
-            BoostCheck();
+            //BoostCheck();
         }
 
         private void ShootControlRay()
         {
-            //Debug mouse input toggle
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                _mouseControl = !_mouseControl;
-                //_vrCam.transform.localPosition = new Vector3(_vrCam.transform.localPosition.x, _mouseControl ? 3 : 3, _vrCam.transform.localPosition.z);
-                _vrCam.transform.localRotation = new Quaternion(_mouseControl ? 0.16f : 0, _vrCam.transform.localRotation.y, _vrCam.transform.localRotation.z, _vrCam.transform.localRotation.w);
-            }
-
             //Shoot Ray from right hand or mouse
-            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
+            Ray ray = new Ray(_handAnchor.position, Vector3.forward);
             RaycastHit hit;
+            Ray rayAccel = new Ray(_handAnchor.position, _handAnchor.forward);
+            RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
                 //Send hit point to car
-                _car.SetOrientation(hit.point, _boosting);
+                float diffY = _car.transform.position.y + (_handAnchor.position.y - _handStartingPos.y) * _positionModifier.y;
+
+                _car.SetOrientation(new Vector3(hit.point.x *  _positionModifier.x, _car.GroundAngle < _car.AngleToLockControlsX ? hit.point.y : diffY, hit.point.z), _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
-                if (!_boosting && _car.Grounded) {
+                if (!_boosting && _car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {
                     float clampedY = (Mathf.Clamp(hit.point.y, -1, 6) + 1) / 7;
 
                     float multiplier = 1;

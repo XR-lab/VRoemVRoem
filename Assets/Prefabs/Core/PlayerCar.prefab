@@ -13,6 +13,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019856576, y: 0.009792076, z: 0.009627458}
   m_Center: {x: -0.0004328005, y: -0.000044042477, z: 0.0047843596}
+--- !u!1 &174385984405944391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7522611067387817683}
+  m_Layer: 0
+  m_Name: Forward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7522611067387817683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174385984405944391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6151382812070786326}
+  - {fileID: 4132829864566243376}
+  m_Father: {fileID: 5571448876694586838}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &806071681746762070
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +158,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6151382812070786326}
+  - {fileID: 7522611067387817683}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -158,7 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c39076696f63f4595d298200819a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvastext: {fileID: 0}
+  maxmoney: 0
+  moneyLose: 0
+  moneyText: {fileID: 0}
+  bankText: {fileID: 0}
+  gameOverUI: {fileID: 0}
 --- !u!114 &1021810409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +212,9 @@ MonoBehaviour:
   _boostDuration: 2
   _boostCooldown: 5
   _fillBoostSpeed: 0.25
+  _tresholdToAccelerate: 0.4
+  _tresholdToDeccelerate: 0.1
+  _positionModifier: {x: 0, y: 0, z: 0}
   _boostTimer: 1
   _layer:
     serializedVersion: 2
@@ -194,12 +233,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
+  _speedReturnZ: 10
+  _gravityMultiplierBasedOnUp: 2
+  _gravityMultiplierOnWallsBasedOnUp: 4
   _lookAtThreshold: 0.1
   _rotationSpeed: 10
+  _rollRotationSpeed: 5
   _dynamicToleranceZ: 0.25
   _boostMultiplierPosZ: 1.5
   _boundsX: 2.7
+  _lookAtMultiplier: 0.5
+  _minimumTurnSpeed: 0.25
+  _maxTurnSpeed: 1.5
   _backCarBounds: {fileID: 0}
+  _forwardTransform: {fileID: 0}
   _model: {fileID: 6151382812070786326}
   _groundLayerMask:
     serializedVersion: 2
@@ -207,6 +254,16 @@ MonoBehaviour:
   _raycastLength: 1
   _grounded: 0
   _groundAngle: 0
+  _angleToRideWall: 45
+  _rotInAirSpeed: 2
+  _normalSmoothing: 1.2
+  _angleToLockControlsX: 80
+  _upsideDownAngleToUnlockControlsX: 120
+  _normalBasedSpeedMultiplier: 0.5
+  _maxTurnAngle: 0.5
+  _maxRollTurn: 15
+  _minimumRollTurnDistance: 0.25
+  _maxTurnDistance: 5
   _upperLeftRay: {fileID: 1235974634437004085}
   _upperRightRay: {fileID: 3256716027665106507}
   _lowerLeftRay: {fileID: 5949650999192565952}
@@ -337,8 +394,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 788208455440820167}
-  - {fileID: 4132829864566243376}
-  m_Father: {fileID: 5571448876694586838}
+  m_Father: {fileID: 7522611067387817683}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5349053048545581593
@@ -607,15 +663,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7936447260294949844}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1235974634437004085}
   - {fileID: 3256716027665106507}
   - {fileID: 5949650999192565952}
   - {fileID: 6151886433748754362}
-  m_Father: {fileID: 6151382812070786326}
+  m_Father: {fileID: 7522611067387817683}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &971368046490746924

@@ -8,12 +8,40 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3383867854428042586}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8447368494271163220, guid: 6c5936c1d497e8b47998981e88768c79, type: 3}
+--- !u!54 &3508185199137293765
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212920927740645601}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2468458144233949287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212920927740645601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2464735854523238411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,16 +101,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: MDL_Spijkermat_obstakel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c5936c1d497e8b47998981e88768c79, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c5936c1d497e8b47998981e88768c79, type: 3}
 --- !u!1 &3383867854428042586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c5936c1d497e8b47998981e88768c79, type: 3}
-  m_PrefabInstance: {fileID: 2464735854523238411}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &3888037572808823951 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6c5936c1d497e8b47998981e88768c79, type: 3}
   m_PrefabInstance: {fileID: 2464735854523238411}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6320210939225947933
@@ -148,16 +175,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1971217287497033515, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
-      propertyPath: _renderer
-      value: 
-      objectReference: {fileID: 3888037572808823951}
     - target: {fileID: 2300747511255003132, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
       propertyPath: m_Name
       value: Obs_Nailmat
       objectReference: {fileID: 0}
+    - target: {fileID: 2300747511255003132, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184772273496730221, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+--- !u!1 &5212920927740645601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2300747511255003132, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+  m_PrefabInstance: {fileID: 6320210939225947933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &769539268249003908 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6708135551405103257, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
