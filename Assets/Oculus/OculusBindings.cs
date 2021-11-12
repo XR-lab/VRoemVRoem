@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/OculusBindings.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Oculus/OculusBindings.inputactions'
 
 using System;
 using System.Collections;
