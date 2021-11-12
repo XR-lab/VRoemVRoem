@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace XRLab.VRoem.Vehicle
-{
+namespace XRLab.VRoem.Vehicle {
+
     public class SimpleMovementCar : Car
     {
         [SerializeField] private float _speed;
@@ -10,6 +11,7 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _gravityMultiplierOnWallsBasedOnUp = 4;
         [SerializeField] private float _lookAtThreshold = 0.1f;
         [SerializeField] private float _rotationSpeed = 5;
+        [SerializeField] private float _resetRotationSpeed = 5;
         [SerializeField] private float _rollRotationSpeed = 5;
         [SerializeField] private float _dynamicToleranceZ = 0.05f;
         [SerializeField] private float _boostMultiplierPosZ = 1.1f;
@@ -69,13 +71,11 @@ namespace XRLab.VRoem.Vehicle
             if (!_grounded || !CanMove) { return; }
 
             if (InTargetPointRange()) {
-                LookAtTarget(transform.position);
+                LookAtTarget(0);
                 return;
             }
 
             LookAtTarget();
-
-            //turnPercentage = Mathf.Clamp(Mathf.Abs(_forwardTransform.localRotation.y) / (_maxTurnAngle / 2), _minimumTurnSpeed, _maxTurnSpeed);
         }
 
         private void FixedUpdate() {
@@ -142,14 +142,21 @@ namespace XRLab.VRoem.Vehicle
         }
 
         private void LookAtTarget() {
-            LookAtTarget(_targetPoint);
+            LookAtTarget(1);
         }
 
-        private void LookAtTarget(Vector3 lookat) {
+        private void LookAtTarget(float rotationPercentMultiplier) {
+            Vector3 lookat = _targetPoint;
+            
             lookat.z = _dynamicPosZ + _speedManager.CurrentMultiplier;
-
-            Quaternion targetRotation = Quaternion.LookRotation(lookat - transform.position);
-            _forwardTransform.rotation = Quaternion.Slerp(_forwardTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            Quaternion targetRotation;
+            if (rotationPercentMultiplier > 0) {
+                targetRotation = Quaternion.LookRotation(lookat - transform.position);
+                _forwardTransform.rotation = Quaternion.Slerp(_forwardTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            }
+            else {
+                _forwardTransform.localRotation = Quaternion.Slerp(_forwardTransform.localRotation, new Quaternion(0, 0, 0, _forwardTransform.localRotation.w), _resetRotationSpeed * Time.deltaTime);
+            }            
 
             transform.localRotation = new Quaternion(transform.localRotation.x, 0, transform.localRotation.z, transform.localRotation.w);
             _forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
@@ -157,7 +164,7 @@ namespace XRLab.VRoem.Vehicle
             lookat.z = transform.position.z;
             float rollPercent = Mathf.Clamp01(turnPercentage - _rollPercentModifier);
 
-            targetRotation = new Quaternion(0, 0, _forwardTransform.localRotation.y > 0 ? -_maxRollTurn * rollPercent : _maxRollTurn * rollPercent, _model.localRotation.w);
+            targetRotation = new Quaternion(0, 0, _forwardTransform.localRotation.y > 0 ? -_maxRollTurn * rollPercent * rotationPercentMultiplier : _maxRollTurn * rollPercent * rotationPercentMultiplier, _model.localRotation.w);
             _model.localRotation = Quaternion.Slerp(_model.localRotation, targetRotation, _rollRotationSpeed * Time.deltaTime);
             //_forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
         }
