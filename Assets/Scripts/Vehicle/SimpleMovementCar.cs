@@ -32,7 +32,7 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private float _normalBasedSpeedMultiplier = 0.5f;
         [SerializeField] private float _maxTurnAngle = 0.5f;
         [SerializeField] private float _maxRollTurn = 15;
-        [SerializeField] private float _minimumRollTurnDistance = 0.25f;
+        [SerializeField] private float _rollPercentModifier = 0.25f;
         [SerializeField] private float _maxTurnDistance = 5;
         [SerializeField] private Transform _upperLeftRay;
         [SerializeField] private Transform _upperRightRay;
@@ -67,6 +67,11 @@ namespace XRLab.VRoem.Vehicle
             UpdateCarBackBounds();
 
             if (!_grounded || !CanMove) { return; }
+
+            if (InTargetPointRange()) {
+                LookAtTarget(transform.position);
+                return;
+            }
 
             LookAtTarget();
 
@@ -137,7 +142,10 @@ namespace XRLab.VRoem.Vehicle
         }
 
         private void LookAtTarget() {
-            Vector3 lookat = _targetPoint;
+            LookAtTarget(_targetPoint);
+        }
+
+        private void LookAtTarget(Vector3 lookat) {
             lookat.z = _dynamicPosZ + _speedManager.CurrentMultiplier;
 
             Quaternion targetRotation = Quaternion.LookRotation(lookat - transform.position);
@@ -147,7 +155,7 @@ namespace XRLab.VRoem.Vehicle
             _forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
 
             lookat.z = transform.position.z;
-            float rollPercent = Vector3.Distance(lookat, transform.position) < _minimumRollTurnDistance ? 0 : turnPercentage;
+            float rollPercent = Mathf.Clamp01(turnPercentage - _rollPercentModifier);
 
             targetRotation = new Quaternion(0, 0, _forwardTransform.localRotation.y > 0 ? -_maxRollTurn * rollPercent : _maxRollTurn * rollPercent, _model.localRotation.w);
             _model.localRotation = Quaternion.Slerp(_model.localRotation, targetRotation, _rollRotationSpeed * Time.deltaTime);
