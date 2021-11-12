@@ -59,11 +59,11 @@ namespace XRLab.VRoem.Vehicle
                 //Send hit point to car
                 float diffY = _car.transform.position.y + (_handAnchor.position.y - _handStartingPos.y) * _positionModifier.y;
 
-                _car.SetOrientation(new Vector3(hit.point.x *  _positionModifier.x, _car.GroundAngle < _car.AngleToLockControlsX ? hit.point.y : diffY, hit.point.z), _boosting);
+                _car.SetOrientation(new Vector3(hit.point.x * _positionModifier.x, _car.GroundAngle < _car.AngleToLockControlsX ? hit.point.y : diffY, hit.point.z), _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
-                if (!_boosting && _car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {
-                    float clampedY = (Mathf.Clamp(hit.point.y, -1, 6) + 1) / 7;
+                if (_car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {
+                    float clampedY = (Mathf.Clamp(hitAccel.point.y, -1, 6) + 1) / 7;
 
                     float multiplier = 1;
 
@@ -80,12 +80,6 @@ namespace XRLab.VRoem.Vehicle
                     _speedManager.CalculateModifedSpeed(multiplier);
                 }
             }
-
-            bool hitFound = (hit.collider != null);
-
-            _lineRenderer.SetPosition(0, _handAnchor.position);
-            _lineRenderer.SetPosition(1, hitFound ? hit.point : ray.origin + ray.direction * 100);
-            Debug.DrawRay(ray.origin, ray.direction * 100, _rayColor);
         }
 
         private void BoostCheck() {

@@ -96,7 +96,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6c5936c1d497e8b47998981e88768c79, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 995f2d252d754ec44a4dad67bebb2a43, type: 2}
+      objectReference: {fileID: 2100000, guid: 6f900df1869e0c34c8af8f4458b6a14e, type: 2}
     - target: {fileID: 919132149155446097, guid: 6c5936c1d497e8b47998981e88768c79, type: 3}
       propertyPath: m_Name
       value: MDL_Spijkermat_obstakel
@@ -186,6 +186,10 @@ PrefabInstance:
     - target: {fileID: 4184772273496730221, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879329536318243083, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: _positionToDestroyZ
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
