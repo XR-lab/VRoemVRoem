@@ -15,7 +15,7 @@ namespace XRLab.VRoem.Core
         [SerializeField] private int policeCarsToInstantiate = 2;
 
         public int objectHitCounter;
-        public UnityEvent normalChaseEvent, firstHitEvent, secondHitEvent, thirdHitEvent, forthHitEvent;
+        public UnityEvent normalChaseEvent, firstHitEvent, secondHitEvent, thirdHitEvent, forthHitEvent, fifthHitEvent;
         private Vector3 policarPropStartLocation;
 
         [SerializeField] private List<GameObject> xtraPoliceCars = new List<GameObject>(); 
@@ -48,11 +48,13 @@ namespace XRLab.VRoem.Core
             if (secondHitEvent == null) { new UnityEvent(); }
             if (thirdHitEvent == null) { new UnityEvent(); }
             if (forthHitEvent == null) { new UnityEvent(); }
+            if (fifthHitEvent == null) { new UnityEvent(); }
 
             firstHitEvent.AddListener(FirstHit);
             secondHitEvent.AddListener(SecondHit);
             thirdHitEvent.AddListener(ThirdHit);
             forthHitEvent.AddListener(ForthHit);
+            fifthHitEvent.AddListener(FifthHit);
 
             CreateXtraPoliceCars();
         }
@@ -74,7 +76,9 @@ namespace XRLab.VRoem.Core
                 case 4:
                     forthHitEvent.Invoke();
                     break;
-
+                case 5:
+                    fifthHitEvent.Invoke();
+                    break;
             }
         }
 
@@ -95,8 +99,12 @@ namespace XRLab.VRoem.Core
 
         void ForthHit()
         {
+            EventCauses(this.gameObject, 4);
+        }
+
+        void FifthHit()
+        {
             EventCauses(gameOverUI, 4);
-            
         }
 
         void CreateXtraPoliceCars()
@@ -118,12 +126,11 @@ namespace XRLab.VRoem.Core
             }
         }
 
-        void PlaceXtraPoliceCars(GameObject policar, int posInLine)
+
+
+        void MoveXtraPoliceCarsForward(GameObject policar)
         {
-            policar.transform.position = new Vector3(policar.transform.position.x , policar.transform.position.y, policar.transform.position.z);
-           
-            policar.SetActive(true);
-            
+            policar.transform.position = Vector3.Lerp(policar.transform.position, new Vector3(policar.transform.position.x, policar.transform.position.y, policarProp.transform.position.z - 2f), 1 * Time.deltaTime);
         }
 
         //the things that happen when a new event is called
@@ -147,14 +154,19 @@ namespace XRLab.VRoem.Core
                     break;
 
                 case 3:
-                    PlaceXtraPoliceCars(xtraPoliceCars[0], 1);
-                    PlaceXtraPoliceCars(xtraPoliceCars[1], 2);
-
-
+                    foreach(GameObject car in xtraPoliceCars)
+                    {
+                        car.SetActive(true);
+                        car.transform.position = Vector3.Lerp(car.transform.position, new Vector3(car.transform.position.x, car.transform.position.y, policarProp.transform.position.z - 2f), 1 * Time.deltaTime);
+                    }
                     break;
 
                 case 4:
                     targetGameObject.SetActive(true);
+                    break;
+
+                case 5:
+                    
                     break;
             
             

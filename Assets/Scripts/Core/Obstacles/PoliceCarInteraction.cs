@@ -32,10 +32,12 @@ namespace XRLab.VRoem.Core
                     switch (carPosInRow) 
                     {
                         case 0:
-                            transform.position = new Vector3(_player.transform.position.x - 1.39f, this.transform.position.y, this.transform.position.z);
+                            if(transform.position.x > -2.5f && transform.position.x < 2.5f)
+                                transform.position = new Vector3(_player.transform.position.x - 1.39f, this.transform.position.y, this.transform.position.z);
                             break;
                         case 1:
-                            transform.position = new Vector3(_player.transform.position.x + 1.39f, this.transform.position.y, this.transform.position.z);
+                            if (transform.position.x > -2.5f && transform.position.x < 2.5f)
+                                transform.position = new Vector3(_player.transform.position.x + 1.39f, this.transform.position.y, this.transform.position.z);
                             break;
                     }
 
