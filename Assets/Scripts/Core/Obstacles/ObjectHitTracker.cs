@@ -10,27 +10,51 @@ namespace XRLab.VRoem.Core
 
     public class ObjectHitTracker : MonoBehaviour
     {
-        [SerializeField] private GameObject gameOverUI, policarProp, policecarPropNextPosition, headLightsNextPosition;
+        [SerializeField] private GameObject gameOverUI, policarProp, policecarPropNextPosition, headLightsNextPosition, policeCarsTransform;
+        
+        [SerializeField] private int policeCarsToInstantiate = 2;
 
         public int objectHitCounter;
-        public UnityEvent normalChaseEvent, firstHitEvent, secondHitEvent, lastHitEvent;
+        public UnityEvent normalChaseEvent, firstHitEvent, secondHitEvent, thirdHitEvent, forthHitEvent;
         private Vector3 policarPropStartLocation;
+
+        [SerializeField] private List<GameObject> xtraPoliceCars = new List<GameObject>(); 
+
+        private sirenLights sirenLights;
+        private InGameMenu inGameMenu;
+
+        [SerializeField] private float behindMainPoliceOffset;
+        [SerializeField] private float nextToMainPoliceOffset;
+
+        private float newPoliceCarZOffset;
+        private float newPoliceCarXOffset;
+
 
         // Start is called before the first frame update
         void Start()
         {
+            newPoliceCarZOffset = policeCarsTransform.transform.position.z - behindMainPoliceOffset;
+            newPoliceCarXOffset = policarProp.transform.position.x + nextToMainPoliceOffset;
+
             objectHitCounter = 0;
             Time.timeScale = 1;
             policarPropStartLocation = policarProp.transform.position;
 
+            sirenLights = FindObjectOfType<sirenLights>();
+            inGameMenu = FindObjectOfType<InGameMenu>();
+
             if (normalChaseEvent == null) { new UnityEvent(); }
             if (firstHitEvent == null) { new UnityEvent(); }
             if (secondHitEvent == null) { new UnityEvent(); }
-            if (lastHitEvent == null) { new UnityEvent(); }
+            if (thirdHitEvent == null) { new UnityEvent(); }
+            if (forthHitEvent == null) { new UnityEvent(); }
 
             firstHitEvent.AddListener(FirstHit);
             secondHitEvent.AddListener(SecondHit);
-            lastHitEvent.AddListener(LastHit);
+            thirdHitEvent.AddListener(ThirdHit);
+            forthHitEvent.AddListener(ForthHit);
+
+            CreateXtraPoliceCars();
         }
 
         // Update is called once per frame
@@ -45,8 +69,12 @@ namespace XRLab.VRoem.Core
                     secondHitEvent.Invoke();
                     break;
                 case 3:
-                    lastHitEvent.Invoke();
+                    thirdHitEvent.Invoke();
                     break;
+                case 4:
+                    forthHitEvent.Invoke();
+                    break;
+
             }
         }
 
@@ -60,26 +88,82 @@ namespace XRLab.VRoem.Core
             EventCauses(policecarPropNextPosition, 2);
         }
 
-        void LastHit()
+        void ThirdHit()
         {
-            EventCauses(gameOverUI, 1);
+            EventCauses(this.gameObject, 3);
+        }
+
+        void ForthHit()
+        {
+            EventCauses(gameOverUI, 4);
+            
+        }
+
+        void CreateXtraPoliceCars()
+        {
+            for(int i = 0; i < policeCarsToInstantiate; i++)
+            {
+                GameObject go = Instantiate(policarProp);
+                //go.transform.parent = policeCarsTransform.transform;
+                if(i == 0)
+                    go.transform.localPosition = new Vector3(1.39f, 0, policeCarsTransform.transform.position.z - 2f);
+                else if(i == 1)
+                    go.transform.localPosition = new Vector3(-1.39f, 0, policeCarsTransform.transform.position.z -2f);
+
+                PoliceCarInteraction policarVariables = go.GetComponent<PoliceCarInteraction>();
+                policarVariables.secondaryCar = true;
+                policarVariables.carPosInRow = i;
+                xtraPoliceCars.Add(go);
+                xtraPoliceCars[i].SetActive(false);
+            }
+        }
+
+        void PlaceXtraPoliceCars(GameObject policar, int posInLine)
+        {
+            policar.transform.position = new Vector3(policar.transform.position.x , policar.transform.position.y, policar.transform.position.z);
+           
+            policar.SetActive(true);
+            
         }
 
         //the things that happen when a new event is called
         void EventCauses(GameObject targetGameObject, int eventIndex)
         {
-            if (eventIndex == 1 || eventIndex == 2)
+            //idle
+            //zwaai licht feller
+            // popo dichterbij
+            // 2 popo erbij, transform voor follow x verandert
+            // dede
+
+            switch (eventIndex) 
             {
-                policarProp.transform.position = Vector3.Lerp(policarProp.transform.position, targetGameObject.transform.position, 1 * Time.deltaTime);
-            }
-            else if(eventIndex == 3)
-            {
-                targetGameObject.SetActive(true);
-                Time.timeScale = 0;
+                case 1:
+                    sirenLights.redLight.range = 10;
+                    sirenLights.blueLight.range = 10;
+                    break;
+
+                case 2:
+                    policeCarsTransform.transform.position = Vector3.Lerp(policeCarsTransform.transform.position, targetGameObject.transform.position, 1 * Time.deltaTime);
+                    break;
+
+                case 3:
+                    PlaceXtraPoliceCars(xtraPoliceCars[0], 1);
+                    PlaceXtraPoliceCars(xtraPoliceCars[1], 2);
+
+
+                    break;
+
+                case 4:
+                    targetGameObject.SetActive(true);
+                    break;
+            
+            
             }
 
 
         }
+
+
 
 
 

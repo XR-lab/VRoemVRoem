@@ -7,6 +7,12 @@ namespace XRLab.VRoem.Core
     public class ObstacleTrigger : MonoBehaviour
     {
         [SerializeField] private Renderer _renderer;
+        private ObjectHitTracker _hitTracker;
+
+        private void Start()
+        {
+            _hitTracker = FindObjectOfType<ObjectHitTracker>();
+        }
 
         //Set the color to green when hitting the player
         ////private void OnTriggerEnter(Collider other)
@@ -23,7 +29,7 @@ namespace XRLab.VRoem.Core
             if (collision.gameObject.CompareTag(Tags.PLAYER)) {
                 Debug.LogError(collision.gameObject.tag);
                 //_renderer.material.SetColor("_Color", Color.green);
-                //FindObjectOfType<ObjectHitTracker>().objectHitCounter += 1;
+                _hitTracker.objectHitCounter += 1;
             }
         }
     }
