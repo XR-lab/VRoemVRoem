@@ -49,27 +49,20 @@ namespace XRLab.VRoem.Vehicle
 
         private void ShootControlRay()
         {
-            if (Input.GetKeyDown(KeyCode.C)) {
-                _mouseControl = !_mouseControl;
-                //_vrCam.transform.localPosition = new Vector3(_vrCam.transform.localPosition.x, _mouseControl ? 3 : 3, _vrCam.transform.localPosition.z);
-                _vrCam.transform.localRotation = new Quaternion(_mouseControl ? 0.16f : 0, _vrCam.transform.localRotation.y, _vrCam.transform.localRotation.z, _vrCam.transform.localRotation.w);
-            }
-
             //Shoot Ray from right hand or mouse
-            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _straightRay ? Vector3.forward : _handAnchor.forward);
+            Ray ray = new Ray(_handAnchor.position, Vector3.forward);
             RaycastHit hit;
-            Ray rayAccel = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_handAnchor.position, _handAnchor.forward);
+            Ray rayAccel = new Ray(_handAnchor.position, _handAnchor.forward);
             RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
                 //Send hit point to car
                 float diffY = _car.transform.position.y + (_handAnchor.position.y - _handStartingPos.y) * _positionModifier.y;
 
-                _car.SetOrientation(new Vector3(hit.point.x * (_mouseControl || !_straightRay ? 1 : _positionModifier.x), _car.GroundAngle < _car.AngleToLockControlsX || !_straightRay || _mouseControl ? hit.point.y : diffY, hit.point.z), _boosting);
-                bool didHit = Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer);
+                _car.SetOrientation(new Vector3(hit.point.x * _positionModifier.x, _car.GroundAngle < _car.AngleToLockControlsX ? hit.point.y : diffY, hit.point.z), _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
-                if (didHit) {
+                if (_car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {
                     float clampedY = (Mathf.Clamp(hitAccel.point.y, -1, 6) + 1) / 7;
 
                     float multiplier = 1;
@@ -87,10 +80,6 @@ namespace XRLab.VRoem.Vehicle
                     _speedManager.CalculateModifedSpeed(multiplier);
                 }
             }
-
-            //_lineRenderer.SetPosition(0, _handAnchor.position);
-            //_lineRenderer.SetPosition(1, rayAccel.origin + rayAccel.direction * 100);
-            //Debug.DrawRay(ray.origin, ray.direction * 100, _rayColor);
         }
 
         private void BoostCheck() {
