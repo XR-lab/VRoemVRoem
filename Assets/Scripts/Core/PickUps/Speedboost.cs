@@ -6,6 +6,13 @@ namespace XRLab.VRoem.Core
 {
     public class Speedboost : PickUp
     {
+        private XRLab.VRoem.Vehicle.CarController _controller;
+        private SpeedManager _speedManger;
+
+        private void Start() {
+            _controller = FindObjectOfType<XRLab.VRoem.Vehicle.CarController>();
+            _speedManger = FindObjectOfType<SpeedManager>();
+        }
         //je hebt dit nodig om de pick up af te laten spelen
         public override void PowerUp()
         {
@@ -16,6 +23,8 @@ namespace XRLab.VRoem.Core
         private void speedBoost()
         {
             Debug.Log("Speed Speed");
+            _controller._boosting = true;
+            _speedManger.CalculateModifedSpeed(2);
             counter.speedBoostCount++;
         }
     }

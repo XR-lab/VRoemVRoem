@@ -23,7 +23,7 @@ namespace XRLab.VRoem.Vehicle
         private Transform _vrCam;
         private bool _mouseControl = false;
         private bool _straightRay = true;
-        private bool _boosting = false;
+        [HideInInspector]public bool _boosting = false;
         private bool _boostInCooldown = false;
         private Vector3 _handStartingPos;
 
