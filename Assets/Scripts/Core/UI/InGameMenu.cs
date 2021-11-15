@@ -17,7 +17,7 @@ public class InGameMenu : MonoBehaviour
     {
         pauzeMenu.SetActive(false);
         deadMenu.SetActive(false);
-        
+        Time.timeScale = 1;
     }
 
 
