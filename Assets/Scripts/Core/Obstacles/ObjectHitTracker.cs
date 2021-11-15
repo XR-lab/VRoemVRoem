@@ -29,6 +29,9 @@ namespace XRLab.VRoem.Core
         private float newPoliceCarZOffset;
         private float newPoliceCarXOffset;
 
+        public float leftMapBoundary;
+        public float rightMapBoundary;
+
 
         // Start is called before the first frame update
         void Start()

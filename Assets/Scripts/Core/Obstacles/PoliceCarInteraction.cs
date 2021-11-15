@@ -11,9 +11,12 @@ namespace XRLab.VRoem.Core
         [SerializeField] public bool secondaryCar;
         [SerializeField] public int carPosInRow;
 
+        private ObjectHitTracker _hitTracker;
+
         // Start is called before the first frame update
         void Start()
         {
+            _hitTracker = FindObjectOfType<ObjectHitTracker>();
             _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
         }
 
@@ -32,12 +35,12 @@ namespace XRLab.VRoem.Core
                     switch (carPosInRow) 
                     {
                         case 0:
-                            if(transform.position.x > -2.5f && transform.position.x < 2.5f)
-                                transform.position = new Vector3(_player.transform.position.x - 1.39f, this.transform.position.y, this.transform.position.z);
+                            if(transform.localPosition.x > _hitTracker.leftMapBoundary && transform.localPosition.x < _hitTracker.rightMapBoundary)
+                                transform.localPosition = new Vector3(_player.transform.localPosition.x - 1.39f, this.transform.localPosition.y, this.transform.localPosition.z);
                             break;
                         case 1:
-                            if (transform.position.x > -2.5f && transform.position.x < 2.5f)
-                                transform.position = new Vector3(_player.transform.position.x + 1.39f, this.transform.position.y, this.transform.position.z);
+                            if (transform.localPosition.x > _hitTracker.leftMapBoundary && transform.localPosition.x < _hitTracker.rightMapBoundary)
+                                transform.localPosition = new Vector3(_player.transform.localPosition.x + 1.39f, this.transform.localPosition.y, this.transform.localPosition.z);
                             break;
                     }
 
