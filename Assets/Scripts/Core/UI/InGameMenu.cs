@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
+using TMPro;
+
 
 public class InGameMenu : MonoBehaviour
 {
     
     [SerializeField] private GameObject pauzeMenu;
     [SerializeField] private GameObject deadMenu;
+    [SerializeField] private GameObject finishMenu;
+
+    [SerializeField] private TMP_Text MoneyGot;
+    [SerializeField] private TMP_Text Moneyearnd;
+
 
 
 
@@ -17,7 +24,7 @@ public class InGameMenu : MonoBehaviour
     {
         pauzeMenu.SetActive(false);
         deadMenu.SetActive(false);
-        
+        finishMenu.SetActive(false);
     }
 
 
@@ -78,5 +85,12 @@ public class InGameMenu : MonoBehaviour
 
     public void BackToMainMenu() {
         SceneManager.LoadScene(1);
+    }
+
+    public void ActivateFinsishMenu() {
+
+        MoneyGot.text = "Your money: " + MoneySystem.currentMonney.ToString();
+        Moneyearnd.text = "Earnd money: " + MoneySystem.TotalMoney.ToString(); 
+
     }
 }

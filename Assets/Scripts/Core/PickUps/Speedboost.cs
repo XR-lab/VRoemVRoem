@@ -6,6 +6,8 @@ namespace XRLab.VRoem.Core
 {
     public class Speedboost : PickUp
     {
+        
+
         //je hebt dit nodig om de pick up af te laten spelen
         public override void PowerUp()
         {
