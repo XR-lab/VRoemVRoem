@@ -728,6 +728,10 @@ PrefabInstance:
       propertyPath: _handAnchor
       value: 
       objectReference: {fileID: 2570701797513552299}
+    - target: {fileID: 1021810409, guid: 86249d52f8029844d9fb4d71515cb73c, type: 3}
+      propertyPath: _leftHandAnchor
+      value: 
+      objectReference: {fileID: 2570701798186081848}
     - target: {fileID: 1021810410, guid: 86249d52f8029844d9fb4d71515cb73c, type: 3}
       propertyPath: backCarBound
       value: 
@@ -914,6 +918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac4754ad239e71640bad9af281fcfb4b, type: 3}
+--- !u!4 &2570701798186081848 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6462640464177467964, guid: ac4754ad239e71640bad9af281fcfb4b, type: 3}
+  m_PrefabInstance: {fileID: 8791904882191485956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2570701798528676389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6462640463446392353, guid: ac4754ad239e71640bad9af281fcfb4b, type: 3}
