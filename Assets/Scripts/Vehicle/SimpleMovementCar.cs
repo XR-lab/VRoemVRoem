@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace XRLab.VRoem.Vehicle {
 
-    public class SimpleMovementCar : Car
-    {
+    public class SimpleMovementCar : Car {
         [SerializeField] private float _speed;
         [SerializeField] private float _speedReturnZ = 10;
         [SerializeField] private float _gravityMultiplierBasedOnUp = 2;
@@ -27,6 +26,7 @@ namespace XRLab.VRoem.Vehicle {
         [SerializeField] private bool _grounded = false;
         [SerializeField] private float _groundAngle = 0;
         [SerializeField] private float _angleToRideWall = 45;
+        [SerializeField] private float _angleToRideWallUpsideDown = 135;
         [SerializeField] private float _rotInAirSpeed = 2;
         [SerializeField] private float _normalSmoothing = 1.2f;
         [SerializeField] private float _angleToLockControlsX = 80;
@@ -52,6 +52,7 @@ namespace XRLab.VRoem.Vehicle {
 
         public float GroundAngle { get { return _groundAngle; } }
         public float AngleToLockControlsX { get { return _angleToLockControlsX; } }
+        public float UpsideDownAngleToUnlockControlsX { get { return _upsideDownAngleToUnlockControlsX; } }
         public bool Grounded { get { return _grounded; } }
         public bool CanMove { get; set; } = true;
         public SpeedManager GetSpeedManager { get { return _speedManager; } }
@@ -79,7 +80,7 @@ namespace XRLab.VRoem.Vehicle {
         }
 
         private void FixedUpdate() {
-            if (InTargetPointRange() || !_grounded || !CanMove) return;
+            if (!_grounded || !CanMove) return;
 
             Vector3 _targetDirection = (_targetPoint - transform.position).normalized;
 
@@ -91,8 +92,13 @@ namespace XRLab.VRoem.Vehicle {
             float force = _speed * turnPercentage;
             float forceZ = _speedReturnZ * turnPercentage;
 
-            _rb.AddForce(new Vector3(_targetDirection.x, _targetDirection.y, 0) * force);
+            if (!InTargetPointRange()) {
+                _rb.AddForce(new Vector3(_targetDirection.x, _targetDirection.y, 0) * force);
+            }
+            
             _rb.AddForce(new Vector3(0, 0, _targetDirection.z) * (_targetDirection.z >= 0 ? force : forceZ));
+
+            Debug.Log(force);
 
             if (!_grounded || _groundAngle > _angleToRideWall) {
                 force = !_grounded ? _gravityMultiplierBasedOnUp : _gravityMultiplierOnWallsBasedOnUp;
@@ -133,7 +139,11 @@ namespace XRLab.VRoem.Vehicle {
                 _rb.drag = 0;
                 _groundAngle = 0;
 
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, new Quaternion(0, 0, 0, transform.localRotation.w), _rotInAirSpeed * Time.deltaTime);
+                if (transform.localRotation.eulerAngles.z != 180) {
+                    transform.localRotation = Quaternion.Slerp(transform.localRotation, new Quaternion(0, 0, 0, transform.localRotation.w), _rotInAirSpeed * Time.deltaTime);
+                } else {
+                    transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, 0, 179);
+                }
             }
         }
 
@@ -147,16 +157,15 @@ namespace XRLab.VRoem.Vehicle {
 
         private void LookAtTarget(float rotationPercentMultiplier) {
             Vector3 lookat = _targetPoint;
-            
+
             lookat.z = _dynamicPosZ + _speedManager.CurrentMultiplier;
             Quaternion targetRotation;
             if (rotationPercentMultiplier > 0) {
                 targetRotation = Quaternion.LookRotation(lookat - transform.position);
                 _forwardTransform.rotation = Quaternion.Slerp(_forwardTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-            }
-            else {
+            } else {
                 _forwardTransform.localRotation = Quaternion.Slerp(_forwardTransform.localRotation, new Quaternion(0, 0, 0, _forwardTransform.localRotation.w), _resetRotationSpeed * Time.deltaTime);
-            }            
+            }
 
             transform.localRotation = new Quaternion(transform.localRotation.x, 0, transform.localRotation.z, transform.localRotation.w);
             _forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
@@ -166,7 +175,6 @@ namespace XRLab.VRoem.Vehicle {
 
             targetRotation = new Quaternion(0, 0, _forwardTransform.localRotation.y > 0 ? -_maxRollTurn * rollPercent * rotationPercentMultiplier : _maxRollTurn * rollPercent * rotationPercentMultiplier, _model.localRotation.w);
             _model.localRotation = Quaternion.Slerp(_model.localRotation, targetRotation, _rollRotationSpeed * Time.deltaTime);
-            //_forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
         }
 
         public override void SetOrientation(Vector3 lookAtPosition, bool boosting) {
@@ -174,7 +182,7 @@ namespace XRLab.VRoem.Vehicle {
 
             _dynamicPosZ = _lockedPosZ * multiplier;
 
-            Vector3 heightCorrectedPoint = new Vector3(_groundAngle < _angleToLockControlsX || _groundAngle > _upsideDownAngleToUnlockControlsX ? Mathf.Clamp(lookAtPosition.x, -_boundsX, _boundsX) : transform.position.x, _groundAngle < _angleToRideWall || _groundAngle > _upsideDownAngleToUnlockControlsX ? transform.position.y : lookAtPosition.y, _dynamicPosZ);
+            Vector3 heightCorrectedPoint = new Vector3(_groundAngle < _angleToLockControlsX || _groundAngle > _upsideDownAngleToUnlockControlsX ? Mathf.Clamp(lookAtPosition.x, -_boundsX, _boundsX) : transform.position.x, _groundAngle < _angleToRideWall || _groundAngle > _angleToRideWallUpsideDown ? transform.position.y : lookAtPosition.y, _dynamicPosZ);
             _targetPoint = heightCorrectedPoint;
         }
 
