@@ -5,6 +5,7 @@ using UnityEngine.XR;
 namespace XRLab.VRoem.Vehicle {
     public class CarController : MonoBehaviour {
         [SerializeField] private Transform _handAnchor;
+        [SerializeField] private Transform _leftHandAnchor;
         [SerializeField] private float _speedMultiplierAdded = 0.2f;
         [SerializeField] private float _boostDuration = 1f;
         [SerializeField] private float _boostCooldown = 5f;
@@ -15,6 +16,7 @@ namespace XRLab.VRoem.Vehicle {
         [SerializeField] private float _boostTimer = 1;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Color _rayColor = Color.red;
+        [SerializeField] private float _maxHandDistance = 5;
 
         //added by Bouke
         private float _boosttime;
@@ -27,6 +29,8 @@ namespace XRLab.VRoem.Vehicle {
         private bool _straightRay = true;
         [HideInInspector]public bool _boosting = false;
         private bool _boostInCooldown = false;
+
+        private Vector3 _lastValidHandPosition;        
 
         private void Start() {
             _car = GetComponent<SimpleMovementCar>();
@@ -49,14 +53,19 @@ namespace XRLab.VRoem.Vehicle {
 
         private void ShootControlRay() {
 
+            if (Vector3.Distance(_leftHandAnchor.position, _handAnchor.position) < _maxHandDistance)
+            {
+                _lastValidHandPosition = _handAnchor.position + (_leftHandAnchor.position - _handAnchor.position) / 2;
+            }
+
             //Shoot Ray from right hand or mouse
-            Ray ray = new Ray(_handAnchor.position, Vector3.forward);
+            Ray ray = new Ray(_lastValidHandPosition, Vector3.forward);
             RaycastHit hit;
-            Ray rayAccel = new Ray(_handAnchor.position, _handAnchor.forward);
+            Ray rayAccel = new Ray(_lastValidHandPosition, _handAnchor.forward);
             RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
-                float diffHandCam = _handAnchor.position.y - Camera.main.transform.position.y;
+                float diffHandCam = _lastValidHandPosition.y - Camera.main.transform.position.y;
                 diffHandCam *= _positionModifier.y;
 
                 //Send hit point to car
