@@ -8,16 +8,26 @@ namespace XRLab.VRoem.Core
     public class PoliceCarInteraction : MonoBehaviour
     {
         [SerializeField] private GameObject _player;
-        [SerializeField] public bool secondaryCar;
-        [SerializeField] public int carPosInRow;
+        public bool secondaryCar;
+        public int carPosInRow;
 
+        private List<GameObject> carsInTransform = new List<GameObject>();
+        private float distanceFromCopCarInRow = 1.39f;
+        private float distanceFromMainCarOnZ = 6f;
+        private float distanceFromCopCarOnZ = 1.5f;
         private ObjectHitTracker _hitTracker;
+
 
         // Start is called before the first frame update
         void Start()
         {
             _hitTracker = FindObjectOfType<ObjectHitTracker>();
             _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
+
+            for(int i = 0; i < carsInTransform.Count; i++)
+            {
+                carsInTransform.Add(transform.GetChild(i).gameObject);
+            }
         }
 
         // Update is called once per frame
@@ -30,26 +40,15 @@ namespace XRLab.VRoem.Core
         {
             if (_player != null)
             {
-                if (secondaryCar)
+                if(carsInTransform[1].activeInHierarchy == false && carsInTransform[2].activeInHierarchy == false)
                 {
-                    switch (carPosInRow) 
-                    {
-                        case 0:
-                            if(transform.localPosition.x > _hitTracker.leftMapBoundary && transform.localPosition.x < _hitTracker.rightMapBoundary)
-                                transform.localPosition = new Vector3(_player.transform.localPosition.x - 1.39f, this.transform.localPosition.y, this.transform.localPosition.z);
-                            break;
-                        case 1:
-                            if (transform.localPosition.x > _hitTracker.leftMapBoundary && transform.localPosition.x < _hitTracker.rightMapBoundary)
-                                transform.localPosition = new Vector3(_player.transform.localPosition.x + 1.39f, this.transform.localPosition.y, this.transform.localPosition.z);
-                            break;
-                    }
-
+                    transform.position = new Vector3(_player.transform.position.x, this.transform.position.y, transform.position.z);
                 }
                 else
                 {
-                    transform.position = new Vector3(_player.transform.position.x, this.transform.position.y, this.transform.position.z);
+                     //if(transform.position.x <= _hitTracker.leftMapBoundary)
                 }
-                
+                    
             }
         }
     }

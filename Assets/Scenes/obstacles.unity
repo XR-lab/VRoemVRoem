@@ -2663,6 +2663,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 601988278}
     - target: {fileID: 8329890106058099243, guid: 2915cab2a6cd7264f90b0b916388b8b6, type: 3}
+      propertyPath: leftMapBoundary
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329890106058099243, guid: 2915cab2a6cd7264f90b0b916388b8b6, type: 3}
+      propertyPath: rightMapBoundary
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329890106058099243, guid: 2915cab2a6cd7264f90b0b916388b8b6, type: 3}
       propertyPath: policeCarsTransform
       value: 
       objectReference: {fileID: 1608458142}

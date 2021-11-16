@@ -10,30 +10,19 @@ namespace XRLab.VRoem.Core
     {
         public Light redLight;
         public Light blueLight;
-        
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
 
         // Update is called once per frame
         void Update()
         {
-            RotateLightCircle(redLight);
-            RotateLightCircle(blueLight);
+            RotateLight360Degrees(redLight);
+            RotateLight360Degrees(blueLight);
 
         }
 
-        void RotateLightCircle(Light light)
+        void RotateLight360Degrees(Light light)
         {
             light.transform.Rotate(Vector3.up, 1.5f);
         }
 
-        //void RotateLightOvale(Light light)
-        //{
-
-        //}
     }
 }

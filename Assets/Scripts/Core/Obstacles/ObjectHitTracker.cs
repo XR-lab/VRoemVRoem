@@ -11,26 +11,22 @@ namespace XRLab.VRoem.Core
     public class ObjectHitTracker : MonoBehaviour
     {
         [SerializeField] private GameObject gameOverUI, policarProp, policecarPropNextPosition, headLightsNextPosition, policeCarsTransform;
-        
+        [SerializeField] private List<GameObject> xtraPoliceCars = new List<GameObject>();
         [SerializeField] private int policeCarsToInstantiate = 2;
-
-        public int objectHitCounter;
-        public UnityEvent normalChaseEvent, firstHitEvent, secondHitEvent, thirdHitEvent, forthHitEvent, fifthHitEvent;
-        private Vector3 policarPropStartLocation;
-
-        [SerializeField] private List<GameObject> xtraPoliceCars = new List<GameObject>(); 
-
-        private sirenLights sirenLights;
-        private InGameMenu inGameMenu;
-
         [SerializeField] private float behindMainPoliceOffset;
         [SerializeField] private float nextToMainPoliceOffset;
 
+        private Vector3 policarPropStartLocation;
         private float newPoliceCarZOffset;
         private float newPoliceCarXOffset;
-
+        private sirenLights sirenLights;
+        private InGameMenu inGameMenu;
+       
         public float leftMapBoundary;
         public float rightMapBoundary;
+        public int objectHitCounter;
+        public UnityEvent normalChaseEvent, firstHitEvent, secondHitEvent, thirdHitEvent, forthHitEvent, fifthHitEvent;
+
 
 
         // Start is called before the first frame update
@@ -40,7 +36,6 @@ namespace XRLab.VRoem.Core
             newPoliceCarXOffset = policarProp.transform.position.x + nextToMainPoliceOffset;
 
             objectHitCounter = 0;
-            Time.timeScale = 1;
             policarPropStartLocation = policarProp.transform.position;
 
             sirenLights = FindObjectOfType<sirenLights>();
@@ -59,10 +54,8 @@ namespace XRLab.VRoem.Core
             forthHitEvent.AddListener(ForthHit);
             fifthHitEvent.AddListener(FifthHit);
 
-            CreateXtraPoliceCars();
         }
 
-        // Update is called once per frame
         void Update()
         {
             switch (objectHitCounter)
@@ -82,6 +75,13 @@ namespace XRLab.VRoem.Core
                 case 5:
                     fifthHitEvent.Invoke();
                     break;
+            }
+
+
+            //test for changing the events in Unity (will end after final event release)
+            if(Input.GetKeyDown(KeyCode.KeypadPlus))
+            {
+                objectHitCounter++;
             }
         }
 
@@ -110,6 +110,7 @@ namespace XRLab.VRoem.Core
             EventCauses(gameOverUI, 4);
         }
 
+        //Function isn't called this push (possible in final push)
         void CreateXtraPoliceCars()
         {
             for(int i = 0; i < policeCarsToInstantiate; i++)
@@ -129,14 +130,13 @@ namespace XRLab.VRoem.Core
             }
         }
 
-
-
+        //Function isn't called this push (possible in final push)
         void MoveXtraPoliceCarsForward(GameObject policar)
         {
             policar.transform.position = Vector3.Lerp(policar.transform.position, new Vector3(policar.transform.position.x, policar.transform.position.y, policarProp.transform.position.z - 2f), 1 * Time.deltaTime);
         }
 
-        //the things that happen when a new event is called
+        //This is the main function that gets called in the smaller event functions
         void EventCauses(GameObject targetGameObject, int eventIndex)
         {
             //idle
@@ -147,41 +147,42 @@ namespace XRLab.VRoem.Core
 
             switch (eventIndex) 
             {
+                //First Time hit, Police lights get brighter
                 case 1:
                     sirenLights.redLight.range = 10;
                     sirenLights.blueLight.range = 10;
                     break;
 
+                //Second time hit, police car comes closer, behind the player
                 case 2:
                     policeCarsTransform.transform.position = Vector3.Lerp(policeCarsTransform.transform.position, targetGameObject.transform.position, 1 * Time.deltaTime);
                     break;
 
-                case 3:
-                    foreach(GameObject car in xtraPoliceCars)
-                    {
-                        car.SetActive(true);
-                        car.transform.position = Vector3.Lerp(car.transform.position, new Vector3(car.transform.position.x, car.transform.position.y, policarProp.transform.position.z - 2f), 1 * Time.deltaTime);
-                    }
-                    break;
+                //case 4:
+                //    GameObject car1 = policeCarsTransform.transform.GetChild(1).gameObject;
+                //    GameObject car2 = policeCarsTransform.transform.GetChild(2).gameObject;
 
-                case 4:
+                //    car1.SetActive(true);
+                //    car2.SetActive(true);
+                //    //car1.transform.position = Vector3.Lerp(car1.transform.position, new Vector3(car1.transform.position.x, car1.transform.position.y, car1.transform.position.z - 2f), 1 * Time.deltaTime);
+                //    //car2.transform.position = Vector3.Lerp(car2.transform.position, new Vector3(car2.transform.position.x, car2.transform.position.y, car2.transform.position.z - 2f), 1 * Time.deltaTime);
+                //    //policeCarsTransform.transform.GetChild(1).gameObject.SetActive(true);
+                //    //policeCarsTransform.transform.GetChild(2).gameObject.SetActive(true);
+
+
+                //    //foreach(GameObject car in targetGameObject.transform)
+                //    //{
+                //    //    car.SetActive(true);
+                //    //    //car.transform.position = Vector3.Lerp(car.transform.position, new Vector3(car.transform.position.x, car.transform.position.y, policarProp.transform.position.z - 2f), 1 * Time.deltaTime);
+                //    //}
+                //    break;
+
+                    //Third time hit, where the gameover ui will be shown
+                case 3:
                     targetGameObject.SetActive(true);
                     break;
 
-                case 5:
-                    
-                    break;
-            
-            
             }
-
-
         }
-
-
-
-
-
-
     }
 }
