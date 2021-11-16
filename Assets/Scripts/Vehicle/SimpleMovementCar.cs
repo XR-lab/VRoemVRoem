@@ -98,8 +98,6 @@ namespace XRLab.VRoem.Vehicle {
             
             _rb.AddForce(new Vector3(0, 0, _targetDirection.z) * (_targetDirection.z >= 0 ? force : forceZ));
 
-            Debug.Log(force);
-
             if (!_grounded || _groundAngle > _angleToRideWall) {
                 force = !_grounded ? _gravityMultiplierBasedOnUp : _gravityMultiplierOnWallsBasedOnUp;
 

@@ -58,7 +58,6 @@ namespace XRLab.VRoem.Vehicle {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
                 float diffHandCam = _handAnchor.position.y - Camera.main.transform.position.y;
                 diffHandCam *= _positionModifier.y;
-
                 //Send hit point to car
                 float diffY = _car.transform.position.y + diffHandCam;
 

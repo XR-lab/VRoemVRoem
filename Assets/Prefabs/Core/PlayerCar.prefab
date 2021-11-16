@@ -219,6 +219,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _rayColor: {r: 1, g: 0, b: 0, a: 1}
+  _boosting: 0
 --- !u!114 &1021810410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,8 +251,8 @@ MonoBehaviour:
   _model: {fileID: 6151382812070786326}
   _groundLayerMask:
     serializedVersion: 2
-    m_Bits: 1
-  _raycastLength: 0.25
+    m_Bits: 513
+  _raycastLength: 0.5
   _grounded: 0
   _groundAngle: 0
   _angleToRideWall: 45
@@ -262,7 +263,7 @@ MonoBehaviour:
   _upsideDownAngleToUnlockControlsX: 140
   _normalBasedSpeedMultiplier: 0.25
   _maxTurnAngle: 0.1
-  _maxRollTurn: 0.1
+  _maxRollTurn: 0.05
   _rollPercentModifier: 0.5
   _maxTurnDistance: 10
   _upperLeftRay: {fileID: 1235974634437004085}
