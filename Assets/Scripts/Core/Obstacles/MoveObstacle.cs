@@ -7,8 +7,7 @@ namespace XRLab.VRoem.Core
 {
     public class MoveObstacle : MonoBehaviour
     {
-        [SerializeField] private float _speedMultiplier = 1;
-        [SerializeField] private float _clipSpeedMultiplier = 1;        
+        [SerializeField] private float _speedMultiplier = 1;  
 
         private SpeedManager speedManager;
         private float _speed;
@@ -21,7 +20,6 @@ namespace XRLab.VRoem.Core
             speedManager = FindObjectOfType<SpeedManager>();
             _clipMaterial = GetComponentInChildren<MeshRenderer>().material;
             _collider = GetComponentInChildren<Collider>();
-
         }
 
         private void Update()
