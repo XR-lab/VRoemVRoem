@@ -22,9 +22,13 @@ namespace XRLab.VRoem.Core
             _clipMaterial = GetComponentInChildren<MeshRenderer>().material;
             _collider = GetComponentInChildren<Collider>();
 
-            //Set material clipping position to the clipping plane position in the scene
-            Vector3 clippingPlanePos = GameObject.FindGameObjectWithTag("ClippingPlane").transform.position;
-            _clipMaterial.SetVector("_SectionPoint", clippingPlanePos);
+            if (GameObject.FindGameObjectWithTag("ClippingPlane") != null)
+            {
+                //Set material clipping position to the clipping plane position in the scene
+                Vector3 clippingPlanePos = GameObject.FindGameObjectWithTag("ClippingPlane").transform.position;
+                _clipMaterial.SetVector("_SectionPoint", clippingPlanePos);
+            }
+            
 
         }
 
