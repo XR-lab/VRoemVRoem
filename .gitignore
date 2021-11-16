@@ -61,3 +61,4 @@ crashlytics-build.properties
 
 # rider config
 .idea
+UserSettings/EditorUserSettings.asset

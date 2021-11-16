@@ -18,7 +18,6 @@ public class MoneySystem : MonoBehaviour
 
     [Header("Canvas")]
     [SerializeField] private Text moneyText;
-    [SerializeField] private Text bankText;
     [SerializeField] private GameObject gameOverUI;
 
     // Start is called before the first frame update
@@ -32,10 +31,9 @@ public class MoneySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentMonney > -1)
+        if (currentMonney > 1)
         {
             moneyText.text = "Money: " + currentMonney;
-            bankText.text = "bank: " + BankMoney;
         }
         else
         {

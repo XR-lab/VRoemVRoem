@@ -7,5 +7,7 @@ public class ObstacleDamagePlayerInteraction : PlayerObstacleInteraction
     protected override void Interact(Collider collider)
     {
         collider.attachedRigidbody.GetComponent<CarDamage>().Damage();
+
+        MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.MonneyToLose;
     }
 }
