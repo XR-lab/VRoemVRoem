@@ -179,6 +179,7 @@ namespace XRLab.VRoem.Core
 
                     //Third time hit, where the gameover ui will be shown
                 case 3:
+                    inGameMenu.deadMenu.SetActive(true);
                     targetGameObject.SetActive(true);
                     break;
 
