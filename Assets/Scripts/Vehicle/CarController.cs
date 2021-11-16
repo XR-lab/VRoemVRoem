@@ -48,6 +48,7 @@ namespace XRLab.VRoem.Vehicle
         {
             ShootControlRay();
             //BoostCheck();
+            deactivateboost();
         }
 
         private void ShootControlRay()

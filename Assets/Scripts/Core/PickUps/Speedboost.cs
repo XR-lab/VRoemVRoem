@@ -23,10 +23,12 @@ namespace XRLab.VRoem.Core
         private void speedBoost()
         {
             Debug.Log("Speed Speed");
-            _controller.BoostTime(2);
+            _controller.BoostTime(3);
             _controller._boosting = true;
-            _speedManger.CalculateModifedSpeed(2);
+            _speedManger.CalculateModifedSpeed(2.2f);
             counter.speedBoostCount++;
+
+            Destroy(gameObject);
         }
     }
 }
