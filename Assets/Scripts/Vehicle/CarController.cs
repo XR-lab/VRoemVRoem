@@ -30,6 +30,8 @@ namespace XRLab.VRoem.Vehicle
         private bool _boostInCooldown = false;
         private Vector3 _handStartingPos;
 
+        [SerializeField] private ParticleSystem particle;
+
         private void Start() {
             _car = GetComponent<SimpleMovementCar>();
             _lineRenderer = GetComponent<LineRenderer>();
@@ -118,6 +120,7 @@ namespace XRLab.VRoem.Vehicle
 
         public void BoostTime(float time) {
             _boosttime = time;
+            particle.Play();
         }
         private void deactivateboost() {
             if (_boosting) {
