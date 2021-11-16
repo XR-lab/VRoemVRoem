@@ -17,6 +17,9 @@ namespace XRLab.VRoem.Vehicle
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Color _rayColor = Color.red;
 
+        //added by Bouke
+        private float _boosttime;
+
         private SimpleMovementCar _car;
         private LineRenderer _lineRenderer;
         private SpeedManager _speedManager;
@@ -110,6 +113,18 @@ namespace XRLab.VRoem.Vehicle
 
             _boostInCooldown = false;
             _boostTimer = _boostDuration;
+        }
+
+        public void BoostTime(float time) {
+            _boosttime = time;
+        }
+        private void deactivateboost() {
+            if (_boosting) {
+                _boosttime -= Time.deltaTime;
+                if(_boosttime <= 0) {
+                    _boosting = false;
+                }
+            }
         }
     }
 }

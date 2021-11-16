@@ -23,6 +23,7 @@ namespace XRLab.VRoem.Core
         private void speedBoost()
         {
             Debug.Log("Speed Speed");
+            _controller.BoostTime(2);
             _controller._boosting = true;
             _speedManger.CalculateModifedSpeed(2);
             counter.speedBoostCount++;
