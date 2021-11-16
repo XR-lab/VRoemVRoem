@@ -16,13 +16,16 @@ namespace XRLab.VRoem.Vehicle {
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Color _rayColor = Color.red;
 
+        //added by Bouke
+        private float _boosttime;
+
         private SimpleMovementCar _car;
         private LineRenderer _lineRenderer;
         private SpeedManager _speedManager;
         private Transform _vrCam;
         private bool _mouseControl = false;
         private bool _straightRay = true;
-        private bool _boosting = false;
+        [HideInInspector]public bool _boosting = false;
         private bool _boostInCooldown = false;
 
         private void Start() {
@@ -41,6 +44,7 @@ namespace XRLab.VRoem.Vehicle {
         private void Update() {
             ShootControlRay();
             //BoostCheck();
+            deactivateboost();
         }
 
         private void ShootControlRay() {
@@ -109,6 +113,18 @@ namespace XRLab.VRoem.Vehicle {
 
             _boostInCooldown = false;
             _boostTimer = _boostDuration;
+        }
+
+        public void BoostTime(float time) {
+            _boosttime = time;
+        }
+        private void deactivateboost() {
+            if (_boosting) {
+                _boosttime -= Time.deltaTime;
+                if(_boosttime <= 0) {
+                    _boosting = false;
+                }
+            }
         }
     }
 }

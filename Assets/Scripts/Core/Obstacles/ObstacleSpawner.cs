@@ -36,8 +36,25 @@ namespace XRLab.VRoem.Core
                     break;
                 case 2:
                     Instantiate(moveableObstacles[2], spawnPosition, transform.rotation, transform);
+                    spawnnr++;
+                    break;
+                case 3:
+                    Instantiate(moveableObstacles[0], spawnPosition, transform.rotation, transform);
+                    spawnnr++;
+                    break; 
+                case 4:
+                    Instantiate(moveableObstacles[1], spawnPosition, transform.rotation, transform);
+                    spawnnr++;
+                    break;
+                case 5:
+                    Instantiate(moveableObstacles[2], spawnPosition, transform.rotation, transform);
+                    spawnnr++;
+                    break;
+                case 6:
+                    Instantiate(moveableObstacles[3], spawnPosition, transform.rotation, transform);
                     spawnnr = 0;
                     break;
+
             }
            
            
