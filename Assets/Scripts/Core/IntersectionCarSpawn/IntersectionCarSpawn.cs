@@ -54,19 +54,14 @@ public class IntersectionCarSpawn : MonoBehaviour
 
     void SpawnPoints()
     {
-       // if ((RoadLenght.z) > previewTrans.z)
+        for (int i = 0; i < nrLocations; i++)
         {
-            for (int i = 0; i < nrLocations; i++)
-            {
-                if (previewTrans.z < transform.position.z)
-                {
-                    previewTrans = new Vector3(previewTrans.x, previewTrans.y, previewTrans.z + spacebetween);
-                    Instantiate(spawnLocation, previewTrans, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
-                    spawnpoints.Add(previewTrans);
-                    Debug.Log(RoadLenght.z);
-                    Debug.LogError(previewTrans.z);
-                }
-            }
+            previewTrans = new Vector3(previewTrans.x, previewTrans.y, previewTrans.z + spacebetween);
+            Instantiate(spawnLocation, previewTrans, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+            spawnpoints.Add(previewTrans);
+            Debug.Log(RoadLenght.z);
+            Debug.LogError(previewTrans.z);
+
         }
     }
 
@@ -81,8 +76,4 @@ public class IntersectionCarSpawn : MonoBehaviour
         }
     }
 
-    void spawnLeft()
-    {
-
-    }
 }
