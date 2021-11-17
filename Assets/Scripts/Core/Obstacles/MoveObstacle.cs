@@ -12,6 +12,7 @@ namespace XRLab.VRoem.Core
 
         private SpeedManager speedManager;
         private float _speed;
+        public float Speed { get { return _speed; } }
         private Material _clipMaterial;
         private Collider _collider;
 
