@@ -73,6 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7562934758894440468}
+  - component: {fileID: 2245247978756450955}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -96,6 +97,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2245247978756450955
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357318958615358411}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &359457504868448368
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1732192718812070304}
+  - component: {fileID: 8851994762379295810}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -128,6 +144,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8851994762379295810
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359457504868448368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &468102939654377597
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +292,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5655678205886780387}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &493987983999535219
 GameObject:
@@ -273,6 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6333334714409586691}
+  - component: {fileID: 4598305969473157328}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -296,6 +327,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &4598305969473157328
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493987983999535219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &704723029056278413
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6828817023949956249}
+  - component: {fileID: 4630609335035657081}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -328,6 +374,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &4630609335035657081
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704723029056278413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &753616770145121280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,7 +2074,7 @@ Transform:
   - {fileID: 5655678205804300784}
   - {fileID: 5329931139098517463}
   m_Father: {fileID: 5655678205886780387}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164437698569058038
 GameObject:
@@ -2025,6 +2085,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3253427893433343730}
+  - component: {fileID: 805935430545419882}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -2048,6 +2109,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &805935430545419882
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164437698569058038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1250207405333711476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,6 +2268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 19385031082670843}
+  - component: {fileID: 2572450566984632398}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -2216,6 +2292,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2572450566984632398
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751518417161582691}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1819175230402871964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,6 +2419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 843727420580284659}
+  - component: {fileID: 2769900360204238533}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -2352,6 +2443,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2769900360204238533
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237377295870890750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2291673559231481737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,6 +2466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7507655016981677065}
+  - component: {fileID: 8326804039683309252}
   m_Layer: 0
   m_Name: StaticPoliceCars
   m_TagString: Untagged
@@ -2400,8 +2506,22 @@ Transform:
   - {fileID: 843727420580284659}
   - {fileID: 5614674381975168855}
   m_Father: {fileID: 5655678205886780387}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8326804039683309252
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291673559231481737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2717013064084975167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,6 +2565,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4147304452890523706}
+  - component: {fileID: 1506262133440715613}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -2468,6 +2589,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1506262133440715613
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733602530697975518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &3225628534616161451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,6 +2612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5352310685580075732}
+  - component: {fileID: 2321173832173115345}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -2500,6 +2636,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2321173832173115345
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225628534616161451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &3556541160143093676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,7 +2798,7 @@ Transform:
   - {fileID: 5705996894947244855}
   - {fileID: 5084600614775783614}
   m_Father: {fileID: 5655678205886780387}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4067431679309506516
 GameObject:
@@ -2659,6 +2809,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9179593707203559422}
+  - component: {fileID: 1897043995073130708}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -2682,6 +2833,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1897043995073130708
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067431679309506516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4433679884322790115
 GameObject:
   m_ObjectHideFlags: 0
@@ -60282,6 +60447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5614674381975168855}
+  - component: {fileID: 6988668831727133075}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60305,6 +60471,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6988668831727133075
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5046478618576980291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5064984734470820527
 GameObject:
   m_ObjectHideFlags: 0
@@ -60314,6 +60494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3405229138913806454}
+  - component: {fileID: 5841315457859246254}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60337,6 +60518,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &5841315457859246254
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064984734470820527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5300710165523371035
 GameObject:
   m_ObjectHideFlags: 0
@@ -60346,6 +60541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8293802810573273330}
+  - component: {fileID: 8905146285818737339}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60369,6 +60565,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8905146285818737339
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300710165523371035}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5380515872630121097
 GameObject:
   m_ObjectHideFlags: 0
@@ -60378,6 +60588,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3131089145351034617}
+  - component: {fileID: 3749685438070914237}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60401,6 +60612,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &3749685438070914237
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380515872630121097}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5483529256325881178
 GameObject:
   m_ObjectHideFlags: 0
@@ -60410,6 +60635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2776549973704110949}
+  - component: {fileID: 6820837694188339781}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60433,6 +60659,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6820837694188339781
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5483529256325881178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5544620608181887692
 GameObject:
   m_ObjectHideFlags: 0
@@ -60442,6 +60682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2296899439845981799}
+  - component: {fileID: 1219935988854791688}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60465,6 +60706,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1219935988854791688
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544620608181887692}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5655678204742814626
 GameObject:
   m_ObjectHideFlags: 0
@@ -60560,99 +60815,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &5655678204899599056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5655678204899599070}
-  - component: {fileID: 5655678204899599071}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5655678204899599070
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5655678204899599056}
-  m_LocalRotation: {x: 0.36599815, y: 0.45315394, z: -0.21130912, w: 0.7848856}
-  m_LocalPosition: {x: -30.646038, y: -3.6637268, z: 196.91444}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5655678205886780387}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!108 &5655678204899599071
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5655678204899599056}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 1
-  m_Shape: 0
-  m_Color: {r: 1, g: 0.98101705, b: 0.9292453, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 1.9
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &5655678205804300785
 GameObject:
   m_ObjectHideFlags: 0
@@ -60760,7 +60922,7 @@ GameObject:
   - component: {fileID: 5655678205886780388}
   - component: {fileID: 4037848538216477910}
   m_Layer: 0
-  m_Name: map3
+  m_Name: City
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60777,7 +60939,6 @@ Transform:
   m_LocalPosition: {x: -5.125808, y: 20.473343, z: 2.300003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5655678204899599070}
   - {fileID: 7507655016981677065}
   - {fileID: 1527531807369353724}
   - {fileID: 769359469440290648}
@@ -60815,6 +60976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8741310134749655585}
+  - component: {fileID: 4340572599322404711}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60838,6 +61000,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &4340572599322404711
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139704593613348344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6330131926501787607
 GameObject:
   m_ObjectHideFlags: 0
@@ -60847,6 +61023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2505164220462550689}
+  - component: {fileID: 3331375841704752067}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -60870,6 +61047,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &3331375841704752067
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330131926501787607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6496031618223885295
 GameObject:
   m_ObjectHideFlags: 0
@@ -62669,6 +62860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1899317127951177369}
+  - component: {fileID: 2404691404288444562}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -62692,6 +62884,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2404691404288444562
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153764078959644220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &7484409286290122921
 GameObject:
   m_ObjectHideFlags: 0
@@ -63199,6 +63405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3002086705115690043}
+  - component: {fileID: 3445019381253857312}
   m_Layer: 0
   m_Name: StaticPoliceCar
   m_TagString: Untagged
@@ -63222,6 +63429,20 @@ Transform:
   m_Father: {fileID: 7507655016981677065}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &3445019381253857312
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345717441106916004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &8441833925841375060
 GameObject:
   m_ObjectHideFlags: 0

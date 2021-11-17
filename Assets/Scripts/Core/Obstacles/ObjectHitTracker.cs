@@ -181,6 +181,7 @@ namespace XRLab.VRoem.Core
                 case 3:
                     inGameMenu.deadMenu.SetActive(true);
                     targetGameObject.SetActive(true);
+                    Time.timeScale = 0;
                     break;
 
             }
