@@ -17,7 +17,7 @@ public class PlayerObstacleInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (!interacting && col.attachedRigidbody.CompareTag("Player"))
+        if (!interacting && col.attachedRigidbody != null && col.attachedRigidbody.CompareTag("Player"))
         {
             interacting = true;
             Interact(col);

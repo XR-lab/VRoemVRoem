@@ -26,10 +26,26 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4715843746579127975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520579469305327769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca1010685451d2448b5c3ea22d5d11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forceMultiplier: 100
+  _upForceMultiplier: 150
+  _explosionForceMultiplier: 200
+  _waitForGroundCheck: 0.1
 --- !u!1001 &438939987557337979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,10 +100,14 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 824fd54ccdfdc6f42a9c16f92a90d596, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 995f2d252d754ec44a4dad67bebb2a43, type: 2}
+      objectReference: {fileID: 2100000, guid: 6f900df1869e0c34c8af8f4458b6a14e, type: 2}
     - target: {fileID: 919132149155446097, guid: 824fd54ccdfdc6f42a9c16f92a90d596, type: 3}
       propertyPath: m_Name
       value: MDL_Pion_obstakel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 824fd54ccdfdc6f42a9c16f92a90d596, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 824fd54ccdfdc6f42a9c16f92a90d596, type: 3}
@@ -172,13 +192,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obs_Pawn
       objectReference: {fileID: 0}
+    - target: {fileID: 2300747511255003132, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3150638174539670489, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
       propertyPath: _forceMultiplier
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3150638174539670489, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
       propertyPath: _explosionForceMultiplier
-      value: 200
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184772273496730221, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879329536318243083, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: _positionToDestroyZ
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1971217287497033515, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}

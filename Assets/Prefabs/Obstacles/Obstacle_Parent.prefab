@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 47305736144859484}
   - component: {fileID: 1900728576484349791}
-  - component: {fileID: 1971217287497033515}
-  - component: {fileID: 3150638174539670489}
   - component: {fileID: 5879329536318243083}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Obstacle_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,33 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedMultiplier: 1
   _clipSpeedMultiplier: 1
---- !u!114 &1971217287497033515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2300747511255003132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07e2eaac498597438ada9d0a348bc47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
---- !u!114 &3150638174539670489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2300747511255003132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca1010685451d2448b5c3ea22d5d11b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _forceMultiplier: 1
-  _explosionForceMultiplier: 1
 --- !u!114 &5879329536318243083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6708135551405103257}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
