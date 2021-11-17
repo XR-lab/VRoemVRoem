@@ -30,7 +30,7 @@ namespace XRLab.VRoem.Utility
 
         void PositionMapAtZero(GameObject map)
         {
-            GameObject go = Instantiate(map, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            GameObject go = Instantiate(map, new Vector3(transform.position.x - 7.5f, transform.position.y + 7.5f, transform.position.z - 125f), Quaternion.identity);
             go.transform.parent = this.transform;
 
 
