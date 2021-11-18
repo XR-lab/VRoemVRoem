@@ -1,21 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.XR;
 
-namespace XRLab.VRoem.Vehicle
-{
-    public class CarController : MonoBehaviour
-    {
+//TODO: Fix code conventions, refactor into data classes
+namespace XRLab.VRoem.Vehicle {
+    public class CarController : MonoBehaviour {
         [SerializeField] private Transform _handAnchor;
         [SerializeField] private float _speedMultiplierAdded = 0.2f;
         [SerializeField] private float _boostDuration = 1f;
         [SerializeField] private float _boostCooldown = 5f;
         [SerializeField] private float _fillBoostSpeed = 0.25f;
-        [SerializeField] private float _tresholdToAccelerate = 0.4f;
-        [SerializeField] private float _tresholdToDeccelerate = 0.1f;
+        [SerializeField] private float _tresholdToAccelerate = 0.8f;
+        [SerializeField] private float _tresholdToDeccelerate = 0.2f;
         [SerializeField] private Vector3 _positionModifier;
         [SerializeField] private float _boostTimer = 1;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Color _rayColor = Color.red;
+
+        //added by Bouke
+        private float _boosttime;
 
         private SimpleMovementCar _car;
         private LineRenderer _lineRenderer;
@@ -23,9 +26,8 @@ namespace XRLab.VRoem.Vehicle
         private Transform _vrCam;
         private bool _mouseControl = false;
         private bool _straightRay = true;
-        private bool _boosting = false;
+        [HideInInspector]public bool _boosting = false;
         private bool _boostInCooldown = false;
-        private Vector3 _handStartingPos;
 
         private void Start() {
             _car = GetComponent<SimpleMovementCar>();
@@ -34,21 +36,20 @@ namespace XRLab.VRoem.Vehicle
             _boostTimer = _boostDuration;
             _vrCam = GameObject.FindGameObjectWithTag("OVR").transform;
 
-
             //When releasing boost before the boost meter is empty this variable will fill it up instead of the normal cooldown
             //It does a calculation to make sure it will take as long as the given cooldown
             _fillBoostSpeed = 1 / (1 / _boostDuration * _boostCooldown);
         }
 
 
-        private void Update()
-        {
+        private void Update() {
             ShootControlRay();
             //BoostCheck();
+            deactivateboost();
         }
 
-        private void ShootControlRay()
-        {
+        private void ShootControlRay() {
+
             //Shoot Ray from right hand or mouse
             Ray ray = new Ray(_handAnchor.position, Vector3.forward);
             RaycastHit hit;
@@ -56,10 +57,13 @@ namespace XRLab.VRoem.Vehicle
             RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
-                //Send hit point to car
-                float diffY = _car.transform.position.y + (_handAnchor.position.y - _handStartingPos.y) * _positionModifier.y;
+                float diffHandCam = _handAnchor.position.y - Camera.main.transform.position.y;
+                diffHandCam *= _positionModifier.y;
 
-                _car.SetOrientation(new Vector3(hit.point.x * _positionModifier.x, _car.GroundAngle < _car.AngleToLockControlsX ? hit.point.y : diffY, hit.point.z), _boosting);
+                //Send hit point to car
+                float diffY = _car.transform.position.y + diffHandCam;
+
+                _car.SetOrientation(new Vector3(hit.point.x * _positionModifier.x, _car.GroundAngle < _car.AngleToLockControlsX || _car.GroundAngle > _car.UpsideDownAngleToUnlockControlsX ? hit.point.y : diffY, hit.point.z), _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
                 if (_car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {
@@ -67,8 +71,8 @@ namespace XRLab.VRoem.Vehicle
 
                     float multiplier = 1;
 
-                    float upperTreshold = _mouseControl ? 0.8f : 0.4f;
-                    float lowerTreshold = _mouseControl ? 0.2f : 0.1f;
+                    float upperTreshold = _tresholdToAccelerate;
+                    float lowerTreshold = _tresholdToDeccelerate;
 
                     if (clampedY < lowerTreshold) {
                         multiplier -= _speedMultiplierAdded;
@@ -110,6 +114,18 @@ namespace XRLab.VRoem.Vehicle
 
             _boostInCooldown = false;
             _boostTimer = _boostDuration;
+        }
+
+        public void BoostTime(float time) {
+            _boosttime = time;
+        }
+        private void deactivateboost() {
+            if (_boosting) {
+                _boosttime -= Time.deltaTime;
+                if(_boosttime <= 0) {
+                    _boosting = false;
+                }
+            }
         }
     }
 }

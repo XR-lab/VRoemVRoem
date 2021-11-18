@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using XRLab.VRoem.Core;
 
+//TODO: Fix Namespace, use set functions or set properties. Update is not needed
 public class MoneySystem : MonoBehaviour
 {
     [Header("Money Count")]
@@ -19,7 +20,6 @@ public class MoneySystem : MonoBehaviour
 
     [Header("Canvas")]
     [SerializeField] private Text moneyText;
-    [SerializeField] private Text bankText;
     [SerializeField] private GameObject gameOverUI;
 
     // Start is called before the first frame update
@@ -36,7 +36,6 @@ public class MoneySystem : MonoBehaviour
         if (currentMonney > 1)
         {
             moneyText.text = "Money: " + currentMonney;
-            bankText.text = "bank: " + BankMoney;
         }
         else
         {
