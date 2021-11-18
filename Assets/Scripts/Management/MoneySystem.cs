@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using XRLab.VRoem.Core;
 
+//TODO: Fix Namespace, use set functions or set properties. Update is not needed
 public class MoneySystem : MonoBehaviour
 {
     [Header("Money Count")]
@@ -15,6 +16,7 @@ public class MoneySystem : MonoBehaviour
     public static float MonneyToLose;
     public static float MonneyFromStart;
     public static float BankMoney;
+    public static float TotalMoney;
 
     [Header("Canvas")]
     [SerializeField] private Text moneyText;
@@ -41,6 +43,9 @@ public class MoneySystem : MonoBehaviour
             gameOverUI.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+    public void AddMoneyToTotal() {
+        TotalMoney += currentMonney;
     }
 
 }
