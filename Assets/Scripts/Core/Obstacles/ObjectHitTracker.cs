@@ -4,55 +4,28 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-//TODO: Refactor, not DRY
+
 namespace XRLab.VRoem.Core
 {
     public class ObjectHitTracker : MonoBehaviour
     {
-        [SerializeField] private GameObject gameOverUI, policarProp, policecarPropNextPosition, headLightsNextPosition, policeCarsTransform;
+        [SerializeField] private GameObject  mainPoliceCar, mainPoliceCarNextPosition, policeCarsTransform;
         [SerializeField] private List<GameObject> xtraPoliceCars = new List<GameObject>();
         [SerializeField] private int policeCarsToInstantiate = 2;
-        [SerializeField] private float behindMainPoliceOffset;
-        [SerializeField] private float nextToMainPoliceOffset;
-
-        private Vector3 policarPropStartLocation;
-        private float newPoliceCarZOffset;
-        private float newPoliceCarXOffset;
         private SirenLights sirenLights;
         private InGameMenu inGameMenu;
        
         public float leftMapBoundary;
         public float rightMapBoundary;
         public int objectHitCounter;
-        public UnityEvent normalChaseEvent, firstHitEvent, secondHitEvent, thirdHitEvent, forthHitEvent, fifthHitEvent;
-
-
-
-        // Start is called before the first frame update
+       
         void Start()
         {
-            newPoliceCarZOffset = policeCarsTransform.transform.position.z - behindMainPoliceOffset;
-            newPoliceCarXOffset = policarProp.transform.position.x + nextToMainPoliceOffset;
-
             objectHitCounter = 0;
-            policarPropStartLocation = policarProp.transform.position;
-
             sirenLights = FindObjectOfType<SirenLights>();
             inGameMenu = FindObjectOfType<InGameMenu>();
 
-            if (normalChaseEvent == null) { new UnityEvent(); }
-            if (firstHitEvent == null) { new UnityEvent(); }
-            if (secondHitEvent == null) { new UnityEvent(); }
-            if (thirdHitEvent == null) { new UnityEvent(); }
-            if (forthHitEvent == null) { new UnityEvent(); }
-            if (fifthHitEvent == null) { new UnityEvent(); }
-
-            firstHitEvent.AddListener(FirstHit);
-            secondHitEvent.AddListener(SecondHit);
-            thirdHitEvent.AddListener(ThirdHit);
-            forthHitEvent.AddListener(ForthHit);
-            fifthHitEvent.AddListener(FifthHit);
-
+            CreateXtraPoliceCars();
         }
 
         void Update()
@@ -60,90 +33,46 @@ namespace XRLab.VRoem.Core
             switch (objectHitCounter)
             {
                 case 1:
-                    firstHitEvent.Invoke();
+                    EventCauses(this.gameObject, 1);
                     break;
                 case 2:
-                    secondHitEvent.Invoke();
+                    EventCauses(mainPoliceCarNextPosition, 2);
                     break;
                 case 3:
-                    thirdHitEvent.Invoke();
+                    EventCauses(this.gameObject, 3);
                     break;
                 case 4:
-                    forthHitEvent.Invoke();
-                    break;
-                case 5:
-                    fifthHitEvent.Invoke();
+                    EventCauses(inGameMenu.deadMenu, 5);
                     break;
             }
-
-
-            //test for changing the events in Unity (will end after final event release)
-            if(Input.GetKeyDown(KeyCode.KeypadPlus))
-            {
-                objectHitCounter++;
-            }
         }
 
-        void FirstHit()
-        {
-            EventCauses(headLightsNextPosition, 1);
-        }
-
-        void SecondHit()
-        {
-            EventCauses(policecarPropNextPosition, 2);
-        }
-
-        void ThirdHit()
-        {
-            EventCauses(this.gameObject, 3);
-        }
-
-        void ForthHit()
-        {
-            EventCauses(this.gameObject, 4);
-        }
-
-        void FifthHit()
-        {
-            EventCauses(gameOverUI, 4);
-        }
-
-        //Function isn't called this push (possible in final push)
         void CreateXtraPoliceCars()
         {
-            for(int i = 0; i < policeCarsToInstantiate; i++)
+            int k = 0;
+            for (int i = 0; i < policeCarsToInstantiate; i++)
             {
-                GameObject go = Instantiate(policarProp);
-                //go.transform.parent = policeCarsTransform.transform;
+                GameObject go = Instantiate(mainPoliceCar);
                 if(i == 0)
-                    go.transform.localPosition = new Vector3(1.39f, 0, policeCarsTransform.transform.position.z - 2f);
+                    go.transform.localPosition = new Vector3(1.39f, 0, policeCarsTransform.transform.position.z - 16f);
                 else if(i == 1)
-                    go.transform.localPosition = new Vector3(-1.39f, 0, policeCarsTransform.transform.position.z -2f);
+                    go.transform.localPosition = new Vector3(-1.39f, 0, policeCarsTransform.transform.position.z -16f);
 
                 PoliceCarInteraction policarVariables = go.GetComponent<PoliceCarInteraction>();
-                policarVariables.secondaryCar = true;
-                policarVariables.carPosInRow = i;
+                k++;
+                policarVariables.popoIndex = k;
                 xtraPoliceCars.Add(go);
                 xtraPoliceCars[i].SetActive(false);
             }
         }
 
-        //Function isn't called this push (possible in final push)
         void MoveXtraPoliceCarsForward(GameObject policar)
         {
-            policar.transform.position = Vector3.Lerp(policar.transform.position, new Vector3(policar.transform.position.x, policar.transform.position.y, policarProp.transform.position.z - 2f), 1 * Time.deltaTime);
+            policar.transform.position = Vector3.Lerp(policar.transform.position, new Vector3(policar.transform.position.x, policar.transform.position.y, mainPoliceCar.transform.position.z - 2.25f), 1 * Time.deltaTime);
         }
 
-        //This is the main function that gets called in the smaller event functions
         void EventCauses(GameObject targetGameObject, int eventIndex)
         {
-            //idle
-            //zwaai licht feller
-            // popo dichterbij
-            // 2 popo erbij, transform voor follow x verandert
-            // dede
-
             switch (eventIndex) 
             {
                 //First Time hit, Police lights get brighter
@@ -157,29 +86,19 @@ namespace XRLab.VRoem.Core
                     policeCarsTransform.transform.position = Vector3.Lerp(policeCarsTransform.transform.position, targetGameObject.transform.position, 1 * Time.deltaTime);
                     break;
 
-                //case 4:
-                //    GameObject car1 = policeCarsTransform.transform.GetChild(1).gameObject;
-                //    GameObject car2 = policeCarsTransform.transform.GetChild(2).gameObject;
-
-                //    car1.SetActive(true);
-                //    car2.SetActive(true);
-                //    //car1.transform.position = Vector3.Lerp(car1.transform.position, new Vector3(car1.transform.position.x, car1.transform.position.y, car1.transform.position.z - 2f), 1 * Time.deltaTime);
-                //    //car2.transform.position = Vector3.Lerp(car2.transform.position, new Vector3(car2.transform.position.x, car2.transform.position.y, car2.transform.position.z - 2f), 1 * Time.deltaTime);
-                //    //policeCarsTransform.transform.GetChild(1).gameObject.SetActive(true);
-                //    //policeCarsTransform.transform.GetChild(2).gameObject.SetActive(true);
-
-
-                //    //foreach(GameObject car in targetGameObject.transform)
-                //    //{
-                //    //    car.SetActive(true);
-                //    //    //car.transform.position = Vector3.Lerp(car.transform.position, new Vector3(car.transform.position.x, car.transform.position.y, policarProp.transform.position.z - 2f), 1 * Time.deltaTime);
-                //    //}
-                //    break;
-
-                    //Third time hit, where the gameover ui will be shown
+                //Third time hit, 2 more police cars join the pursuit
                 case 3:
-                    inGameMenu.deadMenu.SetActive(true);
+                    //
+                    xtraPoliceCars[0].SetActive(true);
+                    xtraPoliceCars[1].SetActive(true);
+                    MoveXtraPoliceCarsForward(xtraPoliceCars[0]);
+                    MoveXtraPoliceCarsForward(xtraPoliceCars[1]);
+                    break;
+
+                //Forth time hit, where the gameover ui will be shown
+                case 4:
                     targetGameObject.SetActive(true);
+                    Time.timeScale = 0;
                     break;
 
             }
