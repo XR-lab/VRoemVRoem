@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 using TMPro;
 
-namespace XRLab.VRoem.core
+namespace XRLab.VRoem.Core
 {
     public class InGameMenu : MonoBehaviour
     {
 
         [SerializeField] private GameObject pauzeMenu;
-        [SerializeField] private GameObject deadMenu;
+         public GameObject deadMenu;
         [SerializeField] private GameObject finishMenu;
 
         [SerializeField] private TMP_Text MoneyGot;
@@ -80,6 +80,7 @@ namespace XRLab.VRoem.core
 
         public void ActivateFinsishMenu() {
 
+            finishMenu.SetActive(true);
             MoneyGot.text = "Your money: " + MoneySystem.currentMonney.ToString();
             Moneyearnd.text = "Earnd money: " + MoneySystem.TotalMoney.ToString();
 
