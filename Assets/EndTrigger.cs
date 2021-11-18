@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class EndTrigger : MonoBehaviour {
-    public GameObject gameOverUI;
+    public GameObject FinishUI;
     private GameManager gameManager;
 
     void Start() {
@@ -12,8 +12,8 @@ public class EndTrigger : MonoBehaviour {
     {
         // gameManager.completeLevel();
 
-        gameOverUI.SetActive(true);
-
+        FinishUI.SetActive(true);
+        Time.timeScale = 0;
 
     }
 
