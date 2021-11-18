@@ -6,39 +6,87 @@ namespace XRLab.VRoem.Utility
 {
     public class PositionAll : MonoBehaviour
     {
-        [SerializeField] private GameObject playerCar, playerVR, raycastHitBox, carBounds, speedManager, levelMap;
+        [SerializeField] private GameObject levelMap;
+        [SerializeField] private List<GameObject> playerConnectedObjects = new List<GameObject>();   
 
         [SerializeField] private float positionX, positionY, positionZ;
-        private bool mapPlaced;
+        [SerializeField] private List<Vector3> placementpositions = new List<Vector3>();
         private void Start()
         {
-            playerCar = GameObject.Find("PlayerCar");
-            playerVR = GameObject.Find("OVRCameraRig (Player)");
-            raycastHitBox = GameObject.Find("RayHitBox");
-            carBounds = GameObject.Find("CarBounds");
-            speedManager = GameObject.Find("SpeedManager");
+            FindAndAddObjects("PlayerCar");
+            FindAndAddObjects("OVRCameraRig (Player)");
+            FindAndAddObjects("RayHitBox");
+            FindAndAddObjects("CarBounds");
+            FindAndAddObjects("SpeedManager");
 
             PositionMapAtZero(levelMap);
+            PlaceAllOtherObjects();
+        }
 
-            if (!mapPlaced)
-            {
-                //position all other objects
-            }
-
+        void FindAndAddObjects(string objectName)
+        {
+            GameObject go = GameObject.Find(objectName);
+            playerConnectedObjects.Add(go);  
         }
 
 
         void PositionMapAtZero(GameObject map)
         {
-            GameObject go = Instantiate(map, new Vector3(transform.position.x - 7.5f, transform.position.y + 7.5f, transform.position.z - 125f), Quaternion.identity);
+            GameObject go = Instantiate(map, this.transform.position, map.transform.rotation);
             go.transform.parent = this.transform;
-
-
-            mapPlaced = true;
         }
 
+        void PlaceAllOtherObjects()
+        {  
+            string objectName = "";
+            for (int i = 0; i < playerConnectedObjects.Count; i++)
+            {
+                objectName = playerConnectedObjects[i].name;
+
+                switch (objectName)
+                {
+                    case "PlayerCar":
+                        PositionObject(playerConnectedObjects[0],this.transform.position);
+                        break;
+
+                    case "OVRCameraRig (Player)":
+                        PositionObject(playerConnectedObjects[1], placementpositions[0]);
+                        break;
+
+                    case "RayHitBox":
+                        PositionObject(playerConnectedObjects[2], placementpositions[1]);
+                        break;
+
+                    case "CarBounds":
+                        PositionObject(playerConnectedObjects[3], placementpositions[2]);
+                        break;
+
+                    case "SpeedManager":
+                        PositionObject(playerConnectedObjects[4], this.transform.position);
+                        break;
+                }
+            }
+        }
+
+        void PositionObject(GameObject obj, Vector3 extraPositions)
+        {
+            if (obj == null) return;
+
+            float diffOnX = extraPositions.x - this.transform.position.x;
+            float diffOnY = extraPositions.y - this.transform.position.y;
+            float diffOnZ = extraPositions.z - this.transform.position.z;
 
 
+
+            if(extraPositions == this.transform.position)
+            {
+                obj.transform.position = this.transform.position;
+            }
+            else
+            {
+                obj.transform.position = new Vector3(diffOnX, diffOnY, diffOnZ);
+            }
+        }
     }
 }
 

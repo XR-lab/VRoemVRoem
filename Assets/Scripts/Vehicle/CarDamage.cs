@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using XRLab.VRoem.Vehicle;
 
+//TODO: Add namespace
 public class CarDamage : MonoBehaviour
 {
     [SerializeField] private float _slowerAccelMultiplier = 0.5f;
     [SerializeField] private float _loseControlTime = 1;
     private SimpleMovementCar _carMovement;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         _carMovement = GetComponent<SimpleMovementCar>();

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.XR;
 
+//TODO: Fix code conventions, refactor into data classes
 namespace XRLab.VRoem.Vehicle {
     public class CarController : MonoBehaviour {
         [SerializeField] private Transform _handAnchor;

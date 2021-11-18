@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Fix code conventions. Class is messy. How can we fix this?
 namespace XRLab.VRoem.Vehicle {
 
     public class SimpleMovementCar : Car {

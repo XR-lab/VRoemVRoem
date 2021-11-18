@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+//TODO: Refactor, not DRY
 namespace XRLab.VRoem.Core
 {
-
-
     public class ObjectHitTracker : MonoBehaviour
     {
         [SerializeField] private GameObject gameOverUI, policarProp, policecarPropNextPosition, headLightsNextPosition, policeCarsTransform;
@@ -19,7 +18,7 @@ namespace XRLab.VRoem.Core
         private Vector3 policarPropStartLocation;
         private float newPoliceCarZOffset;
         private float newPoliceCarXOffset;
-        private sirenLights sirenLights;
+        private SirenLights sirenLights;
         private InGameMenu inGameMenu;
        
         public float leftMapBoundary;
@@ -38,7 +37,7 @@ namespace XRLab.VRoem.Core
             objectHitCounter = 0;
             policarPropStartLocation = policarProp.transform.position;
 
-            sirenLights = FindObjectOfType<sirenLights>();
+            sirenLights = FindObjectOfType<SirenLights>();
             inGameMenu = FindObjectOfType<InGameMenu>();
 
             if (normalChaseEvent == null) { new UnityEvent(); }
