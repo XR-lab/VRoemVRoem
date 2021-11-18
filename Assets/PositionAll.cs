@@ -13,11 +13,11 @@ namespace XRLab.VRoem.Utility
         [SerializeField] private List<Vector3> placementpositions = new List<Vector3>();
         private void Start()
         {
-            FindAndAddObjects("PlayerCar (1)");
-            FindAndAddObjects("OVRCameraRig (Player) (1)");
-            FindAndAddObjects("RayHitBox (1)");
-            FindAndAddObjects("CarBounds (1)");
-            FindAndAddObjects("SpeedManager (1)");
+            FindAndAddObjects("PlayerCar");
+            FindAndAddObjects("OVRCameraRig (Player)");
+            FindAndAddObjects("RayHitBox");
+            FindAndAddObjects("CarBounds");
+            FindAndAddObjects("SpeedManager");
 
             PositionMapAtZero(levelMap);
             PlaceAllOtherObjects();
@@ -32,7 +32,7 @@ namespace XRLab.VRoem.Utility
 
         void PositionMapAtZero(GameObject map)
         {
-            GameObject go = Instantiate(map, this.transform.position, Quaternion.identity);
+            GameObject go = Instantiate(map, this.transform.position, map.transform.rotation);
             go.transform.parent = this.transform;
         }
 
@@ -45,23 +45,23 @@ namespace XRLab.VRoem.Utility
 
                 switch (objectName)
                 {
-                    case "PlayerCar (1)":
+                    case "PlayerCar":
                         PositionObject(playerConnectedObjects[0],this.transform.position);
                         break;
 
-                    case "OVRCameraRig (Player) (1)":
+                    case "OVRCameraRig (Player)":
                         PositionObject(playerConnectedObjects[1], placementpositions[0]);
                         break;
 
-                    case "RayHitBox (1)":
+                    case "RayHitBox":
                         PositionObject(playerConnectedObjects[2], placementpositions[1]);
                         break;
 
-                    case "CarBounds (1)":
+                    case "CarBounds":
                         PositionObject(playerConnectedObjects[3], placementpositions[2]);
                         break;
 
-                    case "SpeedManager (1)":
+                    case "SpeedManager":
                         PositionObject(playerConnectedObjects[4], this.transform.position);
                         break;
                 }
