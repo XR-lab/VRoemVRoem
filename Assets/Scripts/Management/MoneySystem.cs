@@ -16,6 +16,7 @@ public class MoneySystem : MonoBehaviour
     public static float MonneyToLose;
     public static float MonneyFromStart;
     public static float BankMoney;
+    public static float TotalMoney;
 
     [Header("Canvas")]
     [SerializeField] private Text moneyText;
@@ -42,6 +43,9 @@ public class MoneySystem : MonoBehaviour
             gameOverUI.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+    public void AddMoneyToTotal() {
+        TotalMoney += currentMonney;
     }
 
 }
