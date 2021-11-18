@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Add namespace, fix const stings. Colision Enter And Trigger??
 public class PlayerObstacleInteraction : MonoBehaviour
 {
     private bool interacting = false;
@@ -17,7 +18,7 @@ public class PlayerObstacleInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (!interacting && col.attachedRigidbody.CompareTag("Player"))
+        if (!interacting && col.attachedRigidbody != null && col.attachedRigidbody.CompareTag("Player"))
         {
             interacting = true;
             Interact(col);

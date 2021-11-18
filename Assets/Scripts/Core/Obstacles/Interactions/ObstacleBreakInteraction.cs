@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using XRLab.VRoem.Core;
 
+//TODO: Add Namespace, fix curly braces
 public class ObstacleBreakInteraction : PlayerObstacleInteraction
 {
     [SerializeField] private float _forceMultiplier = 1;
+    [SerializeField] private float _upForceMultiplier = 50;
     [SerializeField] private float _explosionForceMultiplier = 1;
+    [SerializeField] private float _waitForGroundCheck = 0.1f;
     //[SerializeField] private float _upwardsForce = 1;
     private MoveObstacle _moveObstacle;
+    private Rigidbody _rb;
 
     private void Start()
     {
@@ -17,21 +21,22 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
 
     protected override void Interact(Collision collision)
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
 
-        if (rb == null) {
-            rb = gameObject.AddComponent<Rigidbody>();
+        if (_rb == null) {
+            _rb = gameObject.AddComponent<Rigidbody>();
         }
         else {
-            rb.isKinematic = false;
+            _rb.isKinematic = false;
         }
          
         _moveObstacle.enabled = false;
 
-        rb.AddForce(transform.forward * _moveObstacle.Speed);
-        rb.AddExplosionForce(_moveObstacle.Speed * _forceMultiplier, collision.contacts[0].point, _moveObstacle.Speed * _explosionForceMultiplier);
+        _rb.AddForce(transform.forward * _moveObstacle.Speed);
+        _rb.AddForce(Vector3.up * _upForceMultiplier);
+        _rb.AddExplosionForce(_moveObstacle.Speed * _forceMultiplier, collision.contacts[0].point, _moveObstacle.Speed * _explosionForceMultiplier);
 
-        Invoke(nameof(AddMoveWithRoadComponent), 0.2f);
+        Invoke(nameof(AddMoveWithRoadComponent), _waitForGroundCheck);
 
         MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.MonneyToLose;
     }

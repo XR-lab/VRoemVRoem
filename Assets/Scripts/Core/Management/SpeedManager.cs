@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Place Curly Bracket on new lines, Add namespace, clean-up (headers, grouping etc.)
 public class SpeedManager : MonoBehaviour {
     [SerializeField] private float _baseSpeed = 2;
     [SerializeField] private float _modifiedSpeed = 1;
+    [SerializeField] private float _finalSpeed = 1;
     [SerializeField] private float _roadSpeedMultiplier = 0.5f;
     [SerializeField] private float _accelerationLerpSpeed = 1;
-    [SerializeField] private float _accelerationLerpMultiplier = 1;
     [SerializeField] private float _currentMultiplier = 1;
+    [SerializeField] private float _lerpSpeedMutltiplierThreshold = 0.5f;
 
-    public float ModifiedSpeed { get { return _modifiedSpeed; } }
+    public float FinalSpeed { get { return _finalSpeed; } }
     public float CurrentMultiplier { get { return _currentMultiplier; } }
     private float _targetSpeed = 1;
+    [SerializeField] private float _accelerationLerpMultiplier = 1;
     private bool _overwritingControllerSpeed = false;
     public bool OverwritingControllerSpeed { get { return _overwritingControllerSpeed; } }
 
@@ -32,12 +35,19 @@ public class SpeedManager : MonoBehaviour {
         //Caluclate speed based on the base speed of the manager * number of the given multiplier (normally the car)
         _currentMultiplier = multiplier;
 
-        _targetSpeed = _baseSpeed * multiplier;
+        _modifiedSpeed = _baseSpeed * multiplier;
+    }
 
-        //Lerp speed to make the transition between speeds smooth
-        _modifiedSpeed = Mathf.Lerp(_modifiedSpeed, _targetSpeed, _accelerationLerpSpeed * _accelerationLerpMultiplier * Time.deltaTime);
+    public void NormalBasedSpeed(float multiplier) {
+        float _targetSpeed = _modifiedSpeed * multiplier;
 
-        if ((_modifiedSpeed > _baseSpeed || multiplier > 1.5f) && !_overwritingControllerSpeed) {
+        if (multiplier > _lerpSpeedMutltiplierThreshold) {
+            _finalSpeed = Mathf.Lerp(_finalSpeed, _targetSpeed, _accelerationLerpSpeed * _accelerationLerpMultiplier * Time.deltaTime);
+        } else {
+            _finalSpeed = _targetSpeed;
+        }
+
+        if (_finalSpeed > _baseSpeed && !_overwritingControllerSpeed) {
             _accelerationLerpMultiplier = 1;
         }
     }
@@ -49,7 +59,7 @@ public class SpeedManager : MonoBehaviour {
     }
 
     public void LoseAllSpeed(float slowerAccelMultiplier) {
-        _modifiedSpeed = 0;
+        _finalSpeed = 0;
         _accelerationLerpMultiplier = slowerAccelMultiplier;
     }
 }
