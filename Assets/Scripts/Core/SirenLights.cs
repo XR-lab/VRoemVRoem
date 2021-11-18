@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace XRLab.VRoem.Core
 {
 
-    public class sirenLights : MonoBehaviour
+    public class SirenLights : MonoBehaviour
     {
         public Light redLight;
         public Light blueLight;
