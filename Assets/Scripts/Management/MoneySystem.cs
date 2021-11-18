@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using XRLab.VRoem.Core;
 
+//TODO: Fix Namespace, use set functions or set properties. Update is not needed
 public class MoneySystem : MonoBehaviour
 {
     [Header("Money Count")]

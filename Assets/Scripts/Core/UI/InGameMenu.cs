@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 
+//TODO: Fix code conventions
 namespace XRLab.VRoem.Core {
 
     public class InGameMenu : MonoBehaviour {

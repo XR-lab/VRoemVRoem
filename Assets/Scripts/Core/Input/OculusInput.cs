@@ -5,7 +5,6 @@ using UnityEngine.XR;
 
 public class OculusInput : MonoBehaviour
 {
-
     public delegate void ConfirmPress();
     public ConfirmPress OnConfirmPress;
     private OculusBindings oculusBindings;
@@ -13,9 +12,6 @@ public class OculusInput : MonoBehaviour
     private void Start()
     {
         oculusBindings = new OculusBindings();
-
-        //InputAction confirm = playerInput.actions.FindAction(oculusBindings.UI.Confirm.id);
-
         oculusBindings.UI.Confirm.performed += c => OnConfirmPress();
 
         oculusBindings.Enable();
