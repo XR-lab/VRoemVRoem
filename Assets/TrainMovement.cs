@@ -8,8 +8,9 @@ namespace XRLab.VRoem.Core
     {
         [Range(0f, 100f)]
         [SerializeField] private float trainSpeed;
-        [SerializeField] private bool leftToRight, rightToLeft;
+        [SerializeField] internal bool leftToRight, rightToLeft;
 
+        
         void Update()
         {
             MoveTrain();
