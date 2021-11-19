@@ -6,6 +6,7 @@ public class Intersection : MonoBehaviour
 {
 
     [SerializeField] private GameObject spawnCarobj;
+    [SerializeField] private GameObject Road;
 
     // spawntimer
     [SerializeField] private float secondsBetweenSpawn;
@@ -32,13 +33,15 @@ public class Intersection : MonoBehaviour
 
     void spawnCarObj()
     {
-        if (timesPress > 0)
+        if (timesPress % 2 == 0)
         {
-            Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(0f, -90f, 0f));
+            GameObject clone  = Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(0f, -90f, 0f));
+            clone.transform.parent = this.transform;
         }
         else
         {
-            Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(0f, 90f, 0f));
+            GameObject clone = Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(0f, 90f, 0f));
+            clone.transform.parent = this.transform;
         }
         timesPress = timesPress + 1;
         if (timesPress == spawnpoints.Count)
