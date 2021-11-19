@@ -483,18 +483,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnCarobj: {fileID: 92073460394027514, guid: 839b9857d087d4043908f263f4ec74ce, type: 3}
+  Road: {fileID: 6378613962395244453}
   secondsBetweenSpawn: 1.5
   spawnpoints:
   - {fileID: 6818895522798558269}
   - {fileID: 6818895523764729707}
---- !u!33 &7604239518697352713
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6818895522798558269}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7604239518697352712
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -536,13 +529,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &7604239519018028211
+--- !u!33 &7604239518697352713
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6818895523764729707}
+  m_GameObject: {fileID: 6818895522798558269}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7604239519018028210
 MeshRenderer:
@@ -585,6 +578,14 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &7604239519018028211
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6818895523764729707}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7604239520142206576
 GameObject:
   m_ObjectHideFlags: 0
