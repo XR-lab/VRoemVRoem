@@ -27,7 +27,7 @@ namespace XRLab.VRoem.Vehicle {
         private Transform _vrCam;
         private bool _mouseControl = false;
         private bool _straightRay = true;
-        [HideInInspector]public bool _boosting = false;
+        [HideInInspector] public bool _boosting = false;
         private bool _boostInCooldown = false;
 
         private Vector3 _lastValidHandPosition;        
@@ -58,23 +58,30 @@ namespace XRLab.VRoem.Vehicle {
                 _lastValidHandPosition = _handAnchor.position + (_leftHandAnchor.position - _handAnchor.position) / 2;
             }
 
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                _mouseControl = !_mouseControl;
+                //_vrCam.transform.localPosition = new Vector3(_vrCam.transform.localPosition.x, _mouseControl ? 3 : 3, _vrCam.transform.localPosition.z);
+                _vrCam.transform.localRotation = new Quaternion(_mouseControl ? 0.16f : 0, _vrCam.transform.localRotation.y, _vrCam.transform.localRotation.z, _vrCam.transform.localRotation.w);
+            }
+
             //Shoot Ray from right hand or mouse
-            Ray ray = new Ray(_lastValidHandPosition, Vector3.forward);
+            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_lastValidHandPosition, Vector3.forward);
             RaycastHit hit;
-            Ray rayAccel = new Ray(_lastValidHandPosition, _handAnchor.forward);
+            Ray rayAccel = _mouseControl ? ray : new Ray(_lastValidHandPosition, _handAnchor.forward);
             RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
-                float diffHandCam = _lastValidHandPosition.y - Camera.main.transform.position.y;
-                diffHandCam *= _positionModifier.y;
+                //float diffHandCam = _lastValidHandPosition.y - Camera.main.transform.position.y;
+                //diffHandCam *= _positionModifier.y;
 
                 //Send hit point to car
-                float diffY = _car.transform.position.y + diffHandCam;
+                //float diffY = _car.transform.position.y + diffHandCam;
 
-                _car.SetOrientation(new Vector3(hit.point.x * _positionModifier.x, _car.GroundAngle < _car.AngleToLockControlsX || _car.GroundAngle > _car.UpsideDownAngleToUnlockControlsX ? hit.point.y : diffY, hit.point.z), _boosting);
+                _car.SetOrientation(new Vector3(hit.point.x * (_mouseControl ? 1 : _positionModifier.x), hit.point.y, hit.point.z), _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
-                if (_car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {
+                if (!_boosting && _car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {
                     float clampedY = (Mathf.Clamp(hitAccel.point.y, -1, 6) + 1) / 7;
 
                     float multiplier = 1;
@@ -129,6 +136,11 @@ namespace XRLab.VRoem.Vehicle {
         }
         private void deactivateboost() {
             if (_boosting) {
+                if (_speedManager.FinalSpeed == 0)
+                {
+                    _boosting = false;
+                }
+
                 _boosttime -= Time.deltaTime;
                 if(_boosttime <= 0) {
                     _boosting = false;
