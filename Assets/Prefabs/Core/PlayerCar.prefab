@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handAnchor: {fileID: 0}
+  _leftHandAnchor: {fileID: 0}
   _speedMultiplierAdded: 0.2
   _boostDuration: 2
   _boostCooldown: 5
@@ -219,6 +220,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _rayColor: {r: 1, g: 0, b: 0, a: 1}
+  _maxHandDistance: 0.2
+  _boosting: 0
 --- !u!114 &1021810410
 MonoBehaviour:
   m_ObjectHideFlags: 0
