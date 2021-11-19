@@ -46,7 +46,8 @@ namespace XRLab.VRoem.Core
                 }
                 else
                 {
-                     //if(transform.position.x <= _hitTracker.leftMapBoundary)
+                    transform.position = new Vector3(_player.transform.position.x, this.transform.position.y, transform.position.z);
+                    //if(transform.position.x <= _hitTracker.leftMapBoundary)
                 }
                     
             }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Add namespace
 public class ObstacleDissapearInteraction : PlayerObstacleInteraction
 {
     protected override void Interact(Collider collider)

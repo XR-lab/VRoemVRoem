@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
+using TMPro;
 
-namespace XRLab.VRoem.Core {
-
-    public class InGameMenu : MonoBehaviour {
+namespace XRLab.VRoem.Core
+{
+    public class InGameMenu : MonoBehaviour
+    {
 
         [SerializeField] private GameObject pauzeMenu;
-        [SerializeField] internal GameObject deadMenu;
+         public GameObject deadMenu;
+        [SerializeField] private GameObject finishMenu;
+
+        [SerializeField] private TMP_Text MoneyGot;
+        [SerializeField] private TMP_Text Moneyearnd;
+
 
 
 
@@ -17,7 +24,7 @@ namespace XRLab.VRoem.Core {
         void Start() {
             pauzeMenu.SetActive(false);
             deadMenu.SetActive(false);
-            Time.timeScale = 1;
+            finishMenu.SetActive(false);
         }
 
 
@@ -69,6 +76,14 @@ namespace XRLab.VRoem.Core {
 
         public void BackToMainMenu() {
             SceneManager.LoadScene(1);
+        }
+
+        public void ActivateFinsishMenu() {
+
+            finishMenu.SetActive(true);
+            MoneyGot.text = "Your money: " + MoneySystem.currentMonney.ToString();
+            Moneyearnd.text = "Earnd money: " + MoneySystem.TotalMoney.ToString();
+
         }
     }
 }
