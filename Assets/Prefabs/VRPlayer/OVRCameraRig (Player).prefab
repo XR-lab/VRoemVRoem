@@ -41,8 +41,8 @@ Camera:
   m_GameObject: {fileID: 6462640462160099308}
   m_Enabled: 0
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -286,8 +286,8 @@ Camera:
   m_GameObject: {fileID: 6462640463444659346}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -535,8 +535,8 @@ Camera:
   m_GameObject: {fileID: 6462640463700817730}
   m_Enabled: 0
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -646,10 +646,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handAnchor: {fileID: 0}
+  _leftHandAnchor: {fileID: 0}
+  _speedMultiplierAdded: 0.2
+  _boostDuration: 1
+  _boostCooldown: 5
+  _fillBoostSpeed: 0.25
+  _tresholdToAccelerate: 0.8
+  _tresholdToDeccelerate: 0.2
+  _positionModifier: {x: 0, y: 0, z: 0}
+  _boostTimer: 1
   _layer:
     serializedVersion: 2
     m_Bits: 0
   _rayColor: {r: 1, g: 0, b: 0, a: 1}
+  _maxHandDistance: 5
+  boostEffects1: {fileID: 0}
+  boostEffects2: {fileID: 0}
+  _boosting: 0
 --- !u!1 &6462640464177467965
 GameObject:
   m_ObjectHideFlags: 0
