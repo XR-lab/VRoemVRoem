@@ -122,6 +122,7 @@ namespace XRLab.VRoem.Vehicle {
 
             if (_grounded) {
                 Vector3 averageNormals = (hitUpLeft.normal + hitUpRight.normal + hitDownLeft.normal + hitDownRight.normal) / 4;
+                
                 transform.up -= (transform.up - averageNormals) * _normalSmoothing * Time.deltaTime;
 
                 _groundAngle = Vector3.Angle(Vector3.up, averageNormals);
@@ -166,7 +167,16 @@ namespace XRLab.VRoem.Vehicle {
                 _forwardTransform.localRotation = Quaternion.Slerp(_forwardTransform.localRotation, new Quaternion(0, 0, 0, _forwardTransform.localRotation.w), _resetRotationSpeed * Time.deltaTime);
             }
 
-            transform.localRotation = new Quaternion(transform.localRotation.x, 0, transform.localRotation.z, transform.localRotation.w);
+            //Prevents X and Z flipping when Z is 1
+            if (transform.localRotation.z > 0.99f || transform.localRotation.x == 1)
+            {
+                transform.localRotation = new Quaternion(0, 0, 0.99f, transform.localRotation.w);
+            }
+            else
+            {
+                transform.localRotation = new Quaternion(transform.localRotation.x, 0, transform.localRotation.z, transform.localRotation.w);
+            }
+
             _forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
 
             lookat.z = transform.position.z;
@@ -181,7 +191,17 @@ namespace XRLab.VRoem.Vehicle {
 
             _dynamicPosZ = _lockedPosZ * multiplier;
 
-            Vector3 heightCorrectedPoint = new Vector3(_groundAngle < _angleToLockControlsX || _groundAngle > _upsideDownAngleToUnlockControlsX ? Mathf.Clamp(lookAtPosition.x, -_boundsX, _boundsX) : transform.position.x, _groundAngle < _angleToRideWall || _groundAngle > _angleToRideWallUpsideDown ? transform.position.y : lookAtPosition.y, _dynamicPosZ);
+            Vector3 heightCorrectedPoint = new Vector3(lookAtPosition.x, transform.position.y, _dynamicPosZ);
+
+            if (_groundAngle >= _angleToRideWall)
+            {
+                heightCorrectedPoint = transform.TransformVector(heightCorrectedPoint);
+            }
+            else
+            {
+                heightCorrectedPoint.x = Mathf.Clamp(lookAtPosition.x, -_boundsX, _boundsX);
+            }
+
             _targetPoint = heightCorrectedPoint;
         }
 
