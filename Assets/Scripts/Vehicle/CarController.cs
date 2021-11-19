@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.VFX;
 
 //TODO: Fix code conventions, refactor into data classes
 namespace XRLab.VRoem.Vehicle {
@@ -19,6 +20,7 @@ namespace XRLab.VRoem.Vehicle {
 
         //added by Bouke
         private float _boosttime;
+        [SerializeField] private GameObject boostEffects1, boostEffects2;
 
         private SimpleMovementCar _car;
         private LineRenderer _lineRenderer;
@@ -39,6 +41,7 @@ namespace XRLab.VRoem.Vehicle {
             //When releasing boost before the boost meter is empty this variable will fill it up instead of the normal cooldown
             //It does a calculation to make sure it will take as long as the given cooldown
             _fillBoostSpeed = 1 / (1 / _boostDuration * _boostCooldown);
+
         }
 
 
@@ -122,8 +125,12 @@ namespace XRLab.VRoem.Vehicle {
         private void deactivateboost() {
             if (_boosting) {
                 _boosttime -= Time.deltaTime;
-                if(_boosttime <= 0) {
+                boostEffects1.SetActive(true);
+                boostEffects2.SetActive(true);
+                if (_boosttime <= 0) {
                     _boosting = false;
+                    boostEffects1.SetActive(false);
+                    boostEffects2.SetActive(false);
                 }
             }
         }
