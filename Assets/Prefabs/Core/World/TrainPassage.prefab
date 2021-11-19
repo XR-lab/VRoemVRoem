@@ -324,8 +324,11 @@ MonoBehaviour:
   trainSpawnPoints: []
   leftTrains: []
   rightTrains: []
-  leftOrRight: 0
+  leftBorder: -60
+  rightBorder: 30
   startingTrains: 10
+  currentWay: 0
+  train: {fileID: 2770136342815084379, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
 --- !u!1 &8436573322732671782
 GameObject:
   m_ObjectHideFlags: 0

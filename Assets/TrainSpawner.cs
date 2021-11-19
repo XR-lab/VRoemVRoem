@@ -8,7 +8,7 @@ namespace XRLab.VRoem.Core
 
     public class TrainSpawner : MonoBehaviour
     {
-        private enum trainSections 
+        public enum trainSections 
         {
             TOP,
             MIDDLE,
@@ -17,18 +17,25 @@ namespace XRLab.VRoem.Core
 
 
 
-        private List<trainSections> sections = new List<trainSections>();
+        
 
 
         [SerializeField] private List<GameObject> trainSpawnPoints = new List<GameObject>();
         [SerializeField] private List<GameObject> leftTrains = new List<GameObject>(); 
         [SerializeField] private List<GameObject> rightTrains = new List<GameObject>();
-
-        private GameObject train;
-        private GameObject SpawnedTrainsTransform;
-
-
+        [SerializeField] internal int leftBorder = -15;
+        [SerializeField] internal int rightBorder = 15;
         [SerializeField] private int startingTrains;
+        [SerializeField] private trainSections currentWay;
+        [SerializeField] private GameObject train;
+
+        internal List<trainSections> sections = new List<trainSections>();
+
+        private int currentLeftTrain = 0;
+        private int currentRightTrain = 0;
+
+        private GameObject SpawnedTrainsTransform;
+        private Transform nextTrainSpawnTransform = null;
 
         private void Start()
         {
@@ -36,7 +43,7 @@ namespace XRLab.VRoem.Core
             sections.Add(trainSections.MIDDLE);
             sections.Add(trainSections.BOTTOM);
 
-            train = GameObject.Find("Train");
+            //train = GameObject.Find("Train");
             SpawnedTrainsTransform = GameObject.Find("SpawnedTrains");
 
             GameObject go = GameObject.Find("TrainSpawnPoints");
@@ -48,7 +55,8 @@ namespace XRLab.VRoem.Core
             SpawnTrains(train, 0);
             SpawnTrains(train, 1);
 
-            
+            SetTrainAtDesignatedPosition();
+            CallNextTrain(1);
         }
 
         void SpawnTrains(GameObject train, int leftOrRight)
@@ -62,12 +70,14 @@ namespace XRLab.VRoem.Core
                 switch (leftOrRight)
                 {
                     case 0:
+                        go.transform.localRotation = Quaternion.Euler(0, 270, 0);
                         trainVariables.leftToRight = true;
                         leftTrains.Add(go);
                         go.SetActive(false);
                         break;
 
                     case 1:
+                        go.transform.localRotation = Quaternion.Euler(0, 90, 0);
                         trainVariables.rightToLeft = true;
                         rightTrains.Add(go);
                         go.SetActive(false);
@@ -78,44 +88,120 @@ namespace XRLab.VRoem.Core
 
         }
 
-        private void Update()
+        void TurnOnLeftTrain()
         {
-            
+            leftTrains[currentLeftTrain].gameObject.GetComponent<TrainMovement>().currentTrainWay = currentWay;
+            leftTrains[currentLeftTrain].gameObject.transform.position = nextTrainSpawnTransform.position;
+            leftTrains[currentLeftTrain].SetActive(true);
         }
 
-        void TurnOnTrainAtDesignatedSpawnPoint()
+        void TurnOnRightTrain()
         {
-            int leftTrainorRightTrain = (int)Random.Range(0f, 1f);
+            rightTrains[currentRightTrain].gameObject.GetComponent<TrainMovement>().currentTrainWay = currentWay;
+            rightTrains[currentRightTrain].gameObject.transform.position = nextTrainSpawnTransform.position;
+            rightTrains[currentRightTrain].SetActive(true);
+        }
 
+
+        public void SetTrainAtDesignatedPosition()
+        {
+            int leftTrainorRightTrain = (int)Random.Range(0f, 2f);
+            int itemIndex = 0;
+            
             if(leftTrainorRightTrain == 0)
             {
-                //spawnleft train
+                itemIndex = Random.Range(0, sections.Count);
 
+                currentWay = sections[itemIndex];
+
+                switch (sections[itemIndex])
+                {
+                    case trainSections.TOP:
+                        nextTrainSpawnTransform = trainSpawnPoints[1].transform;
+                        sections.Remove(trainSections.TOP);
+                        CheckCurrentTrain(currentLeftTrain,0);
+                        TurnOnLeftTrain();
+                        break;
+
+                    case trainSections.MIDDLE:
+                        nextTrainSpawnTransform = trainSpawnPoints[0].transform;
+                        sections.Remove(trainSections.MIDDLE);
+                        CheckCurrentTrain(currentLeftTrain,0);
+                        TurnOnLeftTrain();
+                        break;
+
+                    case trainSections.BOTTOM:
+                        nextTrainSpawnTransform = trainSpawnPoints[2].transform;
+                        sections.Remove(trainSections.BOTTOM);
+                        CheckCurrentTrain(currentLeftTrain, 0);
+                        TurnOnLeftTrain();
+                        break;
+                }
 
             }
             else if(leftTrainorRightTrain == 1)
             {
-                //spawn righttrain
+                itemIndex = Random.Range(0, sections.Count);
+
+                currentWay = sections[itemIndex];
+
+                switch (sections[itemIndex])
+                {
+                    case trainSections.TOP:
+                        nextTrainSpawnTransform = trainSpawnPoints[4].transform;
+                        sections.Remove(trainSections.TOP);
+                        CheckCurrentTrain(currentRightTrain, 1);
+                        TurnOnRightTrain();
+                        break;
+
+                    case trainSections.MIDDLE:
+                        nextTrainSpawnTransform = trainSpawnPoints[3].transform;
+                        sections.Remove(trainSections.MIDDLE);
+                        CheckCurrentTrain(currentRightTrain, 1);
+                        TurnOnRightTrain();
+                        break;
+
+                    case trainSections.BOTTOM:
+                        nextTrainSpawnTransform = trainSpawnPoints[5].transform;
+                        sections.Remove(trainSections.BOTTOM);
+                        CheckCurrentTrain(currentRightTrain,1);
+                        TurnOnRightTrain();
+                        break;
+                }
             }
 
-            //zet een trein aan op een random section
-            //laat trein bewegen
-            //voor het uit zetten van de trein voeg de section die hij heeft weer toe
-
-            //random selecteer een linker of rechter trein
         }
 
-
-        IEnumerator NextIncommingTrain()
+        internal void CallNextTrain(float time)
         {
-            yield return new WaitForSeconds(8);
-
-
+            Invoke(nameof(SetTrainAtDesignatedPosition), time);
         }
 
-
-    }
-
-    
+        void CheckCurrentTrain(int train, int leftOrRight)
+        {
+            if(leftOrRight == 0)
+            {
+                if (train < leftTrains.Count - 1)
+                {
+                    currentLeftTrain++;
+                }
+                else
+                {
+                    currentLeftTrain = 0;
+                }
+            }
+            else if(leftOrRight == 1)
+            {
+                if (train < rightTrains.Count - 1)
+                {
+                    currentRightTrain++;
+                }
+                else
+                {
+                    currentRightTrain = 0;
+                }
+            } 
+        }
+    } 
 }
 
