@@ -239,7 +239,7 @@ MonoBehaviour:
   _speed: 60
   _speedReturnZ: 10
   _gravityMultiplierBasedOnUp: 2
-  _gravityMultiplierOnWallsBasedOnUp: 50
+  _gravityMultiplierOnWallsBasedOnUp: 80
   _lookAtThreshold: 1
   _rotationSpeed: 0.5
   _resetRotationSpeed: 2
@@ -288,8 +288,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slowerAccelMultiplier: 0.25
   _loseControlTime: 1
+  _invincibilityTime: 2
   _hitParticle: {fileID: 3362486857200185581}
   _cashParticle: {fileID: 4261673684639731380}
+  _carModel: {fileID: 124860293912345981}
 --- !u!1 &1809369668288144353
 GameObject:
   m_ObjectHideFlags: 0
