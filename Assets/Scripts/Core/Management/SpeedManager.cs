@@ -21,6 +21,7 @@ public class SpeedManager : MonoBehaviour {
 
     private void Start() {
         _modifiedSpeed = _baseSpeed;
+        LoseAllSpeed(0.1f);
     }
 
     public void CalculateModifedSpeed(float multiplier) {

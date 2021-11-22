@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &3813831200283800142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005498466341669181}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019966636, y: 0.009953467, z: 0.0070511852}
+  m_Center: {x: -0.00038110855, y: -0.000044360073, z: 0.004078292}
+--- !u!114 &1274466919562208029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005498466341669181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6088768722141093636
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +175,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6088768723331692586}
   - component: {fileID: 6088768723331692587}
-  - component: {fileID: 6088768723331692564}
-  - component: {fileID: 4418021606472610025}
-  - component: {fileID: -3552995821369856137}
   m_Layer: 0
   m_Name: PoliceCar (1)
   m_TagString: Untagged
@@ -191,47 +213,6 @@ MonoBehaviour:
   _player: {fileID: 0}
   secondaryCar: 0
   carPosInRow: 0
---- !u!54 &6088768723331692564
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6088768723331692565}
-  serializedVersion: 2
-  m_Mass: 1.5
-  m_Drag: 4
-  m_AngularDrag: 5
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 96
-  m_CollisionDetection: 1
---- !u!65 &4418021606472610025
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6088768723331692565}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3552995821369856137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6088768723331692565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6088768723420231947
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,5 +415,10 @@ GameObject:
 --- !u!4 &6049776418664264588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1dc40a6e28fd1ae4d8b4ad3a6684cea9, type: 3}
+  m_PrefabInstance: {fileID: 6088768723634213991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5005498466341669181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1227438367956213082, guid: 1dc40a6e28fd1ae4d8b4ad3a6684cea9, type: 3}
   m_PrefabInstance: {fileID: 6088768723634213991}
   m_PrefabAsset: {fileID: 0}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8852982855364516152}
   - component: {fileID: 6717376445937675762}
   - component: {fileID: -3843859727748739959}
+  - component: {fileID: 3985156576676225798}
   m_Layer: 0
   m_Name: MDL_pop_up_shop_mid
   m_TagString: Untagged
@@ -90,8 +91,20 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5059818618173213735}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.020400014, y: 0.010199999, z: 0.018700022}
   m_Center: {x: -0.0011687288, y: -0.0012218626, z: 0.0009562399}
+--- !u!114 &3985156576676225798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059818618173213735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

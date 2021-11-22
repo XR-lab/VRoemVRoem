@@ -57,7 +57,7 @@ namespace XRLab.VRoem.Vehicle {
 
         private void ShootControlRay() {
 
-            if (Vector3.Distance(_leftHandAnchor.position, _handAnchor.position) < _maxHandDistance)
+            if (!_mouseControl && Vector3.Distance(_leftHandAnchor.position, _handAnchor.position) < _maxHandDistance)
             {
                 _lastValidHandPosition = _handAnchor.position + (_leftHandAnchor.position - _handAnchor.position) / 2;
             }
@@ -66,7 +66,7 @@ namespace XRLab.VRoem.Vehicle {
             {
                 _mouseControl = !_mouseControl;
                 //_vrCam.transform.localPosition = new Vector3(_vrCam.transform.localPosition.x, _mouseControl ? 3 : 3, _vrCam.transform.localPosition.z);
-                _vrCam.transform.localRotation = new Quaternion(_mouseControl ? 0.16f : 0, _vrCam.transform.localRotation.y, _vrCam.transform.localRotation.z, _vrCam.transform.localRotation.w);
+                //_vrCam.transform.localRotation = new Quaternion(_mouseControl ? 0.16f : 0, _vrCam.transform.localRotation.y, _vrCam.transform.localRotation.z, _vrCam.transform.localRotation.w);
             }
 
             //Shoot Ray from right hand or mouse

@@ -27,6 +27,11 @@ public class CarDamage : MonoBehaviour
 
         Invoke(nameof(ReturnControl), _loseControlTime);
 
+        if (_hitParticle == null || _cashParticle == null)
+        {
+            return;
+        }
+
         _hitParticle.SetActive(false);
         _hitParticle.SetActive(true);
 

@@ -177,7 +177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4858091385715534123
 Transform:
   m_ObjectHideFlags: 0
@@ -593,11 +593,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8672280993991741788}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.9505807}
+  m_Center: {x: 0.000000015048878, y: 0, z: 0.063119575}
 --- !u!114 &-7611077898522242489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,7 +619,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8125036711415582428}
-  - component: {fileID: 4809701773242199306}
   m_Layer: 0
   m_Name: MDL_Speler_wagen
   m_TagString: Untagged
@@ -643,16 +642,3 @@ Transform:
   m_Father: {fileID: 3418144904767953933}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
---- !u!65 &4809701773242199306
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8901995214632080486}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.019856576, y: 0.009792076, z: 0.009627458}
-  m_Center: {x: -0.0004328005, y: -0.000044042477, z: 0.0047843596}

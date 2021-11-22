@@ -610,7 +610,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6462640464020983731}
-  - component: {fileID: 6462640464020983730}
   m_Layer: 0
   m_Name: RightHandAnchor
   m_TagString: Untagged
@@ -633,36 +632,6 @@ Transform:
   m_Father: {fileID: 6462640462589628759}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6462640464020983730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462640464020983728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a745c836010875747b56d7a2b0fe7fb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _handAnchor: {fileID: 0}
-  _leftHandAnchor: {fileID: 0}
-  _speedMultiplierAdded: 0.2
-  _boostDuration: 1
-  _boostCooldown: 5
-  _fillBoostSpeed: 0.25
-  _tresholdToAccelerate: 0.8
-  _tresholdToDeccelerate: 0.2
-  _positionModifier: {x: 0, y: 0, z: 0}
-  _boostTimer: 1
-  _layer:
-    serializedVersion: 2
-    m_Bits: 0
-  _rayColor: {r: 1, g: 0, b: 0, a: 1}
-  _maxHandDistance: 5
-  boostEffects1: {fileID: 0}
-  boostEffects2: {fileID: 0}
-  _boosting: 0
 --- !u!1 &6462640464177467965
 GameObject:
   m_ObjectHideFlags: 0
