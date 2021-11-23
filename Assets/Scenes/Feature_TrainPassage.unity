@@ -10878,6 +10878,7 @@ MonoBehaviour:
   - {fileID: 534958338}
   checkpoint: {fileID: 0}
   roadsTillCheckpoint: 0
+  roadCount: 0
 --- !u!1001 &412285761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52240,18 +52241,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2867129924748163744, guid: f80428400b1bbdf418be9ecbe580e2f2, type: 3}
-      propertyPath: leftBorder
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2867129924748163744, guid: f80428400b1bbdf418be9ecbe580e2f2, type: 3}
-      propertyPath: leftOrRight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2867129924748163744, guid: f80428400b1bbdf418be9ecbe580e2f2, type: 3}
-      propertyPath: rightBorder
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 6939380876670972980, guid: f80428400b1bbdf418be9ecbe580e2f2, type: 3}
       propertyPath: m_Name
       value: TrainPassage
@@ -52441,67 +52430,6 @@ Transform:
   m_Father: {fileID: 2278123689711765764}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3454624274243119786
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -63.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616044209793321226, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2770136342815084379, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_Name
-      value: Train
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937737889466280423, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
 --- !u!1 &4185660257058740487
 GameObject:
   m_ObjectHideFlags: 0
