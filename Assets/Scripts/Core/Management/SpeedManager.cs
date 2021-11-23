@@ -21,6 +21,7 @@ public class SpeedManager : MonoBehaviour {
 
     private void Start() {
         _modifiedSpeed = _baseSpeed;
+        LoseAllSpeed(0.1f);
     }
 
     public void CalculateModifedSpeed(float multiplier) {
@@ -60,6 +61,7 @@ public class SpeedManager : MonoBehaviour {
 
     public void LoseAllSpeed(float slowerAccelMultiplier) {
         _finalSpeed = 0;
+        SetModifiedSpeed(1);
         _accelerationLerpMultiplier = slowerAccelMultiplier;
     }
 }
