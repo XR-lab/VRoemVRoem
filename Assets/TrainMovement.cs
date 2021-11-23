@@ -8,11 +8,20 @@ namespace XRLab.VRoem.Core
     {
         [Range(0f, 100f)]
         [SerializeField] private float trainSpeed;
-        [SerializeField] private bool leftToRight, rightToLeft;
+        [SerializeField] internal bool leftToRight, rightToLeft;
+        [SerializeField] internal TrainSpawner.trainSections currentTrainWay;
+
+        private TrainSpawner trainSpawner;
+
+        private void Start()
+        {
+            trainSpawner = FindObjectOfType<TrainSpawner>();
+        }
 
         void Update()
         {
             MoveTrain();
+            DisableTrain();
         }
 
         void MoveTrain()
@@ -22,6 +31,24 @@ namespace XRLab.VRoem.Core
             if(rightToLeft)
                 transform.localPosition += Vector3.forward * (-trainSpeed / 1000);
         }
+
+        void DisableTrain()
+        {
+            if(leftToRight)
+                if(transform.position.z > trainSpawner.rightBorder)
+                {
+                    this.gameObject.SetActive(false);
+                    trainSpawner.sections.Add(currentTrainWay);
+                    trainSpawner.CallNextTrain(1);
+                }    
+            if(rightToLeft)
+                if (transform.position.z < trainSpawner.leftBorder)
+                {
+                    this.gameObject.SetActive(false);
+                    trainSpawner.sections.Add(currentTrainWay);
+                    trainSpawner.CallNextTrain(1);
+                }
+        } 
     }
 }
 

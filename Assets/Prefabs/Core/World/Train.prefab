@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2616044209793321226}
   - component: {fileID: 1386539703}
   - component: {fileID: 1386539701}
+  - component: {fileID: 1386539704}
   m_Layer: 0
   m_Name: Train
   m_TagString: Untagged
@@ -61,7 +62,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb3b741ae0f92745a207ed1c31896be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trainSpeed: 1
+  trainSpeed: 28.6
+  leftToRight: 0
+  rightToLeft: 0
+  currentTrainWay: 0
+--- !u!65 &1386539704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770136342815084379}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.248642, y: 2.39299, z: 1.9814501}
+  m_Center: {x: -9.686157, y: 1.1794043, z: 0.14197588}
+--- !u!33 &7874391259443767524
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675391156346993912}
+  m_Mesh: {fileID: 2902951461405943642, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
 --- !u!1001 &5792378104959041961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75,15 +100,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.989998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.6800003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
       propertyPath: m_LocalRotation.w
@@ -121,8 +146,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MDL_BO_train_01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5754084199372789682, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
+--- !u!1 &6675391156346993912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
+  m_PrefabInstance: {fileID: 5792378104959041961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6334330807526155842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}

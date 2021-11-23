@@ -35,12 +35,12 @@ public class Intersection : MonoBehaviour
     {
         if (timesPress % 2 == 0)
         {
-            GameObject clone  = Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(0f, -90f, 0f));
+            GameObject clone  = Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(spawnCarobj.transform.rotation.x, 90f, -90f));
             clone.transform.parent = this.transform;
         }
         else
         {
-            GameObject clone = Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(0f, 90f, 0f));
+            GameObject clone = Instantiate(spawnCarobj, spawnpoints[timesPress].transform.position, transform.rotation * Quaternion.Euler(spawnCarobj.transform.rotation.x, -90f, -90f));
             clone.transform.parent = this.transform;
         }
         timesPress = timesPress + 1;

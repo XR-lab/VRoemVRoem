@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5166716737287308619}
   - component: {fileID: 8078339436961352430}
   - component: {fileID: 6339082158594637348}
+  - component: {fileID: 2594033016457870616}
   m_Layer: 0
   m_Name: MDL_Weg+stoep
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2594033016457870616
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546198141526810609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3781065485206817927, guid: 31e690f4c45d02540a1df5e68f649039, type: 3}
