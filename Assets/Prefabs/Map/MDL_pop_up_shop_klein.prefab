@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 132086622871063400}
   - component: {fileID: 3925625398079030477}
   - component: {fileID: 1269567360815099911}
+  - component: {fileID: 8574789286449860918}
+  - component: {fileID: 3918900037384050858}
   m_Layer: 0
   m_Name: MDL_pop_up_shop_klein
   m_TagString: Untagged
@@ -81,3 +83,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8574789286449860918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765212513041109458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.013600012, y: 0.011899984, z: 0.015299992}
+  m_Center: {x: -0.00031592487, y: 0.0010694473, z: 0.0013419724}
+--- !u!114 &3918900037384050858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765212513041109458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
