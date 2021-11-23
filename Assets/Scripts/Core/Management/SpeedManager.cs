@@ -60,6 +60,7 @@ public class SpeedManager : MonoBehaviour {
 
     public void LoseAllSpeed(float slowerAccelMultiplier) {
         _finalSpeed = 0;
+        SetModifiedSpeed(1);
         _accelerationLerpMultiplier = slowerAccelMultiplier;
     }
 }
