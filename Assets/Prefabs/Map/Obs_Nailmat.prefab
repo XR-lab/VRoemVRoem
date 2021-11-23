@@ -30,18 +30,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2468458144233949287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5212920927740645601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2464735854523238411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -191,7 +179,8 @@ PrefabInstance:
       propertyPath: _positionToDestroyZ
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1900728576484349791, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
 --- !u!1 &5212920927740645601 stripped
 GameObject:

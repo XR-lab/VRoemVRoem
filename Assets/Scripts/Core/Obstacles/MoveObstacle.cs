@@ -27,7 +27,7 @@ namespace XRLab.VRoem.Core
             //Move forward based on the speedmanagers speed and a multiplier for some objects like cars
             _speed = speedManager.FinalSpeed * _speedMultiplier;
 
-            transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+            transform.position += transform.forward * _speed * Time.deltaTime;
         }       
     }
 }
