@@ -12,9 +12,10 @@ public class CarDamage : MonoBehaviour
     [SerializeField] private float _invincibilityTime = 2;
     private SimpleMovementCar _carMovement;
 
-    [SerializeField] public GameObject _hitParticle;
-    [SerializeField] public GameObject _cashParticle;
-    [SerializeField] public GameObject _carModel;
+    [SerializeField] private GameObject _hitParticle;
+    [SerializeField] private GameObject _cashParticle;
+    [SerializeField] private GameObject _carModel;
+    [SerializeField] private AudioSource _carDamageAudio;
 
     private bool _invincible = false;
 
@@ -50,6 +51,8 @@ public class CarDamage : MonoBehaviour
 
         _cashParticle.SetActive(false);
         _cashParticle.SetActive(true);
+
+        _carDamageAudio.Play();
     }
 
     private void ReturnControl()
