@@ -11,7 +11,7 @@ namespace XRLab.VRoem.Core
     {
 
         [SerializeField] private GameObject pauzeMenu;
-         public GameObject deadMenu;
+        public GameObject deadMenu;
         [SerializeField] private GameObject finishMenu;
 
         [SerializeField] private TMP_Text MoneyGot;

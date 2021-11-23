@@ -17,13 +17,14 @@ namespace XRLab.VRoem.Core
        
         public float leftMapBoundary;
         public float rightMapBoundary;
-        public int objectHitCounter;
+        [SerializeField] internal int objectHitCounter;
        
         void Start()
         {
             objectHitCounter = 0;
             sirenLights = FindObjectOfType<SirenLights>();
             inGameMenu = FindObjectOfType<InGameMenu>();
+            Time.timeScale = 1;
 
             CreateXtraPoliceCars();
         }
@@ -39,10 +40,10 @@ namespace XRLab.VRoem.Core
                     EventCauses(mainPoliceCarNextPosition, 2);
                     break;
                 case 3:
-                    EventCauses(this.gameObject, 3);
+                    EventCauses(mainPoliceCarNextPosition, 3);
                     break;
                 case 4:
-                    EventCauses(inGameMenu.deadMenu, 5);
+                    EventCauses(inGameMenu.deadMenu, 4);
                     break;
             }
         }
@@ -83,12 +84,16 @@ namespace XRLab.VRoem.Core
 
                 //Second time hit, police car comes closer, behind the player
                 case 2:
-                    policeCarsTransform.transform.position = Vector3.Lerp(policeCarsTransform.transform.position, targetGameObject.transform.position, 1 * Time.deltaTime);
+                        policeCarsTransform.transform.position = Vector3.Lerp(policeCarsTransform.transform.position, targetGameObject.transform.position, 1 * Time.deltaTime);
                     break;
 
                 //Third time hit, 2 more police cars join the pursuit
                 case 3:
                     //
+                    if (policeCarsTransform.transform.position != targetGameObject.transform.position)
+                    {
+                        policeCarsTransform.transform.position = targetGameObject.transform.position;
+                    }
                     xtraPoliceCars[0].SetActive(true);
                     xtraPoliceCars[1].SetActive(true);
                     MoveXtraPoliceCarsForward(xtraPoliceCars[0]);
