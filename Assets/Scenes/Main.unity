@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4ef184950f5e147b1ce806955e2b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionToDestroyZ: -100
+  _positionToDestroyZ: -500
   secondsBetweenDestroy: 0
 --- !u!4 &822705411
 Transform:
@@ -1397,7 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4ef184950f5e147b1ce806955e2b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionToDestroyZ: -100
+  _positionToDestroyZ: -500
   secondsBetweenDestroy: 0
 --- !u!1 &1150626540 stripped
 GameObject:
