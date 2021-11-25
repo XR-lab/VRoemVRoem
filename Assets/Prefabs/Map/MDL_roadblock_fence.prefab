@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1851247794550734022}
   - component: {fileID: -714194501081176461}
   - component: {fileID: 1158905110607609459}
+  - component: {fileID: -8850560962929537047}
   m_Layer: 0
   m_Name: MDL_roadblock_fence
   m_TagString: Untagged
@@ -108,3 +109,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!205 &-8850560962929537047
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193664128345464083}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.00019551348, y: 0.0004282131, z: 0.0029922018}
+  m_Size: 0.010686304
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.03203958
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1851247794550734022}
+  m_Enabled: 1
