@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XRLab.VRoem.Core;
 
+//TODO: Add Namespace, fix curly braces
 public class ObstacleBreakInteraction : PlayerObstacleInteraction
 {
     [SerializeField] private float _forceMultiplier = 1;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Add Namespaces
 public class ObstacleBoostSpeed : PlayerObstacleInteraction
 {
     [SerializeField] private float _speedBoost = 2.5f;

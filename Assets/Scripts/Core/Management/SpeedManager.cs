@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Place Curly Bracket on new lines, Add namespace, clean-up (headers, grouping etc.)
 public class SpeedManager : MonoBehaviour {
     [SerializeField] private float _baseSpeed = 2;
     [SerializeField] private float _modifiedSpeed = 1;
@@ -20,6 +21,7 @@ public class SpeedManager : MonoBehaviour {
 
     private void Start() {
         _modifiedSpeed = _baseSpeed;
+        LoseAllSpeed(0.1f);
     }
 
     public void CalculateModifedSpeed(float multiplier) {
@@ -59,6 +61,7 @@ public class SpeedManager : MonoBehaviour {
 
     public void LoseAllSpeed(float slowerAccelMultiplier) {
         _finalSpeed = 0;
+        SetModifiedSpeed(1);
         _accelerationLerpMultiplier = slowerAccelMultiplier;
     }
 }

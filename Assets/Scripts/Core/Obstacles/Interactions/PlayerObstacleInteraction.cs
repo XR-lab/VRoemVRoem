@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Add namespace, fix const stings. Colision Enter And Trigger??
 public class PlayerObstacleInteraction : MonoBehaviour
 {
     private bool interacting = false;
