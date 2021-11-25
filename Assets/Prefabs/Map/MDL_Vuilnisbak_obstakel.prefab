@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2082870714609761440}
   - component: {fileID: 3118756436045198085}
   - component: {fileID: 913381066234857423}
+  - component: {fileID: 2737523292043810743}
   m_Layer: 0
   m_Name: MDL_Vuilnisbak_obstakel
   m_TagString: Untagged
@@ -81,3 +82,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!205 &2737523292043810743
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705746389311464986}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.00019874098, y: -0.0003851098, z: 0.0052362713}
+  m_Size: 0.010472571
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.15461063
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 913381066234857423}
+  m_Enabled: 1

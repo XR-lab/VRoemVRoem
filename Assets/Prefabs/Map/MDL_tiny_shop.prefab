@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 491026433787363820}
   - component: {fileID: 3566747988455198281}
   - component: {fileID: 1628989337912146563}
+  - component: {fileID: 203141567706406489}
   m_Layer: 0
   m_Name: MDL_tiny_shop
   m_TagString: Untagged
@@ -81,3 +82,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!205 &203141567706406489
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980563557484157782}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.0020674467, y: -0.003445778, z: 0.033143856}
+  m_Size: 0.07029474
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.10132926
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1628989337912146563}
+  m_Enabled: 1

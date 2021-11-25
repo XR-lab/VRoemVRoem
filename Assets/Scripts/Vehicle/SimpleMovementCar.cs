@@ -52,8 +52,6 @@ namespace XRLab.VRoem.Vehicle {
         private bool _overrideTargetPoint = false;
 
         public float GroundAngle { get { return _groundAngle; } }
-        public float AngleToLockControlsX { get { return _angleToLockControlsX; } }
-        public float UpsideDownAngleToUnlockControlsX { get { return _upsideDownAngleToUnlockControlsX; } }
         public bool Grounded { get { return _grounded; } }
         public bool CanMove { get; set; } = true;
         public SpeedManager GetSpeedManager { get { return _speedManager; } }

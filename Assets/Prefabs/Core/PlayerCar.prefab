@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2336b321a4a8444a179a1c106accaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 60
+  _speed: 100
   _speedReturnZ: 10
   _gravityMultiplierBasedOnUp: 2
   _gravityMultiplierOnWallsBasedOnUp: 80
@@ -256,7 +256,7 @@ MonoBehaviour:
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  _raycastLength: 0.25
+  _raycastLength: 0.5
   _grounded: 0
   _groundAngle: 0
   _angleToRideWall: 45
