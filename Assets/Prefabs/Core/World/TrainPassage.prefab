@@ -74,6 +74,36 @@ Transform:
   m_Father: {fileID: 8907266823037148206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1620546344475090317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2146002483584414238}
+  m_Layer: 0
+  m_Name: TrainSpawnerFrontRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2146002483584414238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620546344475090317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 5.4, z: 28.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8907266823037148206}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1822280715130158496
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3002430375808862960}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: TrainSpawnerBackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4784668625262111394}
   m_Layer: 0
-  m_Name: TrainSpawnerForwardLeft
+  m_Name: TrainSpawnerFrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +178,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6405317420378132561, guid: f909aebb04cb24c729b92a0b6ca20b1d, type: 3}
+--- !u!1 &3288515464489969891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4375382439023052057}
+  m_Layer: 0
+  m_Name: SpawnedTrains
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4375382439023052057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3288515464489969891}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7122190778425396364}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5615437311994877328
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +238,41 @@ Transform:
   - {fileID: 3076689073466948781}
   - {fileID: 4784668625262111394}
   - {fileID: 3002430375808862960}
+  - {fileID: 7183608421900784559}
+  - {fileID: 2146002483584414238}
+  - {fileID: 3143357629554529075}
   m_Father: {fileID: 7122190778425396364}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6777077546856364282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7183608421900784559}
+  m_Layer: 0
+  m_Name: TrainSpawnerMiddleRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7183608421900784559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777077546856364282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.5, y: 5.4, z: 28.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8907266823037148206}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6939380876670972980
 GameObject:
@@ -212,6 +305,7 @@ Transform:
   - {fileID: 3139960081870624198}
   - {fileID: 3139960082114230393}
   - {fileID: 8907266823037148206}
+  - {fileID: 4375382439023052057}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -227,6 +321,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405bb7ab764be2f46a94417ff4cfb010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainSpawnPoints: []
+  leftTrains: []
+  rightTrains: []
+  leftBorder: -60
+  rightBorder: 30
+  startingTrains: 10
+  currentWay: 0
+  train: {fileID: 2770136342815084379, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
+--- !u!1 &8436573322732671782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3143357629554529075}
+  m_Layer: 0
+  m_Name: TrainSpawnerBackRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3143357629554529075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8436573322732671782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9, y: 5.4, z: 28.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8907266823037148206}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3177809002833534866
 PrefabInstance:
   m_ObjectHideFlags: 0
