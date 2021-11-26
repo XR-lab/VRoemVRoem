@@ -2845,7 +2845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _rollPercentModifier
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2570701798419648388, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: _angleToLockControlsX
