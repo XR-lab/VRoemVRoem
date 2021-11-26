@@ -4,25 +4,16 @@ using UnityEngine;
 
 namespace XRLab.VRoem.Core
 {
-
-
     //TODO: Add namespace
     public class ObstacleDamagePlayerInteraction : PlayerObstacleInteraction
     {
-        ObjectHitTracker _hitTracker;
-        private void Start()
-        {
-            _hitTracker = FindObjectOfType<ObjectHitTracker>();
-        }
-
+        [SerializeField] private float _speedLossMultiplier = 0;
 
         protected override void Interact(Collider collider)
         {
-            collider.attachedRigidbody.GetComponent<CarDamage>().Damage();
+            collider.attachedRigidbody.GetComponent<CarDamage>().Damage(_speedLossMultiplier);
 
-            MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.MonneyToLose;
-
-            _hitTracker.objectHitCounter += 1;
+            MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.MonneyToLose;            
         }
     }
 }

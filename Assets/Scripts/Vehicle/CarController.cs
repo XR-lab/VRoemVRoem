@@ -40,6 +40,7 @@ namespace XRLab.VRoem.Vehicle {
         private SpeedManager _speedManager;
         private Transform _vrCam;
 
+        private bool _mouseControl = false;
 
         private void Start() {
             _car = GetComponent<SimpleMovementCar>();
@@ -68,15 +69,20 @@ namespace XRLab.VRoem.Vehicle {
                 _lastValidHandPosition = _rightHandAnchor.position + (_leftHandAnchor.position - _rightHandAnchor.position) / 2;
             }
 
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                _mouseControl = !_mouseControl;
+            }
+
             //Shoot Ray from right hand or mouse
-            Ray ray =   new Ray(_lastValidHandPosition, Vector3.forward);
+            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_lastValidHandPosition, Vector3.forward);
             RaycastHit hit;
-            Ray rayAccel = new Ray(_lastValidHandPosition, _rightHandAnchor.forward);
+            Ray rayAccel = _mouseControl ? ray : new Ray(_lastValidHandPosition, _rightHandAnchor.forward);
             RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
 
-                _car.SetOrientation(new Vector3(hit.point.x * _positionModifier.x, hit.point.y, hit.point.z), _boosting);
+                _car.SetOrientation(new Vector3(hit.point.x * (_mouseControl ? 1 : _positionModifier.x), hit.point.y, hit.point.z), _boosting);
 
                 //Check position of the hit point so that it can accelerate when you shoot the ray high enough and deccelerate when you shoot the ray low enough
                 if (!_boosting && _car.Grounded && Physics.Raycast(rayAccel, out hitAccel, Mathf.Infinity, _layer)) {

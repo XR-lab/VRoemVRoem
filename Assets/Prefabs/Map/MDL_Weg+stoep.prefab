@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8078339436961352430}
   - component: {fileID: 6339082158594637348}
   - component: {fileID: 2594033016457870616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MDL_Weg+stoep
   m_TagString: Untagged
   m_Icon: {fileID: 0}

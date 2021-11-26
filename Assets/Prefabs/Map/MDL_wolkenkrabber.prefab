@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 71930072072555768}
   - component: {fileID: 3985781953667433309}
   - component: {fileID: 1203763851440584599}
-  - component: {fileID: 7447502147446956623}
   m_Layer: 0
   m_Name: MDL_wolkenkrabber
   m_TagString: Untagged
@@ -82,22 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!205 &7447502147446956623
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843400908464051778}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.00016831979, y: 0.0024918057, z: 0.0513425}
-  m_Size: 0.10268507
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.30058908
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1203763851440584599}
-  m_Enabled: 1

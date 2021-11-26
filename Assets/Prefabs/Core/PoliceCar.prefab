@@ -396,6 +396,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc1daf017ebd12a45b761218f9b5d95c, type: 2}
+    - target: {fileID: -5942492658381683676, guid: 1dc40a6e28fd1ae4d8b4ad3a6684cea9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e41e012fc206d024f9af015ffb9b9c0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 1dc40a6e28fd1ae4d8b4ad3a6684cea9, type: 3}
       propertyPath: m_Name
       value: MDL_Politie_wagen
@@ -408,6 +412,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1888267378562964907, guid: 1dc40a6e28fd1ae4d8b4ad3a6684cea9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 746065a67425e594485f7f0906f701b1, type: 2}
     - target: {fileID: 4991254680979497757, guid: 1dc40a6e28fd1ae4d8b4ad3a6684cea9, type: 3}
       propertyPath: m_Layer
       value: 12

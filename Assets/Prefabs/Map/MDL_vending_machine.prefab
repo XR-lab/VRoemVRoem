@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2004093925730026546}
   - component: {fileID: 3197594613169195927}
   - component: {fileID: 830021405247012701}
-  - component: {fileID: 435466217327852318}
   m_Layer: 0
   m_Name: MDL_vending_machine
   m_TagString: Untagged
@@ -83,26 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!205 &435466217327852318
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190120603728240264}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.00004088017, y: -0.00009999797, z: 0.0068191066}
-  m_Size: 0.013638217
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.14601505
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 830021405247012701}
-    - renderer: {fileID: 7717974782545116535}
-  m_Enabled: 1
 --- !u!1 &6559698127489110442
 GameObject:
   m_ObjectHideFlags: 0
