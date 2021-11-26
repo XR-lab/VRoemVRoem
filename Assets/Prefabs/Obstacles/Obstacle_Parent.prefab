@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedMultiplier: 1
-  _clipSpeedMultiplier: 1
+  _dependantOnSpeedManager: 1
 --- !u!114 &5879329536318243083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionToDestroyZ: -10
+  secondsBetweenDestroy: 0
 --- !u!1 &4184772273496730221
 GameObject:
   m_ObjectHideFlags: 0

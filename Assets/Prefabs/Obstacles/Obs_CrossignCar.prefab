@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1448429038725882983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92073460394027514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedLossMultiplier: 0
 --- !u!65 &5308279976915366852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26,6 +13,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010523797, y: 0.013197431, z: 0.025513915}
   m_Center: {x: -0.0087327715, y: 0.00037819266, z: 0.0002309537}
+--- !u!114 &1448429038725882983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92073460394027514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedLossMultiplier: 0
 --- !u!1001 &2209853414520718854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,6 +89,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1900728576484349791, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: _speedMultiplier
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900728576484349791, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
+      propertyPath: _dependantOnSpeedManager
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1971217287497033515, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
       propertyPath: _renderer
       value: 
@@ -107,7 +115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5879329536318243083, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}
       propertyPath: secondsBetweenDestroy
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1971217287497033515, guid: 4d1362cccc9f88342a2c3158c4c55e83, type: 3}

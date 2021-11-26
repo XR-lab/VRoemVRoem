@@ -8,6 +8,7 @@ namespace XRLab.VRoem.Core
     public class MoveObstacle : MonoBehaviour
     {
         [SerializeField] private float _speedMultiplier = 1;  
+        [SerializeField] private bool _dependantOnSpeedManager = true;  
 
         private SpeedManager speedManager;
         private float _speed;
@@ -25,7 +26,7 @@ namespace XRLab.VRoem.Core
         private void Update()
         {
             //Move forward based on the speedmanagers speed and a multiplier for some objects like cars
-            _speed = speedManager.FinalSpeed * _speedMultiplier;
+            _speed = (_dependantOnSpeedManager ? speedManager.FinalSpeed : 1) * _speedMultiplier;
 
             transform.position += transform.forward * _speed * Time.deltaTime;
         }       
