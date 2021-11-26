@@ -48,8 +48,10 @@ namespace XRLab.VRoem.Core
         // call to restart level
         public void RestartLevel() {
             Time.timeScale = 1;
-
-            SceneManager.LoadScene(0);
+            Scene scene;
+            scene = SceneManager.GetActiveScene();
+            
+            SceneManager.LoadScene(scene.name);
         }
 
         public void PauzeMenuButton() {
@@ -75,7 +77,7 @@ namespace XRLab.VRoem.Core
         }
 
         public void BackToMainMenu() {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
 
         public void ActivateFinsishMenu() {
