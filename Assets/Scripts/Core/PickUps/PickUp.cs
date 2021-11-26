@@ -28,7 +28,7 @@ namespace XRLab.VRoem.Core
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.attachedRigidbody.CompareTag("Player"))
             {
                 PowerUp();
                 counter.totaalCount++;
