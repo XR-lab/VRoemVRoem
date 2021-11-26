@@ -40,8 +40,6 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
         _rb.AddForceAtPosition(collision.relativeVelocity.normalized * force, collision.contacts[0].point, ForceMode.Impulse);
 
         Invoke(nameof(AddMoveWithRoadComponent), _waitForGroundCheck);
-
-        MoneySystem.currentMonney = MoneySystem.currentMonney - MoneySystem.MonneyToLose;
     }
 
     private void AddMoveWithRoadComponent()
