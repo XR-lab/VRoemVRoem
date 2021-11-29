@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435264268963259446}
-  m_LocalRotation: {x: 0.27362114, y: -0, z: -0, w: 0.9618376}
-  m_LocalPosition: {x: 3.1600025, y: 2.498, z: 5.1303053}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 3.16, y: 2.83, z: 5.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3139960082114230393}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 31.76, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!65 &8061780266265493686
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5f3ae6ce7d6ae4f34b38b087a8a289e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5f3ae6ce7d6ae4f34b38b087a8a289e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -422,6 +422,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5f3ae6ce7d6ae4f34b38b087a8a289e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40007b180f869ca409e4d6baddf92c56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5f3ae6ce7d6ae4f34b38b087a8a289e2, type: 3}
       propertyPath: m_Name
       value: MDL_BO_ramp_01
@@ -496,6 +500,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f909aebb04cb24c729b92a0b6ca20b1d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40007b180f869ca409e4d6baddf92c56, type: 2}
     - target: {fileID: 919132149155446097, guid: f909aebb04cb24c729b92a0b6ca20b1d, type: 3}
       propertyPath: m_Name
       value: MDL_BO_Bridge_01
