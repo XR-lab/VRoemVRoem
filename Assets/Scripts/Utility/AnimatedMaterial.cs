@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class AnimatedMaterial : MonoBehaviour
 {
+    [SerializeField] private Texture[] _albedoArray;
     [SerializeField] private Texture[] _occlusionArray;
     [SerializeField] private float _interval = 0.025f;
     private Material _material;
 
-    private int _arrayIndex = 0;
+    private int _albedoIndex = 0;
+    private int _occlusionIndex = 0;
     private float _timer = 0;
 
     // Start is called before the first frame update
@@ -29,14 +31,32 @@ public class AnimatedMaterial : MonoBehaviour
 
         _timer = 0;
 
-        if (_arrayIndex < _occlusionArray.Length)
+        if (_albedoArray.Length > 0)
         {
-            _arrayIndex += 1;
+            if (_albedoIndex < _albedoArray.Length)
+            {
+                _albedoIndex += 1;
+            }
+            else
+            {
+                _albedoIndex = 0;
+            }
+            _material.mainTexture = _albedoArray[_albedoIndex];
+        }
+
+        if (_occlusionArray.Length == 0)
+        {
+            return;
+        }
+
+        if (_occlusionIndex < _occlusionArray.Length)
+        {
+            _occlusionIndex += 1;
         }
         else
         {
-            _arrayIndex = 0;
+            _occlusionIndex = 0;
         }
-        _material.SetTexture("_OcclusionMap", _occlusionArray[_arrayIndex]);
+        _material.SetTexture("_OcclusionMap", _occlusionArray[_occlusionIndex]);
     }
 }
