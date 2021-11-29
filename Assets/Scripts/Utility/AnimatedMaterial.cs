@@ -33,7 +33,7 @@ public class AnimatedMaterial : MonoBehaviour
 
         if (_albedoArray.Length > 0)
         {
-            if (_albedoIndex < _albedoArray.Length)
+            if (_albedoIndex < _albedoArray.Length - 1)
             {
                 _albedoIndex += 1;
             }
@@ -49,7 +49,7 @@ public class AnimatedMaterial : MonoBehaviour
             return;
         }
 
-        if (_occlusionIndex < _occlusionArray.Length)
+        if (_occlusionIndex < _occlusionArray.Length - 1)
         {
             _occlusionIndex += 1;
         }

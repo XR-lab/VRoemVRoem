@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1386539703}
   - component: {fileID: 1386539701}
   - component: {fileID: 1386539704}
+  - component: {fileID: 3875819090022581421}
   m_Layer: 0
   m_Name: Train
   m_TagString: Untagged
@@ -79,6 +80,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 19.248642, y: 2.39299, z: 1.9814501}
   m_Center: {x: -9.686157, y: 1.1794043, z: 0.14197588}
+--- !u!114 &3875819090022581421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770136342815084379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedLossMultiplier: 0
 --- !u!33 &7874391259443767524
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -138,6 +152,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc1daf017ebd12a45b761218f9b5d95c, type: 2}
     - target: {fileID: -5754084199372789682, guid: d2ac068e3b2c243868dc6ae12d9a5514, type: 3}
       propertyPath: m_Mesh
       value: 
