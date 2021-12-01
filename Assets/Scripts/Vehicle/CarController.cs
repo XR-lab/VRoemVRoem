@@ -9,7 +9,6 @@ namespace XRLab.VRoem.Vehicle {
     public class CarController : MonoBehaviour {
         [Header("The Controllers")]
         [SerializeField] private Transform _rightHandAnchor;
-        [SerializeField] private Transform _leftHandAnchor;
 
         [Header("Misc")]
         [SerializeField] private float _speedMultiplierAdded = 0.2f;
@@ -19,8 +18,6 @@ namespace XRLab.VRoem.Vehicle {
         [SerializeField] private Vector3 _positionModifier;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Color _rayColor = Color.red;
-        [SerializeField] private float _maxHandDistance = 5;
-        private Vector3 _lastValidHandPosition;
 
         [Header("Audio")]
         public AudioSource _carBoostAudio;
@@ -64,20 +61,15 @@ namespace XRLab.VRoem.Vehicle {
         #region Conroller Position Moves Car
         private void ShootControlRay() {
 
-            if (Vector3.Distance(_leftHandAnchor.position, _rightHandAnchor.position) < _maxHandDistance)
-            {
-                _lastValidHandPosition = _rightHandAnchor.position + (_leftHandAnchor.position - _rightHandAnchor.position) / 2;
-            }
-
             if (Input.GetKeyDown(KeyCode.C))
             {
                 _mouseControl = !_mouseControl;
             }
 
             //Shoot Ray from right hand or mouse
-            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_lastValidHandPosition, Vector3.forward);
+            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_rightHandAnchor.position, Vector3.forward);
             RaycastHit hit;
-            Ray rayAccel = _mouseControl ? ray : new Ray(_lastValidHandPosition, _rightHandAnchor.forward);
+            Ray rayAccel = _mouseControl ? ray : new Ray(_rightHandAnchor.position, _rightHandAnchor.forward);
             RaycastHit hitAccel;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer)) {
