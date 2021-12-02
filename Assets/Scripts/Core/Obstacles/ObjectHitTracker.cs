@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 
 namespace XRLab.VRoem.Core
@@ -14,6 +13,7 @@ namespace XRLab.VRoem.Core
         [SerializeField] private int policeCarsToInstantiate = 2;
         private SirenLights sirenLights;
         private InGameMenu inGameMenu;
+        private SpeedManager _speedManager;
        
         public float leftMapBoundary;
         public float rightMapBoundary;
@@ -35,14 +35,12 @@ namespace XRLab.VRoem.Core
             {
                 case 1:
                     EventCauses(this.gameObject, 1);
-                    break;
-                case 2:
                     EventCauses(mainPoliceCarNextPosition, 2);
                     break;
-                case 3:
-                    EventCauses(mainPoliceCarNextPosition, 3);
+                case 2:
+                    EventCauses(mainPoliceCarNextPosition, 3);                    
                     break;
-                case 4:
+                case 3:                    
                     EventCauses(inGameMenu.deadMenu, 4);
                     break;
             }
@@ -103,7 +101,6 @@ namespace XRLab.VRoem.Core
                 //Forth time hit, where the gameover ui will be shown
                 case 4:
                     targetGameObject.SetActive(true);
-                    Time.timeScale = 0;
                     break;
 
             }

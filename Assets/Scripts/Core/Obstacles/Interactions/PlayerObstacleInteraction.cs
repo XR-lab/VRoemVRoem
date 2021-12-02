@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerObstacleInteraction : MonoBehaviour
 {
     private bool interacting = false;
+    private bool interactingTrigger = false;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,9 +19,9 @@ public class PlayerObstacleInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (!interacting && col.attachedRigidbody != null && col.attachedRigidbody.CompareTag("Player"))
+        if (!interactingTrigger && col.attachedRigidbody != null && col.attachedRigidbody.CompareTag("Player"))
         {
-            interacting = true;
+            interactingTrigger = true;
             Interact(col);
         }
     }

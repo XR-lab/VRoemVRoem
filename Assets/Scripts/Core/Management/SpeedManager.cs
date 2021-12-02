@@ -11,8 +11,11 @@ public class SpeedManager : MonoBehaviour {
     [SerializeField] private float _accelerationLerpSpeed = 1;
     [SerializeField] private float _currentMultiplier = 1;
     [SerializeField] private float _lerpSpeedMutltiplierThreshold = 0.5f;
+    [SerializeField] private float _speedBeforeHit = 0;
+    [SerializeField] private float _timeBeforeFullAccel = 2;
 
     public float FinalSpeed { get { return _finalSpeed; } }
+    public float SpeedBeforeHit { get { return _speedBeforeHit; } }
     public float CurrentMultiplier { get { return _currentMultiplier; } }
     private float _targetSpeed = 1;
     [SerializeField] private float _accelerationLerpMultiplier = 1;
@@ -21,7 +24,7 @@ public class SpeedManager : MonoBehaviour {
 
     private void Start() {
         _modifiedSpeed = _baseSpeed;
-        LoseAllSpeed(0.1f);
+        LoseSpeed(0.1f, 0);
     }
 
     public void CalculateModifedSpeed(float multiplier) {
@@ -47,10 +50,6 @@ public class SpeedManager : MonoBehaviour {
         } else {
             _finalSpeed = _targetSpeed;
         }
-
-        if (_finalSpeed > _baseSpeed && !_overwritingControllerSpeed) {
-            _accelerationLerpMultiplier = 1;
-        }
     }
 
     public void OverrideControllerSpeed(float multiplier, float slowerAccelMultiplier) {
@@ -59,9 +58,22 @@ public class SpeedManager : MonoBehaviour {
         SetModifiedSpeed(multiplier);
     }
 
-    public void LoseAllSpeed(float slowerAccelMultiplier) {
-        _finalSpeed = 0;
+    public void LoseSpeed(float slowerAccelMultiplier, float speedLossMultiplier) {
+        _speedBeforeHit = _finalSpeed;
+        _finalSpeed *= speedLossMultiplier;
         SetModifiedSpeed(1);
         _accelerationLerpMultiplier = slowerAccelMultiplier;
+        Invoke(nameof(SetFullAcceleration), _timeBeforeFullAccel);
+    }
+
+    private void SetFullAcceleration()
+    {
+        _accelerationLerpMultiplier = 1;
+    }
+
+    public void StopSpeedingUp()
+    {
+        _baseSpeed = 0;
+        _accelerationLerpMultiplier = 0.5f;
     }
 }

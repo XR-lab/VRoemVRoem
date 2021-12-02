@@ -56,6 +56,8 @@ namespace XRLab.VRoem.Vehicle {
         [SerializeField] private float _rollPercentModifier = 0.25f;
         [Tooltip("distance between player and next position, to achieve full rotation")]
         [SerializeField] private float _maxTurnDistance = 5;
+        [Tooltip("distance between player and next position, to achieve full rotation")]
+        [SerializeField] private float _minTurnDistance = 0.25f;
         private float turnPercentage;
 
         [Header("Raycasts on the wheels")]
@@ -214,9 +216,16 @@ namespace XRLab.VRoem.Vehicle {
             _forwardTransform.localRotation = new Quaternion(0, Mathf.Clamp(_forwardTransform.localRotation.y, -_maxTurnAngle, _maxTurnAngle), 0, _forwardTransform.localRotation.w);
 
             lookat.z = transform.position.z;
-            float rollPercent = Mathf.Clamp01(turnPercentage - _rollPercentModifier);
 
-            targetRotation = new Quaternion(0, 0, _forwardTransform.localRotation.y > 0 ? -_maxRollTurn * rollPercent * rotationPercentMultiplier : _maxRollTurn * rollPercent * rotationPercentMultiplier, _model.localRotation.w);
+            float rollPercent = Mathf.Clamp01(turnPercentage - _rollPercentModifier);
+            float roll = 0;
+
+            if (rollPercent > _minTurnDistance)
+            {
+                roll = _forwardTransform.localRotation.y > 0 ? -_maxRollTurn * rollPercent * rotationPercentMultiplier : _maxRollTurn * rollPercent * rotationPercentMultiplier;
+            }
+
+            targetRotation = new Quaternion(0, 0, roll, _model.localRotation.w);
             _model.localRotation = Quaternion.Slerp(_model.localRotation, targetRotation, _rollRotationSpeed * Time.deltaTime);
         }
 
