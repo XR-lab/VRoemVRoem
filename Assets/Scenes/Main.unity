@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1676756394}
-  m_IndirectSpecularColor: {r: 0.46479136, g: 0.1123646, b: 0.3632256, a: 1}
+  m_IndirectSpecularColor: {r: 0.46498454, g: 0.11236244, b: 0.3657881, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3327,7 +3327,7 @@ PrefabInstance:
     - target: {fileID: 3273911351936825541, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: b1ec3ff028e081343a96a579038f4556, type: 3}
+      objectReference: {fileID: 8300000, guid: a812fbcba14754747a15b3459f4d6b9d, type: 3}
     - target: {fileID: 3603456097069098882, guid: 69d49675d97627c4da408a47dce84915, type: 3}
       propertyPath: m_LocalPosition.x
       value: 195.8
@@ -3956,6 +3956,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2570701798365103031, guid: 69d49675d97627c4da408a47dce84915, type: 3}
   m_PrefabInstance: {fileID: 1954504167}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1954504169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6384667726235502806, guid: 69d49675d97627c4da408a47dce84915, type: 3}
+  m_PrefabInstance: {fileID: 1954504167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1954504170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954504169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb3b741ae0f92745a207ed1c31896be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trainSpeed: 0
+  leftToRight: 0
+  rightToLeft: 0
+  currentTrainWay: 0
 --- !u!1001 &1955394489
 PrefabInstance:
   m_ObjectHideFlags: 0
