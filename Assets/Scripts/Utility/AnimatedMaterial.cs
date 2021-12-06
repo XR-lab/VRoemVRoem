@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimatedMaterial : MonoBehaviour
 {
+    [SerializeField] private Texture[] _albedoArray;
     [SerializeField] private Texture[] _occlusionArray;
     [SerializeField] private float _interval = 0.025f;
     private Material _material;
