@@ -279,7 +279,7 @@ MonoBehaviour:
   _gravityMultiplierBasedOnUp: 2
   _normalBasedSpeedMultiplier: 0.25
   _normalSmoothing: 20
-  _rotInAirSpeed: 4
+  _rotInAirSpeed: 8
   _dynamicToleranceZ: 0.1
   _boostMultiplierPosZ: 1.25
   _boundsX: 6.35
