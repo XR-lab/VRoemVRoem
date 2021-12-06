@@ -4335,3 +4335,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &4169472200224604239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1870646846}
+    m_Modifications:
+    - target: {fileID: 4169472201520436950, guid: 22baf9567e57e4b629ee1397858f7993, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169472201520436950, guid: 22baf9567e57e4b629ee1397858f7993, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169472201520436950, guid: 22baf9567e57e4b629ee1397858f7993, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169472201520436950, guid: 22baf9567e57e4b629ee1397858f7993, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169472201520436955, guid: 22baf9567e57e4b629ee1397858f7993, type: 3}
+      propertyPath: m_Name
+      value: Godzilla_animation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22baf9567e57e4b629ee1397858f7993, type: 3}
