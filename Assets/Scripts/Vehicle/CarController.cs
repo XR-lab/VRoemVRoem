@@ -35,7 +35,9 @@ namespace XRLab.VRoem.Vehicle {
         private SimpleMovementCar _car;
         private LineRenderer _lineRenderer;
         private SpeedManager _speedManager;
-        private Transform _vrCam;
+        private Transform _vrSpace;
+        private Camera _vrCam;
+        private Camera _lerpCam;
 
         private bool _mouseControl = false;
         private float _startingPosModiferX = 0;
@@ -46,9 +48,10 @@ namespace XRLab.VRoem.Vehicle {
             _lineRenderer = GetComponent<LineRenderer>();
             _speedManager = FindObjectOfType<SpeedManager>();
             _boostTimer = _boostDuration;
-            _vrCam = GameObject.FindGameObjectWithTag(Tags.OVR).transform;
+            _vrSpace = GameObject.FindGameObjectWithTag(Tags.OVR).transform;
+            _vrCam = GameObject.FindGameObjectWithTag(Tags.OVR).transform.GetComponentInChildren<OVRScreenFade>().GetComponent<Camera>();
+            _lerpCam = FindObjectOfType<CameraLerp>().GetComponent<Camera>();
         }
-
 
         private void Update() {
             ShootControlRay();
@@ -73,8 +76,10 @@ namespace XRLab.VRoem.Vehicle {
                 _mouseControl = !_mouseControl;
             }
 
+            Camera cam = _vrCam.enabled ? _vrCam : _lerpCam;
+
             //Shoot Ray from right hand or mouse
-            Ray ray = _mouseControl ? Camera.main.ScreenPointToRay(Input.mousePosition) : new Ray(_rightHandAnchor.position, Vector3.forward);
+            Ray ray = _mouseControl ? cam.ScreenPointToRay(Input.mousePosition) : new Ray(_rightHandAnchor.position, Vector3.forward);
             RaycastHit hit;
             Ray rayAccel = _mouseControl ? ray : new Ray(_rightHandAnchor.position, _rightHandAnchor.forward);
             RaycastHit hitAccel;
