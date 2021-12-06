@@ -25,7 +25,9 @@ public class CarDamage : MonoBehaviour
     private bool _invincible = false;
     private bool _blinking = false;
     private int _oldHealth = 3;
-    ObjectHitTracker _hitTracker;
+
+    public delegate void DamageDelegate();
+    public DamageDelegate OnDamage;
 
     void Start()
     {
@@ -33,7 +35,6 @@ public class CarDamage : MonoBehaviour
         color.a = 0;
         _healthImage.color = color;
         _health = _maxHealth;
-        _hitTracker = FindObjectOfType<ObjectHitTracker>();
         _carMovement = GetComponent<SimpleMovementCar>();
     }
 
@@ -47,8 +48,8 @@ public class CarDamage : MonoBehaviour
         _oldHealth = _health;
 
         _carMovement.CanMove = false;
-        _hitTracker.objectHitCounter += 1;
         _health -= 1;
+        OnDamage();
 
         if (_health > 0)
         {

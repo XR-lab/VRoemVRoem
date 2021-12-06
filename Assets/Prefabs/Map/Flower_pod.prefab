@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 611165009184108395}
   - component: {fileID: 7020978024046495223}
   - component: {fileID: 965079975969207633}
+  - component: {fileID: 1704980748720186161}
+  - component: {fileID: 1858368410780120188}
   m_Layer: 0
   m_Name: Flower_pod
   m_TagString: Untagged
@@ -108,3 +110,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedLossMultiplier: 0
+--- !u!114 &1704980748720186161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098677337020505663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca1010685451d2448b5c3ea22d5d11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forceMultiplier: 0.5
+  _upForceMultiplier: 10
+  _policeUpForceMultiplier: 10
+  _waitForGroundCheck: 0.1
+  _policeOnly: 0
+  _boxCollider: {fileID: 1858368410780120188}
+--- !u!65 &1858368410780120188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098677337020505663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1, z: 1.0000001}
+  m_Center: {x: 0.000015258789, y: 0, z: 0.00000071525574}

@@ -125,7 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceMultiplier: 0.5
   _upForceMultiplier: 10
+  _policeUpForceMultiplier: 10
   _waitForGroundCheck: 0.1
+  _policeOnly: 0
+  _boxCollider: {fileID: 9209822476324181877}
 --- !u!65 &9209822476324181877
 BoxCollider:
   m_ObjectHideFlags: 0

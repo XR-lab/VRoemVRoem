@@ -6,27 +6,60 @@ using XRLab.VRoem.Core;
 //TODO: Add Namespace, fix curly braces
 public class ObstacleBreakInteraction : PlayerObstacleInteraction
 {
-    [SerializeField] private float _forceMultiplier = 1;
-    [SerializeField] private float _upForceMultiplier = 50;
+    [SerializeField] private float _forceMultiplier = 0.5f;
+    [SerializeField] private float _upForceMultiplier = 25;
+    [SerializeField] private float _policeUpForceMultiplier = 10;
     //[SerializeField] private float _explosionForceMultiplier = 1;
     [SerializeField] private float _waitForGroundCheck = 0.1f;
+    [SerializeField] private bool _policeOnly = true;
+    [SerializeField] private BoxCollider _boxCollider;
     //[SerializeField] private float _upwardsForce = 1;
     private Rigidbody _rb;
     private SpeedManager _speedManager;
+    private MoveObstacle _moveObstacle;
 
     private void Start()
     {
         _speedManager = FindObjectOfType<SpeedManager>();
+        _moveObstacle = GetComponent<MoveObstacle>();
+
+        if (_policeOnly)
+        {
+            _boxCollider.enabled = false;
+        }
     }
 
     protected override void Interact(Collision collision)
     {
+        if (_policeOnly)
+        {
+            return;
+        }
+
+        BlowAway(collision.relativeVelocity.normalized, collision.contacts[0].point, _upForceMultiplier);
+    }
+
+    protected override void RunOver()
+    {
+        _boxCollider.enabled = true;
+        BlowAway(Vector3.forward, transform.position, _policeUpForceMultiplier);
+    }
+
+    private void BlowAway(Vector3 dir, Vector3 point, float upForceMultiplier)
+    {
+        if (_moveObstacle != null)
+        {
+            _moveObstacle.enabled = false;
+        }
+        
         _rb = GetComponent<Rigidbody>();
 
-        if (_rb == null) {
+        if (_rb == null)
+        {
             _rb = gameObject.AddComponent<Rigidbody>();
         }
-        else {
+        else
+        {
             _rb.isKinematic = false;
         }
 
@@ -36,8 +69,8 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
 
         float force = playerSpeed * _forceMultiplier;
 
-        _rb.AddForce(Vector3.up * _upForceMultiplier, ForceMode.Impulse);
-        _rb.AddForceAtPosition(collision.relativeVelocity.normalized * force, collision.contacts[0].point, ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * upForceMultiplier, ForceMode.Impulse);
+        _rb.AddForceAtPosition(dir * force, point, ForceMode.Impulse);
 
         Invoke(nameof(AddMoveWithRoadComponent), _waitForGroundCheck);
     }

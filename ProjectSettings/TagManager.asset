@@ -8,6 +8,8 @@ TagManager:
   - OVR
   - Counter
   - Obstacle
+  - StopPolice
+  - Map
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - RayHit
   - Player
   - Bounds
-  - ClippingPlane
+  - ObstacleOnly
   - Obstacle
   - PoPo
   - 

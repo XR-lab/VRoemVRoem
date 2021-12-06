@@ -244,10 +244,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6462640463444659373}
-  - component: {fileID: 6462640463444659369}
-  - component: {fileID: 6462640463444659374}
-  - component: {fileID: 6462640463444659375}
-  - component: {fileID: 6462640463444659372}
+  - component: {fileID: 7990642252297963443}
+  - component: {fileID: 1611598588714312075}
+  - component: {fileID: 5886574456293821010}
+  - component: {fileID: 6799953536740876751}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -262,22 +262,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6462640463444659346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6462640462589628759}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &6462640463444659369
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462640463444659346}
-  m_Enabled: 1
---- !u!20 &6462640463444659374
+--- !u!20 &7990642252297963443
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,7 +312,15 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &6462640463444659375
+--- !u!81 &1611598588714312075
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462640463444659346}
+  m_Enabled: 1
+--- !u!114 &5886574456293821010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,7 +336,7 @@ MonoBehaviour:
   fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
   fadeOnStart: 1
   renderQueue: 5000
---- !u!114 &6462640463444659372
+--- !u!114 &6799953536740876751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 6462640463446392358}
   - component: {fileID: 6462640463446392359}
   - component: {fileID: 6462640463446392356}
+  - component: {fileID: 1190972609119934681}
   m_Layer: 0
   m_Name: OVRCameraRig (Player)
   m_TagString: Untagged
@@ -494,6 +495,20 @@ MonoBehaviour:
   resetHmdPoseByMiddleMouseButton: 1
   activateKeys: 3201000031010000
   pitchKeys: 3401000033010000
+--- !u!114 &1190972609119934681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462640463446392357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69fb7125187f3640a6351cf3cd5b170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lerpSpeed: 1
+  _minDistance: 0.5
 --- !u!1 &6462640463700817730
 GameObject:
   m_ObjectHideFlags: 0
