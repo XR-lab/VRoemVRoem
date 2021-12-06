@@ -50,7 +50,7 @@ namespace XRLab.VRoem.Vehicle {
             _boostTimer = _boostDuration;
             _vrSpace = GameObject.FindGameObjectWithTag(Tags.OVR).transform;
             _vrCam = GameObject.FindGameObjectWithTag(Tags.OVR).transform.GetComponentInChildren<OVRScreenFade>().GetComponent<Camera>();
-            _lerpCam = FindObjectOfType<CameraLerp>().GetComponent<Camera>();
+            _lerpCam = FindObjectOfType<CameraLerp>().GetComponentInChildren<Camera>();
         }
 
         private void Update() {

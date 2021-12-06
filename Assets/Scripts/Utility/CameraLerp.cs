@@ -19,7 +19,7 @@ public class CameraLerp : MonoBehaviour
     {
         _vrCam = GameObject.FindGameObjectWithTag(Tags.OVR).transform.GetComponentInChildren<OVRScreenFade>().GetComponent<Camera>();
         transform.position = _vrCam.transform.position;
-        _cam = GetComponent<Camera>();
+        _cam = GetComponentInChildren<Camera>();
         _startPos = transform.position;
         _cam.enabled = false;
         _vrCam.enabled = true;
@@ -34,7 +34,7 @@ public class CameraLerp : MonoBehaviour
         }
 
         _targetPos.z = transform.position.z;
-        transform.position = Vector3.Lerp(transform.position, _targetPos, _lerpSpeed * Time.deltaTime) + _vrCam.transform.localPosition;
+        transform.position = Vector3.Lerp(transform.position, _targetPos, _lerpSpeed * Time.deltaTime);
         transform.rotation = _vrCam.transform.rotation;
 
         if (Vector3.Distance(transform.position, _targetPos) < _minDistance)
