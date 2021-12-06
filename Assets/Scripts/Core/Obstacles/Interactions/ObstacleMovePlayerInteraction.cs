@@ -6,18 +6,23 @@ using XRLab.VRoem.Vehicle;
 //TODO: Add Namespace
 public class ObstacleMovePlayerInteraction : PlayerObstacleInteraction
 {
-    [SerializeField] private float _posX = 1;
-    [SerializeField] private bool _addCurrentPositionX = false;
+    [SerializeField] private Vector2 _pos;
+    [SerializeField] private bool _addCurrentPosition = false;
 
     protected override void Interact(Collider col)
     {
-        float x = _posX;
+        Vector2 pos = _pos;
 
-        if (_addCurrentPositionX)
+        if (_addCurrentPosition)
         {
-            x += transform.position.x;
+            _pos += new Vector2(transform.position.x, transform.position.y);
         }
 
-        col.attachedRigidbody.GetComponent<SimpleMovementCar>().SetOverridenTargetPoint(x);
+        Transform player = col.attachedRigidbody.transform;
+
+        Vector3 teleportPos = _pos;
+        teleportPos.z = player.position.z;
+
+        player.transform.position = teleportPos;
     }
 }

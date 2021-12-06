@@ -179,7 +179,7 @@ namespace XRLab.VRoem.Vehicle {
 
         private void UpdateCarBackBounds() 
         {
-            _backCarBounds.position = new Vector3(0, _backCarBounds.position.y, Mathf.Clamp(transform.position.z, _lockedPosZ * 1 - _dynamicToleranceZ, _lockedPosZ * 1 + _dynamicToleranceZ) - 1.1f);
+            _backCarBounds.position = new Vector3(0, _backCarBounds.position.y, Mathf.Clamp(transform.position.z, _lockedPosZ * 1 - _dynamicToleranceZ, _lockedPosZ * 1 + _dynamicToleranceZ) - 1.6f);
         }
 
         private void LookAtTarget() 
@@ -230,7 +230,7 @@ namespace XRLab.VRoem.Vehicle {
         }
 
         public override void SetOrientation(Vector3 lookAtPosition, bool boosting) 
-        {
+        {            
             float multiplier = boosting ? _boostMultiplierPosZ : Mathf.Clamp(_speedManager.CurrentMultiplier, 1 - _dynamicToleranceZ, 1 + _dynamicToleranceZ);
 
             _dynamicPosZ = _lockedPosZ * multiplier;

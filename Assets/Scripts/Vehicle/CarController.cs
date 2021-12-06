@@ -9,10 +9,10 @@ namespace XRLab.VRoem.Vehicle {
     public class CarController : MonoBehaviour {
         [Header("The Controllers")]
         [SerializeField] private Transform _rightHandAnchor;
+        [SerializeField] private OVRManager _rightHandControllerHelp;
 
         [Header("Misc")]
         [SerializeField] private float _speedMultiplierAdded = 0.2f;
-        [SerializeField] private float _fillBoostSpeed = 0.25f;
         [SerializeField] private float _tresholdToAccelerate = 0.8f;
         [SerializeField] private float _tresholdToDeccelerate = 0.2f;
         [SerializeField] private Vector3 _positionModifier;
@@ -38,18 +38,15 @@ namespace XRLab.VRoem.Vehicle {
         private Transform _vrCam;
 
         private bool _mouseControl = false;
+        private float _startingPosModiferX = 0;
 
         private void Start() {
+            _startingPosModiferX = _positionModifier.x;
             _car = GetComponent<SimpleMovementCar>();
             _lineRenderer = GetComponent<LineRenderer>();
             _speedManager = FindObjectOfType<SpeedManager>();
             _boostTimer = _boostDuration;
             _vrCam = GameObject.FindGameObjectWithTag(Tags.OVR).transform;
-
-            //When releasing boost before the boost meter is empty this variable will fill it up instead of the normal cooldown
-            //It does a calculation to make sure it will take as long as the given cooldown
-            _fillBoostSpeed = 1 / (1 / _boostDuration * _boostCooldown);
-
         }
 
 
@@ -57,6 +54,16 @@ namespace XRLab.VRoem.Vehicle {
             ShootControlRay();
             deactivateboost();
         }
+
+        //public void SetToDefaultPostionModiferX()
+        //{
+        //    _positionModifier.x = _startingPosModiferX;
+        //}
+
+        //public void OverridePositionModifierX(float x)
+        //{
+        //    _positionModifier.x = x;
+        //}
 
         #region Conroller Position Moves Car
         private void ShootControlRay() {
@@ -95,6 +102,8 @@ namespace XRLab.VRoem.Vehicle {
                     _speedManager.CalculateModifedSpeed(multiplier);
                 }
             }
+
+            Debug.DrawLine(ray.origin, hit.point, Color.red);
         }
         #endregion
         #region Boosting

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6717376445937675762}
   - component: {fileID: -3843859727748739959}
   - component: {fileID: 3985156576676225798}
+  - component: {fileID: 619232822719190158}
+  - component: {fileID: 7131557455003752261}
   m_Layer: 0
   m_Name: MDL_pop_up_shop_mid
   m_TagString: Untagged
@@ -108,3 +110,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e321ab5954d3014da7cead045d6b502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedLossMultiplier: 0
+--- !u!114 &619232822719190158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059818618173213735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca1010685451d2448b5c3ea22d5d11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forceMultiplier: 0.5
+  _upForceMultiplier: 10
+  _policeUpForceMultiplier: 10
+  _waitForGroundCheck: 0.1
+  _policeOnly: 0
+  _boxCollider: {fileID: 7131557455003752261}
+--- !u!65 &7131557455003752261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059818618173213735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02040002, y: 0.010199999, z: 0.018700019}
+  m_Center: {x: -0.0011687272, y: -0.0012218626, z: 0.00095623964}

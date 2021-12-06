@@ -562,6 +562,8 @@ GameObject:
   - component: {fileID: 1320685358114916296}
   - component: {fileID: 8760132566070816631}
   - component: {fileID: -7611077898522242489}
+  - component: {fileID: 7294885742396077169}
+  - component: {fileID: 468455598083692287}
   m_Layer: 0
   m_Name: random car
   m_TagString: Untagged
@@ -611,6 +613,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedLossMultiplier: 0
+--- !u!114 &7294885742396077169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672280993991741788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca1010685451d2448b5c3ea22d5d11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forceMultiplier: 0.5
+  _upForceMultiplier: 10
+  _policeUpForceMultiplier: 10
+  _waitForGroundCheck: 0.1
+  _policeOnly: 1
+  _boxCollider: {fileID: 468455598083692287}
+--- !u!65 &468455598083692287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672280993991741788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.9505807}
+  m_Center: {x: 0.000000015048878, y: 0, z: 0.063119575}
 --- !u!1 &8901995214632080486
 GameObject:
   m_ObjectHideFlags: 0

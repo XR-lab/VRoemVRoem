@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788208455440820167}
   - component: {fileID: 4075428885654111249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MDL_Speler_wagen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7522611067387817683}
-  m_Layer: 0
+  - component: {fileID: 6428474956221272359}
+  m_Layer: 8
   m_Name: Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +79,20 @@ Transform:
   m_Father: {fileID: 5571448876694586838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6428474956221272359
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174385984405944391}
+  m_Material: {fileID: 13400000, guid: 037172857e88bca45ae26ad2ed8d25b6, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.62304336
+  m_Height: 2.4917746
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.08, z: 0.044845104}
 --- !u!1 &806071681746762070
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +188,7 @@ GameObject:
   - component: {fileID: 1021810409}
   - component: {fileID: 1021810410}
   - component: {fileID: 5678626680113757248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCar
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -241,9 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rightHandAnchor: {fileID: 0}
-  _leftHandAnchor: {fileID: 0}
   _speedMultiplierAdded: 0.2
-  _fillBoostSpeed: 0.25
   _tresholdToAccelerate: 0.4
   _tresholdToDeccelerate: 0.1
   _positionModifier: {x: 10, y: 4, z: 1}
@@ -251,7 +264,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _rayColor: {r: 1, g: 0, b: 0, a: 1}
-  _maxHandDistance: 0.2
   _carBoostAudio: {fileID: 0}
   boostEffects1: {fileID: 0}
   boostEffects2: {fileID: 0}
@@ -336,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6151382812070786326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +383,7 @@ GameObject:
   - component: {fileID: 5118621156715939591}
   - component: {fileID: 6566926544149003382}
   - component: {fileID: 9191341249761347373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: speler_wagen_wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +464,7 @@ GameObject:
   - component: {fileID: 4385135923114203261}
   - component: {fileID: 2076663060655525922}
   - component: {fileID: 8448119484517139459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: vfxgraph_Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +575,7 @@ GameObject:
   - component: {fileID: 6074981633391617356}
   - component: {fileID: 8962947331912390986}
   - component: {fileID: 8223347275722737613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: vfxgraph_MoneyDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +687,7 @@ GameObject:
   - component: {fileID: 8597071985918629949}
   - component: {fileID: 4940117163750634572}
   - component: {fileID: 1626816873079988502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1042,7 @@ GameObject:
   - component: {fileID: 5570168855673132806}
   - component: {fileID: 8102772659242097990}
   - component: {fileID: 364496066717314045}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1151,7 @@ GameObject:
   - component: {fileID: 2320189788061330806}
   - component: {fileID: 2719963896108888399}
   - component: {fileID: 1996870928876904805}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: speler_wagen.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
