@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XRLab.VRoem.Core;
 
 public class CameraLerp : MonoBehaviour
 {
@@ -10,30 +11,43 @@ public class CameraLerp : MonoBehaviour
     private bool _moveCamera = false;
     private Vector3 _startPos;
     private Vector3 _targetPos;
+    private Camera _cam;
+    private Camera _vrCam;
 
     // Start is called before the first frame update
     void Start()
     {
+        _vrCam = GameObject.FindGameObjectWithTag(Tags.OVR).transform.GetComponentInChildren<OVRScreenFade>().GetComponent<Camera>();
+        transform.position = _vrCam.transform.position;
+        _cam = GetComponentInChildren<Camera>();
         _startPos = transform.position;
+        _cam.enabled = false;
+        _vrCam.enabled = true;
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (!_moveCamera)
-    //    {
-    //        return;
-    //    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (!_moveCamera)
+        {
+            return;
+        }
 
-    //    _targetPos.z = transform.position.z;
-    //    transform.position = Vector3.Lerp(transform.position, _targetPos, _lerpSpeed * Time.deltaTime);
+        _targetPos.z = transform.position.z;
+        transform.position = Vector3.Lerp(transform.position, _targetPos, _lerpSpeed * Time.deltaTime);
+        transform.rotation = _vrCam.transform.rotation;
 
-    //    if (Vector3.Distance(transform.position, _targetPos) < _minDistance)
-    //    {
-    //        _moveCamera = false;
-            
-    //    }
-    //}
+        if (Vector3.Distance(transform.position, _targetPos) < _minDistance)
+        {
+            _moveCamera = false;
+
+            if (_targetPos == _startPos)
+            {
+                _cam.enabled = false;
+                _vrCam.enabled = true;
+            }
+        }
+    }
 
     public void MoveToStart()
     {
@@ -42,7 +56,9 @@ public class CameraLerp : MonoBehaviour
 
     public void MoveCameraToPos(Vector3 pos)
     {
-        pos.z = transform.position.z;
-        transform.position = pos;
+        _moveCamera = true;
+        _vrCam.enabled = false;
+        _cam.enabled = true;
+        _targetPos = pos;
     }
 }
