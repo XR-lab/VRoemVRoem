@@ -83,9 +83,6 @@ namespace XRLab.VRoem.Core
         public void ActivateFinsishMenu() {
 
             finishMenu.SetActive(true);
-            MoneyGot.text = "Your money: " + MoneySystem.currentMonney.ToString();
-            Moneyearnd.text = "Earnd money: " + MoneySystem.TotalMoney.ToString();
-
         }
     }
 }
