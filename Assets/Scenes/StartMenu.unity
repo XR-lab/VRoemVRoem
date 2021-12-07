@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 462634579}
-  m_IndirectSpecularColor: {r: 0.46479136, g: 0.1123646, b: 0.3632256, a: 1}
+  m_IndirectSpecularColor: {r: 0.46478814, g: 0.11235163, b: 0.3632237, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1002,7 +1002,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1731172473}
         m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1875,8 +1875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12cad15679f6894a8892c110b027716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenu: {fileID: 0}
   _screenFade: {fileID: 0}
+  _sceneName: Cutscene
 --- !u!1001 &1744268304
 PrefabInstance:
   m_ObjectHideFlags: 0
