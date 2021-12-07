@@ -12,14 +12,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Clicking",
-                    "type": "Button",
-                    "id": "8ab304e0-2205-4512-ade9-c5dd5f92faa3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -36,12 +28,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5ead542d-1e90-4e6a-b604-52ff1898209c",
-                    "path": "",
+                    "id": "23bc744a-6dc0-4c73-b975-f9f65d8e4fce",
+                    "path": "<XRController>{RightHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Clicking",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

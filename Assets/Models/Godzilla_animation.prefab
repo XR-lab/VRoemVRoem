@@ -127,4 +127,5 @@ MonoBehaviour:
   - {fileID: 2800000, guid: a20fbb105b4d24a03837528bc554eee1, type: 3}
   - {fileID: 2800000, guid: af0d482277e844b2b87f97c526c86390, type: 3}
   _occlusionArray: []
-  _interval: 0.025
+  _interval: 0.1
+  _delayTime: 3

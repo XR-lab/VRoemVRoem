@@ -25,14 +25,6 @@ public class @OculusBindings : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Clicking"",
-                    ""type"": ""Button"",
-                    ""id"": ""8ab304e0-2205-4512-ade9-c5dd5f92faa3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -49,12 +41,12 @@ public class @OculusBindings : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5ead542d-1e90-4e6a-b604-52ff1898209c"",
-                    ""path"": """",
+                    ""id"": ""23bc744a-6dc0-4c73-b975-f9f65d8e4fce"",
+                    ""path"": ""<XRController>{RightHand}/primaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Clicking"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -66,7 +58,6 @@ public class @OculusBindings : IInputActionCollection, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
-        m_UI_Clicking = m_UI.FindAction("Clicking", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -117,13 +108,11 @@ public class @OculusBindings : IInputActionCollection, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Confirm;
-    private readonly InputAction m_UI_Clicking;
     public struct UIActions
     {
         private @OculusBindings m_Wrapper;
         public UIActions(@OculusBindings wrapper) { m_Wrapper = wrapper; }
         public InputAction @Confirm => m_Wrapper.m_UI_Confirm;
-        public InputAction @Clicking => m_Wrapper.m_UI_Clicking;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,9 +125,6 @@ public class @OculusBindings : IInputActionCollection, IDisposable
                 @Confirm.started -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
                 @Confirm.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
                 @Confirm.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
-                @Clicking.started -= m_Wrapper.m_UIActionsCallbackInterface.OnClicking;
-                @Clicking.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnClicking;
-                @Clicking.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnClicking;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -146,9 +132,6 @@ public class @OculusBindings : IInputActionCollection, IDisposable
                 @Confirm.started += instance.OnConfirm;
                 @Confirm.performed += instance.OnConfirm;
                 @Confirm.canceled += instance.OnConfirm;
-                @Clicking.started += instance.OnClicking;
-                @Clicking.performed += instance.OnClicking;
-                @Clicking.canceled += instance.OnClicking;
             }
         }
     }
@@ -156,6 +139,5 @@ public class @OculusBindings : IInputActionCollection, IDisposable
     public interface IUIActions
     {
         void OnConfirm(InputAction.CallbackContext context);
-        void OnClicking(InputAction.CallbackContext context);
     }
 }
