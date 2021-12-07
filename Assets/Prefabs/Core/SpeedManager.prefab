@@ -43,11 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd02c37cd87bca4ca3bf2a24a17123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseSpeed: 12
+  _baseSpeed: 13.2
   _modifiedSpeed: 0
   _finalSpeed: 0
   _roadSpeedMultiplier: 0.2
   _accelerationLerpSpeed: 7
   _currentMultiplier: 1
   _lerpSpeedMutltiplierThreshold: 0.5
+  _speedBeforeHit: 0
+  _timeBeforeFullAccel: 2
   _accelerationLerpMultiplier: 1

@@ -28,6 +28,7 @@ public class CarDamage : MonoBehaviour
 
     public delegate void DamageDelegate();
     public DamageDelegate OnDamage;
+    private InGameMenu _inGameMenu;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class CarDamage : MonoBehaviour
         _healthImage.color = color;
         _health = _maxHealth;
         _carMovement = GetComponent<SimpleMovementCar>();
+        _inGameMenu = FindObjectOfType<InGameMenu>();
     }
 
     public void Damage(float speedLossMultiplier)
@@ -64,6 +66,7 @@ public class CarDamage : MonoBehaviour
             _carMovement.GetSpeedManager.LoseSpeed(_slowerAccelMultiplier, 0.5f);
             _carMovement.GetSpeedManager.StopSpeedingUp();
             StartCoroutine(nameof(StopMovementWhenNoSpeed));
+            _inGameMenu.deadMenu.SetActive(true);
         }
 
         _invincible = true;

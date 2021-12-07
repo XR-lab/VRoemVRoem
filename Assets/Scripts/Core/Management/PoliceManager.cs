@@ -97,6 +97,7 @@ public class PoliceManager : MonoBehaviour
         
         _canChase = true;
     }
+
     public void SetReplacements(PoliceChase repMiddle, PoliceChase repLeft, PoliceChase repRight)
     {
         if (repMiddle == null)
@@ -104,10 +105,7 @@ public class PoliceManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("REPLACING");
         _canChase = false;
-
-        Debug.Log(repMiddle);
 
         _middlePoliceCar = repMiddle;
         _leftPoliceCar = repLeft;
