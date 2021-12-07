@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - StopPolice
   - Map
+  - TrainPassage
   layers:
   - Default
   - TransparentFX

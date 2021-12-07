@@ -14,9 +14,11 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
     [SerializeField] private bool _policeOnly = true;
     [SerializeField] private BoxCollider _boxCollider;
     //[SerializeField] private float _upwardsForce = 1;
+
     private Rigidbody _rb;
     private SpeedManager _speedManager;
     private MoveObstacle _moveObstacle;
+    private float _policeBackForce = 12;
 
     private void Start()
     {
@@ -36,16 +38,16 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
             return;
         }
 
-        BlowAway(collision.relativeVelocity.normalized, collision.contacts[0].point, _upForceMultiplier);
+        BlowAway(collision.relativeVelocity.normalized, collision.contacts[0].point, _upForceMultiplier, _speedManager.FinalSpeed);
     }
 
-    protected override void RunOver()
+    protected override void RunOver(bool lookingForward)
     {
         _boxCollider.enabled = true;
-        BlowAway(Vector3.forward, transform.position, _policeUpForceMultiplier);
+        BlowAway(lookingForward ? Vector3.forward : -Vector3.forward, transform.position, _policeUpForceMultiplier, lookingForward ? _speedManager.FinalSpeed : _policeBackForce);
     }
 
-    private void BlowAway(Vector3 dir, Vector3 point, float upForceMultiplier)
+    private void BlowAway(Vector3 dir, Vector3 point, float upForceMultiplier, float carSpeed)
     {
         if (_moveObstacle != null)
         {
@@ -65,7 +67,7 @@ public class ObstacleBreakInteraction : PlayerObstacleInteraction
 
         transform.SetParent(null);
 
-        float playerSpeed = _speedManager.FinalSpeed != 0 ? _speedManager.FinalSpeed : _speedManager.SpeedBeforeHit;
+        float playerSpeed = carSpeed != 0 ? carSpeed : _speedManager.SpeedBeforeHit;
 
         float force = playerSpeed * _forceMultiplier;
 

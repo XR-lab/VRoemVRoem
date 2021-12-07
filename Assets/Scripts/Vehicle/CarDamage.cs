@@ -28,6 +28,8 @@ public class CarDamage : MonoBehaviour
 
     public delegate void DamageDelegate();
     public DamageDelegate OnDamage;
+    public delegate void BrokenCarDelegate();
+    public BrokenCarDelegate OnGameOver;
     private InGameMenu _inGameMenu;
 
     void Start()
@@ -66,7 +68,7 @@ public class CarDamage : MonoBehaviour
             _carMovement.GetSpeedManager.LoseSpeed(_slowerAccelMultiplier, 0.5f);
             _carMovement.GetSpeedManager.StopSpeedingUp();
             StartCoroutine(nameof(StopMovementWhenNoSpeed));
-            _inGameMenu.deadMenu.SetActive(true);
+            //_inGameMenu.deadMenu.SetActive(true);
         }
 
         _invincible = true;
@@ -141,6 +143,11 @@ public class CarDamage : MonoBehaviour
 
         _carMovement.CanMove = false;
         _blinking = false;
+        OnGameOver();
+
+        yield return new WaitForSeconds(5);
+
+        _inGameMenu.deadMenu.SetActive(true);
     }
 
     IEnumerator ParticleDeactivate()

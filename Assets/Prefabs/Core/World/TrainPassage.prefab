@@ -1124,7 +1124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7122190778425396364}
-  - component: {fileID: 2867129924748163744}
   m_Layer: 6
   m_Name: TrainPassage
   m_TagString: Untagged
@@ -1155,26 +1154,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2867129924748163744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6939380876670972980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405bb7ab764be2f46a94417ff4cfb010, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trainSpawnPoints: []
-  leftTrains: []
-  rightTrains: []
-  leftBorder: -60
-  rightBorder: 30
-  startingTrains: 10
-  currentWay: 0
-  train: {fileID: 2770136342815084379, guid: 9788e2cdbd3869345b0c76ada388085b, type: 3}
 --- !u!1 &6942008543179279132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,14 +1760,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f909aebb04cb24c729b92a0b6ca20b1d, type: 3}
---- !u!1 &2366836915446894460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f909aebb04cb24c729b92a0b6ca20b1d, type: 3}
-  m_PrefabInstance: {fileID: 3177809003043582509}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3139960081870624198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f909aebb04cb24c729b92a0b6ca20b1d, type: 3}
+  m_PrefabInstance: {fileID: 3177809003043582509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2366836915446894460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f909aebb04cb24c729b92a0b6ca20b1d, type: 3}
   m_PrefabInstance: {fileID: 3177809003043582509}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4009700020262795480
@@ -2139,13 +2118,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3728f9cf0cbd4452fa58e8cfd72e6587, type: 3}
---- !u!4 &7705930313847527631 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3728f9cf0cbd4452fa58e8cfd72e6587, type: 3}
-  m_PrefabInstance: {fileID: 7888705347147710244}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7042264663840227957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3728f9cf0cbd4452fa58e8cfd72e6587, type: 3}
+  m_PrefabInstance: {fileID: 7888705347147710244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7705930313847527631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3728f9cf0cbd4452fa58e8cfd72e6587, type: 3}
   m_PrefabInstance: {fileID: 7888705347147710244}
   m_PrefabAsset: {fileID: 0}

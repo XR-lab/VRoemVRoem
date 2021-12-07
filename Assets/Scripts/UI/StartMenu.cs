@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject _mainMenu;
     [SerializeField] private OVRScreenFade _screenFade;
+    [SerializeField] private string _sceneName = "Cutscene";
 
     private bool _fading = false;
 
@@ -19,11 +19,11 @@ public class StartMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartGame();
+            LoadNextScene();
         }
     }
 
-    public void StartGame()
+    public void LoadNextScene()
     {
         if (_fading)
         {
@@ -37,6 +37,6 @@ public class StartMenu : MonoBehaviour
 
     private void FadeDone()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(_sceneName);
     }
 }

@@ -38,7 +38,7 @@ public class PlayerObstacleInteraction : MonoBehaviour
             _interactedWithPolice = true;
             _interacting = true;
             _interactingTrigger = true;
-            RunOver();
+            RunOver(col.transform.localRotation.y == 0);
         }
     }
 
@@ -52,7 +52,7 @@ public class PlayerObstacleInteraction : MonoBehaviour
         Debug.Log("Interacting with " + collider.gameObject.name);
     }
 
-    protected virtual void RunOver()
+    protected virtual void RunOver(bool lookingForward)
     {
         Debug.Log("Running over with a police car!");
     }

@@ -85,5 +85,6 @@ public class AnimatedMaterial : MonoBehaviour
             _occlusionIndex = 0;
         }
         _material.SetTexture("_OcclusionMap", _occlusionArray[_occlusionIndex]);
+        _material.SetTexture("_EmissionMap", _occlusionArray[_occlusionIndex]);
     }
 }

@@ -13,7 +13,6 @@ public class PoliceChase : MonoBehaviour
     [SerializeField] private float _lerpSpeedX = 1;
     [SerializeField] private float _lerpSpeedZ = 1;
     [SerializeField] private float _boostLerpSpeedZ = 1;
-    [SerializeField] private float _destroyTime = 5;
     [SerializeField] private float _distanceBetweenCars = 2;
     [SerializeField] private float _playerBoostModifierZ = 2;
     [SerializeField] private PoliceCarPos _carPos;
@@ -111,6 +110,5 @@ public class PoliceChase : MonoBehaviour
         _anim.SetTrigger("Brake");
         _brakeSfx.Play();
         transform.SetParent(_map);
-        Destroy(gameObject, _destroyTime);
     }
 }
