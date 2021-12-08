@@ -83,21 +83,15 @@ public class PoliceManager : MonoBehaviour
 
     private void CheckChaseLevel()
     {
+        _canChase = true;
+
         switch (_chaseLevel)
         {
             case 0:
                 _middlePoliceCar.TargetZ = _middleCarStartPoint.z;
                 break;
             case 1:
-                if (_prevChaseLevel == 0)
-                {
-                    _middlePoliceCar.TargetZ = _middlePoliceCarChasePos.z;
-                }
-                else
-                {
-                    _leftPoliceCar.TargetZ = _sideCarsStartPoint.z;
-                    _rightPoliceCar.TargetZ = _sideCarsStartPoint.z;
-                }               
+                _middlePoliceCar.TargetZ = _middlePoliceCarChasePos.z;       
                 break;
             case 2:
                 _sidePoliceCars.gameObject.SetActive(true);
@@ -177,15 +171,14 @@ public class PoliceManager : MonoBehaviour
     {        
         _middlePoliceCar.transform.SetParent(null);        
         _middlePoliceCar.enabled = true;
-        
-        CheckChaseLevel();
-        
         _canChase = true;
+        
+        CheckChaseLevel();        
     }
 
     public void SetReplacements(PoliceChase repMiddle, PoliceChase repLeft, PoliceChase repRight)
     {
-        if (repMiddle == null)
+        if (repMiddle == null || repMiddle == _middlePoliceCar)
         {
             return;
         }
