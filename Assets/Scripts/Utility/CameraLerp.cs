@@ -7,6 +7,8 @@ public class CameraLerp : MonoBehaviour
 {
     [SerializeField] private float _lerpSpeed = 3;
     [SerializeField] private float _minDistance = 0.1f;
+    [SerializeField] private LayerMask _nothingLayer;
+    [SerializeField] private LayerMask _everythingLayer;
 
     private bool _moveCamera = false;
     private Vector3 _startPos;
@@ -22,7 +24,6 @@ public class CameraLerp : MonoBehaviour
         _cam = GetComponentInChildren<Camera>();
         _startPos = transform.position;
         _cam.enabled = false;
-        _vrCam.enabled = true;
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class CameraLerp : MonoBehaviour
             if (_targetPos == _startPos)
             {
                 _cam.enabled = false;
-                _vrCam.enabled = true;
+                _vrCam.cullingMask = _everythingLayer;
             }
         }
     }
@@ -57,7 +58,7 @@ public class CameraLerp : MonoBehaviour
     public void MoveCameraToPos(Vector3 pos)
     {
         _moveCamera = true;
-        _vrCam.enabled = false;
+        _vrCam.cullingMask = _nothingLayer;
         _cam.enabled = true;
         _targetPos = pos;
     }

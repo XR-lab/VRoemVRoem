@@ -39,4 +39,10 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene(_sceneName);
     }
+
+    public void QuitGame()
+    {
+        _screenFade.FadeOut();
+        Invoke(nameof(Application.Quit), _screenFade.fadeTime);
+    }
 }

@@ -34,6 +34,10 @@ namespace XRLab.VRoem.Core
                 RestartLevel();
             }
 
+            if(OVRInput.GetDown(OVRInput.RawButton.Start))
+            {
+                CheckOpen();
+            }
         }
 
         //check if pauzemenu is active

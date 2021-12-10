@@ -8,6 +8,7 @@ public class EndTrigger : MonoBehaviour {
     [SerializeField] private Transform _map;
     [SerializeField] private Transform _platform;
     [SerializeField] private Transform _ui;
+    [SerializeField] private Transform _fog;
     [SerializeField] private Rigidbody _playerRb;
 
     void Start() {
@@ -23,6 +24,7 @@ public class EndTrigger : MonoBehaviour {
         _cam.SetParent(_map);
         _platform.SetParent(_map);
         _ui.SetParent(_map);
+        _fog.SetParent(_map);
         _playerRb.velocity = Vector3.zero;
         Invoke(nameof(FreezeGame), 3);
     }
